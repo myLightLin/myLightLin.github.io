@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="大多数编程语言如java，c#,其面向对象都有两个明确的基本概念，即类和实例。类是对象的类型模板，例如，用Worker来表示一个工人类，用Student来    表示一个学生类，类不表示任何具体的事物；实例是根据类创建的对象，例如要表示小明是一个学生，就可以在Student中创建‘小明’这样一个对象。然    而在JavaScript的世界里，没有类的概念。    JavaScript通过原型（p">
+    <meta name="description" content="大多数编程语言如java，c#,其面向对象都有两个明确的基本概念，即类和实例。类是对象的类型模板，例如，用Worker来表示一个工人类，用Student来表示一个学生类，类不表示任何具体的事物；实例是根据类创建的对象，例如要表示小明是一个学生，就可以在Student中创建‘小明’这样一个对象。然而在JavaScript的世界里，没有类的概念。 JavaScript通过原型（prototype）来实">
 <meta name="keywords" content="Light Lin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js面向对象编程(一)">
 <meta property="og:url" content="http://yoursite.com/2018/04/24/js面向对象编程-一/index.html">
 <meta property="og:site_name" content="Light">
-<meta property="og:description" content="大多数编程语言如java，c#,其面向对象都有两个明确的基本概念，即类和实例。类是对象的类型模板，例如，用Worker来表示一个工人类，用Student来    表示一个学生类，类不表示任何具体的事物；实例是根据类创建的对象，例如要表示小明是一个学生，就可以在Student中创建‘小明’这样一个对象。然    而在JavaScript的世界里，没有类的概念。    JavaScript通过原型（p">
+<meta property="og:description" content="大多数编程语言如java，c#,其面向对象都有两个明确的基本概念，即类和实例。类是对象的类型模板，例如，用Worker来表示一个工人类，用Student来表示一个学生类，类不表示任何具体的事物；实例是根据类创建的对象，例如要表示小明是一个学生，就可以在Student中创建‘小明’这样一个对象。然而在JavaScript的世界里，没有类的概念。 JavaScript通过原型（prototype）来实">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-24T17:02:12.788Z">
+<meta property="og:updated_time" content="2018-04-24T17:05:12.695Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js面向对象编程(一)">
-<meta name="twitter:description" content="大多数编程语言如java，c#,其面向对象都有两个明确的基本概念，即类和实例。类是对象的类型模板，例如，用Worker来表示一个工人类，用Student来    表示一个学生类，类不表示任何具体的事物；实例是根据类创建的对象，例如要表示小明是一个学生，就可以在Student中创建‘小明’这样一个对象。然    而在JavaScript的世界里，没有类的概念。    JavaScript通过原型（p">
+<meta name="twitter:description" content="大多数编程语言如java，c#,其面向对象都有两个明确的基本概念，即类和实例。类是对象的类型模板，例如，用Worker来表示一个工人类，用Student来表示一个学生类，类不表示任何具体的事物；实例是根据类创建的对象，例如要表示小明是一个学生，就可以在Student中创建‘小明’这样一个对象。然而在JavaScript的世界里，没有类的概念。 JavaScript通过原型（prototype）来实">
     
     <link rel="shortcut icon" href="/img/favicon32x32.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -124,7 +124,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -180,7 +180,8 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>大多数编程语言如java，c#,其面向对象都有两个明确的基本概念，即类和实例。类是对象的类型模板，例如，用Worker来表示一个工人类，用Student来<br>    表示一个学生类，类不表示任何具体的事物；实例是根据类创建的对象，例如要表示小明是一个学生，就可以在Student中创建‘小明’这样一个对象。然<br>    而在JavaScript的世界里，没有类的概念。<br>    <font color="#00a8e6">JavaScript通过原型（prototype）来实现面向对象编程。</font><br>    假设现在有一个这样的对象：<br>    //创建一个名为Student的对象<br>    var Student = {<br>      name: ‘xiaoming’,<br>      height: 172,<br>      eat: fucntion () {<br>        console.log(this.name+’is eating..’);<br>      }<br>    };<br>   那么如何来创建一个‘小明’呢？JavaScript通过一个Object.create()方法来传入一个原型对象，并创建一个基于该原型的新对象。下面通过编写一个函数<br>   来实践上面讲到的。<br>   //函数名为creatStudent<br>   function createStudent (name) {<br>     var x = Object.create(Student);<br>     x.name = name;<br>     return x;<br>   }<br>   var xiaoming = createStudent(‘小明’);<br>   xiaoming.eat();   //小明现在拥有父类eat这个方法了，能”吃”了</p>
+            <p>大多数编程语言如java，c#,其面向对象都有两个明确的基本概念，即类和实例。类是对象的类型模板，例如，用Worker来表示一个工人类，用Student来<br>表示一个学生类，类不表示任何具体的事物；实例是根据类创建的对象，例如要表示小明是一个学生，就可以在Student中创建‘小明’这样一个对象。然<br>而在JavaScript的世界里，没有类的概念。</p>
+<p><font color="#00a8e6">JavaScript通过原型（prototype）来实现面向对象编程。</font><br>    假设现在有一个这样的对象：<br>    //创建一个名为Student的对象<br>    var Student = {<br>      name: ‘xiaoming’,<br>      height: 172,<br>      eat: fucntion () {<br>        console.log(this.name+’is eating..’);<br>      }<br>    };<br>   那么如何来创建一个‘小明’呢？JavaScript通过一个Object.create()方法来传入一个原型对象，并创建一个基于该原型的新对象。下面通过编写一个函数<br>   来实践上面讲到的。<br>   //函数名为creatStudent<br>   function createStudent (name) {<br>     var x = Object.create(Student);<br>     x.name = name;<br>     return x;<br>   }<br>   var xiaoming = createStudent(‘小明’);<br>   xiaoming.eat();   //小明现在拥有父类eat这个方法了，能”吃”了</p>
 <p>   当然，也可以不编写函数，直接在创建一个xiaoming的对象，然后通过xiaoming.<strong>proto</strong> = Student;同样可以实现，只不过不推荐采用这种方式，因为<br>   万恶的低版本IE不兼容<em>proto</em>这个属性.</p>
 <p>   未完待续… …</p>
 
@@ -191,7 +192,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-04-24T17:02:12.788Z" itemprop="dateUpdated">2018-04-25 01:02:12</time>
+    Last updated: <time datetime="2018-04-24T17:05:12.695Z" itemprop="dateUpdated">2018-04-25 01:05:12</time>
 </span><br>
 
 
@@ -350,7 +351,7 @@
 
         <p>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
