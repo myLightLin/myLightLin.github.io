@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="Light">
 <meta property="og:description" content="大多数编程语言如java，c#,其面向对象都有两个明确的基本概念，即类和实例。类是对象的类型模板，例如，用Worker来表示一个工人类，用Student来   表示一个学生类，类不表示任何具体的事物；实例是根据类创建的对象，例如要表示小明是一个学生，就可以在Student中创建‘小明’这样一个对象。然   而在JavaScript的世界里，没有类的概念。   JavaScript通过原型（p">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-24T17:12:18.791Z">
+<meta property="og:updated_time" content="2018-04-25T15:57:02.620Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js面向对象编程(一)">
 <meta name="twitter:description" content="大多数编程语言如java，c#,其面向对象都有两个明确的基本概念，即类和实例。类是对象的类型模板，例如，用Worker来表示一个工人类，用Student来   表示一个学生类，类不表示任何具体的事物；实例是根据类创建的对象，例如要表示小明是一个学生，就可以在Student中创建‘小明’这样一个对象。然   而在JavaScript的世界里，没有类的概念。   JavaScript通过原型（p">
@@ -160,6 +160,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建对象"><span class="post-toc-number">1.</span> <span class="post-toc-text">创建对象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#构造函数"><span class="post-toc-number">2.</span> <span class="post-toc-text">构造函数</span></a></li></ol>
+        </nav>
+    </aside>
+
 
 <article id="post-js面向对象编程-一"
   class="post-article article-type-post fade" itemprop="blogPost">
@@ -180,9 +187,16 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>   大多数编程语言如java，c#,其面向对象都有两个明确的基本概念，即类和实例。类是对象的类型模板，例如，用Worker来表示一个工人类，用Student来<br>   表示一个学生类，类不表示任何具体的事物；实例是根据类创建的对象，例如要表示小明是一个学生，就可以在Student中创建‘小明’这样一个对象。然<br>   而在JavaScript的世界里，没有类的概念。<br>   <font color="#00a8e6">JavaScript通过原型（prototype）来实现面向对象编程。</font><br>    假设现在有一个这样的对象：<br>    //创建一个名为Student的对象<br>    var Student = {<br>      name: ‘xiaoming’,<br>      height: 172,<br>      eat: fucntion () {<br>        console.log(this.name+’is eating..’);<br>      }<br>    };<br>   那么如何来创建一个‘小明’呢？JavaScript通过一个Object.create()方法来传入一个原型对象，并创建一个基于该原型的新对象。下面通过编写一个函数<br>   来实践上面讲到的。<br>   //函数名为creatStudent<br>   function createStudent (name) {<br>     var x = Object.create(Student);<br>     x.name = name;<br>     return x;<br>   }<br>   var xiaoming = createStudent(‘小明’);<br>   xiaoming.eat();   //小明现在拥有父类eat这个方法了，能”吃”了</p>
+            <p>   大多数编程语言如java，c#,其面向对象都有两个明确的基本概念，即类和实例。类是对象的类型模板，例如，用Worker来表示一个工人类，用Student来<br>   表示一个学生类，类不表示任何具体的事物；实例是根据类创建的对象，例如要表示小明是一个学生，就可以在Student中创建‘小明’这样一个对象。然<br>   而在JavaScript的世界里，没有类的概念。<br>   <font color="#00a8e6">JavaScript通过原型（prototype）来实现面向对象编程。</font><br>    假设现在有一个这样的对象：<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//创建一个名为Student的对象</span><br><span class="line">var Student = &#123;</span><br><span class="line">  name: <span class="string">'xiaoming'</span>,</span><br><span class="line">  height: 172,</span><br><span class="line">  eat: <span class="function"><span class="title">fucntion</span></span> () &#123;</span><br><span class="line">    console.log(this.name+<span class="string">'is eating..'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>   那么如何来创建一个‘小明’呢？JavaScript通过一个Object.create()方法来传入一个原型对象，并创建一个基于该原型的新对象。下面通过编写一个函数<br>   来实践上面讲到的。<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//函数名为creatStudent</span><br><span class="line"><span class="keyword">function</span> createStudent (name) &#123;</span><br><span class="line">  var x = Object.create(Student);</span><br><span class="line">  x.name = name;</span><br><span class="line">  <span class="built_in">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line">var xiaoming = createStudent(<span class="string">'小明'</span>);</span><br><span class="line">xiaoming.eat();     //小明现在拥有父类eat这个方法了，能<span class="string">"吃"</span>了</span><br></pre></td></tr></table></figure></p>
 <p>   当然，也可以不编写函数，直接在创建一个xiaoming的对象，然后通过xiaoming.<strong>proto</strong> = Student;同样可以实现，只不过不推荐采用这种方式，因为<br>   万恶的低版本IE不兼容<em>proto</em>这个属性.</p>
-<p>   未完待续… …</p>
+<h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><p>   JavaScript中每一个对象都会有一个原型，当我们用obj.xxx去调用一个对象的属性时，JavaScript引擎会先在当前对象上寻找，如果找不到就去到原型对象上寻找，如果还没找到，<br>   就去到Object.prototype(最外层)找，最终还没找到就只能返回undefined了。<br>   例如，创建一个Array数组，来看看它的原型链<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,2,3];</span><br><span class="line">arr---&gt;Array.prototype---&gt;Object.prototype---&gt;null</span><br></pre></td></tr></table></figure></p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>   除了使用{…}创建一个对象外，还可以使用<font color="#000">构造函数</font>来创建。下面定义一个构造函数<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Student(name) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">  this.hello = <span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">    alert(<span class="string">'hello,'</span>this.name+<span class="string">'!'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>   也许这个函数看起来跟普通函数没什么两样，JavaScript通过一个关键字new来实例化一个对象，<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var xiaoming = new Student(<span class="string">'小明'</span>);</span><br><span class="line">xiaoming.name;   //小明</span><br><span class="line">xiaoming.hello();  //hello,小明！</span><br></pre></td></tr></table></figure></p>
+<p>   试试如果不写new的话，上面的代码运行会如何!<br>   此时新创建的xiaoming的原型链是：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xiaoming--&gt;Student.prototype---&gt;Object.prototype---&gt;null</span><br></pre></td></tr></table></figure></p>
+<p>   用new Student创建的对象还会从原型上获得一个constructor属性，它指向函数Student本身。<br>   需要注意一个小问题，假设现在xiaoming,xiaohong来自对象Student.来看下面这段代码：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xiaoming.name;  //小明</span><br><span class="line">xiaohong.name;  //小红</span><br><span class="line">xiaoming.hello; //<span class="keyword">function</span>: Student.hello()</span><br><span class="line">xiaohong.hello; //<span class="keyword">function</span>: Student.hello()</span><br><span class="line">xioaming.hello === xiaohong.hello;  //<span class="literal">false</span></span><br></pre></td></tr></table></figure></p>
+<p>   xiaoming和xiaohong居然不是同一个函数！这就带来这样的问题，当我们创建很多对象的时候，就会产生很多不同的函数，虽然它们的名称和代码是相同的，这极大地浪费了内存，<br>   所以我们需要让这些hello函数实际上只共享一个函数就行，也就是下面这段修改后的代码：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Student(name) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Student.prototype.hello = <span class="function"><span class="title">function</span></span> () &#123;  //通过prototype来实现所有子对象共享父对象的函数</span><br><span class="line">  alert(<span class="string">'hello,'</span>+this.name+<span class="string">'!'</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>   PS：以上是个人学习js面向对象的一些不成熟不全面的总结，想了解更多关于js面向对象的知识,推荐廖雪峰的js面向对象教程<a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499763408e24c210985d34edcabbca944b4239e20000以及另一位" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499763408e24c210985d34edcabbca944b4239e20000以及另一位</a><br>   大佬的js面向对象教程。</p>
 
         </div>
 
@@ -191,7 +205,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-04-24T17:12:18.791Z" itemprop="dateUpdated">2018-04-25 01:12:18</time>
+    Last updated: <time datetime="2018-04-25T15:57:02.620Z" itemprop="dateUpdated">2018-04-25 23:57:02</time>
 </span><br>
 
 
