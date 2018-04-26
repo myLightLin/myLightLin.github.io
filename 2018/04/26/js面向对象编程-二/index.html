@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="##原型继承实际上，实现JavaScript的原型继承就如同Java的class中定义一个subclass一样，当我们定义了一个学生类Student，想要在定义一个子类去继承这个学生类，这就是原型继承，可是由于JavaScript没有class类型，所以其中的一个方法就是借助一个空的函数F来实现正确的原型链，确保其原型指向是正确的。这个空函数F定义如下：1234567891011121314151">
+    <meta name="description" content="原型继承实际上，实现JavaScript的原型继承就如同Java的class中定义一个subclass一样，当我们定义了一个学生类Student，想要在定义一个子类去继承这个学生类，这就是原型继承，可是由于JavaScript没有class类型，所以其中的一个方法就是借助一个空的函数F来实现正确的原型链，确保其原型指向是正确的。这个空函数F定义如下：123456789101112131415161">
 <meta name="keywords" content="Light Lin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js面向对象编程(二)">
 <meta property="og:url" content="http://yoursite.com/2018/04/26/js面向对象编程-二/index.html">
 <meta property="og:site_name" content="Light">
-<meta property="og:description" content="##原型继承实际上，实现JavaScript的原型继承就如同Java的class中定义一个subclass一样，当我们定义了一个学生类Student，想要在定义一个子类去继承这个学生类，这就是原型继承，可是由于JavaScript没有class类型，所以其中的一个方法就是借助一个空的函数F来实现正确的原型链，确保其原型指向是正确的。这个空函数F定义如下：1234567891011121314151">
+<meta property="og:description" content="原型继承实际上，实现JavaScript的原型继承就如同Java的class中定义一个subclass一样，当我们定义了一个学生类Student，想要在定义一个子类去继承这个学生类，这就是原型继承，可是由于JavaScript没有class类型，所以其中的一个方法就是借助一个空的函数F来实现正确的原型链，确保其原型指向是正确的。这个空函数F定义如下：123456789101112131415161">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-26T13:50:36.162Z">
+<meta property="og:updated_time" content="2018-04-26T14:01:38.223Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js面向对象编程(二)">
-<meta name="twitter:description" content="##原型继承实际上，实现JavaScript的原型继承就如同Java的class中定义一个subclass一样，当我们定义了一个学生类Student，想要在定义一个子类去继承这个学生类，这就是原型继承，可是由于JavaScript没有class类型，所以其中的一个方法就是借助一个空的函数F来实现正确的原型链，确保其原型指向是正确的。这个空函数F定义如下：1234567891011121314151">
+<meta name="twitter:description" content="原型继承实际上，实现JavaScript的原型继承就如同Java的class中定义一个subclass一样，当我们定义了一个学生类Student，想要在定义一个子类去继承这个学生类，这就是原型继承，可是由于JavaScript没有class类型，所以其中的一个方法就是借助一个空的函数F来实现正确的原型链，确保其原型指向是正确的。这个空函数F定义如下：123456789101112131415161">
     
     <link rel="shortcut icon" href="/img/favicon32x32.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -160,6 +160,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原型继承"><span class="post-toc-number">1.</span> <span class="post-toc-text">原型继承</span></a></li></ol>
+        </nav>
+    </aside>
+
 
 <article id="post-js面向对象编程-二"
   class="post-article article-type-post fade" itemprop="blogPost">
@@ -180,10 +187,10 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>##原型继承<br>实际上，实现JavaScript的原型继承就如同Java的class中定义一个subclass一样，当我们定义了一个学生类Student，想要在定义一个子类去继承这个学生类，这就是原型继承，可是<br>由于JavaScript没有class类型，所以其中的一个方法就是借助一个空的函数F来实现正确的原型链，确保其原型指向是正确的。这个空函数F定义如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">//子类的构造函数,在内部用call()调用希望“继承”的构造函数，并绑定this；</span><br><span class="line"><span class="keyword">function</span> PrimaryStudent(props)&#123;</span><br><span class="line">  Student.call(this,props);     </span><br><span class="line">  this.grade = props.grade || 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//空函数F</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">F</span></span>() &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//把F的原型指向Student.prototype</span><br><span class="line">F.prototype = Student.prototype;</span><br><span class="line"></span><br><span class="line">//把PrimaryStudent的原型指向一个新的F对象，F对象的原型正好指向Student.prototype:</span><br><span class="line">PrimaryStudent.prototype = new F();</span><br><span class="line"></span><br><span class="line">//把PrimaryStudent原型的构造函数修复为PrimaryStudent:</span><br><span class="line">PrimaryStudent.prototype.constructor = PrimaryStudent;</span><br><span class="line"></span><br><span class="line">//定义属于这个PrimaryStudent自己的方法</span><br><span class="line">PrimaryStudent.prototype.getGrade = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">  <span class="built_in">return</span> this.grade;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//创建xiaoming;</span><br><span class="line">var xiaoming = new PrimaryStudent(&#123;</span><br><span class="line">  name:<span class="string">'小明'</span>,</span><br><span class="line">  grade: 80</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//验证原型</span><br><span class="line">xiaoming.__proto__===PrimaryStudent.prototype;  //<span class="literal">true</span></span><br><span class="line">xiaoming.__proto__.__proto__===Student.prototype;  //<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">//验证继承关系</span><br><span class="line">xiaoming instanceof PrimaryStudent;  //<span class="literal">true</span></span><br><span class="line">xiaoming instanceof Student;  //<span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+            <h2 id="原型继承"><a href="#原型继承" class="headerlink" title="原型继承"></a>原型继承</h2><p>实际上，实现JavaScript的原型继承就如同Java的class中定义一个subclass一样，当我们定义了一个学生类Student，想要在定义一个子类去继承这个学生类，这就是原型继承，可是<br>由于JavaScript没有class类型，所以其中的一个方法就是借助一个空的函数F来实现正确的原型链，确保其原型指向是正确的。这个空函数F定义如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">//子类的构造函数,在内部用call()调用希望“继承”的构造函数，并绑定this；</span><br><span class="line"><span class="keyword">function</span> PrimaryStudent(props)&#123;</span><br><span class="line">  Student.call(this,props);     </span><br><span class="line">  this.grade = props.grade || 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//空函数F</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">F</span></span>() &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//把F的原型指向Student.prototype</span><br><span class="line">F.prototype = Student.prototype;</span><br><span class="line"></span><br><span class="line">//把PrimaryStudent的原型指向一个新的F对象，F对象的原型正好指向Student.prototype:</span><br><span class="line">PrimaryStudent.prototype = new F();</span><br><span class="line"></span><br><span class="line">//把PrimaryStudent原型的构造函数修复为PrimaryStudent:</span><br><span class="line">PrimaryStudent.prototype.constructor = PrimaryStudent;</span><br><span class="line"></span><br><span class="line">//定义属于这个PrimaryStudent自己的方法</span><br><span class="line">PrimaryStudent.prototype.getGrade = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">  <span class="built_in">return</span> this.grade;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//创建xiaoming;</span><br><span class="line">var xiaoming = new PrimaryStudent(&#123;</span><br><span class="line">  name:<span class="string">'小明'</span>,</span><br><span class="line">  grade: 80</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//验证原型</span><br><span class="line">xiaoming.__proto__===PrimaryStudent.prototype;  //<span class="literal">true</span></span><br><span class="line">xiaoming.__proto__.__proto__===Student.prototype;  //<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">//验证继承关系</span><br><span class="line">xiaoming instanceof PrimaryStudent;  //<span class="literal">true</span></span><br><span class="line">xiaoming instanceof Student;  //<span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
 <p>还可以写一个inherits()，将继承这个动作封装成函数，方便调用，简化代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> inherits (Child,Parent) &#123;</span><br><span class="line">  var F = <span class="function"><span class="title">function</span></span> () &#123;&#125;;</span><br><span class="line">  F.prototype = Parent.prototype;</span><br><span class="line">  Child.prototype = new F();</span><br><span class="line">  Child.prototype.constructor = Child;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>现在可以调用这个函数来实现继承了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Student(props) &#123;</span><br><span class="line">  this.name = props.name || <span class="string">''</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student.prototype.hello = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">  alert(<span class="string">'hello,'</span>+this.name+<span class="string">'!'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> PrimaryStudent(props)&#123;</span><br><span class="line">  Student.call(this,props);</span><br><span class="line">  this.grade = grade || 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//实现继承</span><br><span class="line">inherits(PrimaryStudent,Student);</span><br><span class="line"></span><br><span class="line">//定义PrimaryStudent自己的方法</span><br><span class="line">PrimaryStudent.prototype.getGrade = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">  <span class="built_in">return</span> this.grade;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>PS：以上是个人学习js面向对象的一些不成熟不全面的总结，想了解更多关于js面向对象的知识,推荐廖雪峰的js面向对象教程<a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499763408e24c210985d34edcabbca944b4239e20000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499763408e24c210985d34edcabbca944b4239e20000</a><br>以及另一位大佬的js面向对象教程。</p>
+<p>PS：以上是个人学习js面向对象的一些不成熟不全面的总结，想了解更多关于js面向对象的知识,推荐<a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499763408e24c210985d34edcabbca944b4239e20000" target="_blank" rel="noopener">廖雪峰的js面向对象教程</a>以及<a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html" target="_blank" rel="noopener">阮一峰的网络日志</a></p>
 
         </div>
 
@@ -192,7 +199,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-04-26T13:50:36.162Z" itemprop="dateUpdated">2018-04-26 21:50:36</time>
+    Last updated: <time datetime="2018-04-26T14:01:38.223Z" itemprop="dateUpdated">2018-04-26 22:01:38</time>
 </span><br>
 
 
@@ -287,17 +294,15 @@
     
 
 
+
+
+
 <section class="comments" id="comments">
-    <div id="disqus_thread"></div>
-    <script>
-    var disqus_shortname = 'true';
-    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
 </section>
-
-
-
 
 
 
