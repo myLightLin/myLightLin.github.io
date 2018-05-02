@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>js实现轮播图效果 | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="现在很多网站都会用到轮播图效果，轮播图的应用会给你的网站增色不少，本文将一步步带你用原生JavaScript捣鼓出一个轮播图，如果有不正确的地方希望指出，一起交流讨论，先来看下轮播图用到的基本知识点:1.绝对定位与相对定位2.overflow: hidden;3.闭包 HTML布局12345678910111213141516171819202122232425262728293031323334">
+<meta name="keywords" content="Light Lin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js实现轮播图效果">
+<meta property="og:url" content="http://yoursite.com/2018/04/30/js实现轮播图效果/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="现在很多网站都会用到轮播图效果，轮播图的应用会给你的网站增色不少，本文将一步步带你用原生JavaScript捣鼓出一个轮播图，如果有不正确的地方希望指出，一起交流讨论，先来看下轮播图用到的基本知识点:1.绝对定位与相对定位2.overflow: hidden;3.闭包 HTML布局12345678910111213141516171819202122232425262728293031323334">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-5-1/22492119.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-5-2/7768017.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-5-2/900720.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-5-3/8792901.jpg">
+<meta property="og:updated_time" content="2018-05-02T16:37:04.265Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js实现轮播图效果">
+<meta name="twitter:description" content="现在很多网站都会用到轮播图效果，轮播图的应用会给你的网站增色不少，本文将一步步带你用原生JavaScript捣鼓出一个轮播图，如果有不正确的地方希望指出，一起交流讨论，先来看下轮播图用到的基本知识点:1.绝对定位与相对定位2.overflow: hidden;3.闭包 HTML布局12345678910111213141516171819202122232425262728293031323334">
+<meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-5-1/22492119.jpg">
+    
+    <link rel="shortcut icon" href="/img/favicon32x32.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/images.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:1072770248@qq.com" title="1072770248@qq.com" class="mail">1072770248@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">js实现轮播图效果</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">js实现轮播图效果</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-30T02:12:21.000Z" itemprop="datePublished" class="page-time">
+  2018-04-30
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HTML布局"><span class="post-toc-number">1.</span> <span class="post-toc-text">HTML布局</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CSS代码"><span class="post-toc-number">2.</span> <span class="post-toc-text">CSS代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JavaScript代码"><span class="post-toc-number">3.</span> <span class="post-toc-text">JavaScript代码</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-js实现轮播图效果"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">js实现轮播图效果</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-30 10:12:21" datetime="2018-04-30T02:12:21.000Z"  itemprop="datePublished">2018-04-30</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>现在很多网站都会用到轮播图效果，轮播图的应用会给你的网站增色不少，本文将一步步带你用原生JavaScript捣鼓出一个轮播图，如果有不正确的地方希望指出，一起交流讨论，先来看下轮播图用到的基本知识点:<br>1.绝对定位与相对定位<br>2.overflow: hidden;<br>3.闭包</p>
+<h2 id="HTML布局"><a href="#HTML布局" class="headerlink" title="HTML布局"></a>HTML布局</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;js轮播图效果&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">"banner"</span>&gt;</span><br><span class="line">        &lt;ul class=<span class="string">"list"</span> style=<span class="string">"left: -600px"</span>&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                &lt;img src=<span class="string">"5.jpg"</span> alt=<span class="string">"第五张"</span>&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                &lt;img src=<span class="string">"1.jpg"</span> alt=<span class="string">"第一张"</span>&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                &lt;img src=<span class="string">"2.jpg"</span> alt=<span class="string">"第二张"</span>&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                &lt;img src=<span class="string">"3.jpg"</span> alt=<span class="string">"第三张"</span>&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                &lt;img src=<span class="string">"4.jpg"</span> alt=<span class="string">"第四张"</span>&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                &lt;img src=<span class="string">"5.jpg"</span> alt=<span class="string">"第五张"</span>&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                &lt;img src=<span class="string">"1.jpg"</span> alt=<span class="string">"第一张"</span>&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">        &lt;div class=<span class="string">"buttons"</span>&gt;</span><br><span class="line">            &lt;span class=<span class="string">"on"</span>&gt;&lt;/span&gt;</span><br><span class="line">            &lt;span&gt;&lt;/span&gt;</span><br><span class="line">            &lt;span&gt;&lt;/span&gt;</span><br><span class="line">            &lt;span&gt;&lt;/span&gt;</span><br><span class="line">            &lt;span&gt;&lt;/span&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;a href=<span class="string">"javascript:;"</span> class=<span class="string">"arrow"</span> id=<span class="string">"prev"</span>&gt;&amp;lt;&lt;/a&gt;</span><br><span class="line">        &lt;a href=<span class="string">"javascript:;"</span> class=<span class="string">"arrow"</span> id=<span class="string">"next"</span>&gt;&amp;gt;&lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>一共有 5 张图片参与轮播，但我们布局里却用了7张图片，这是为了实现无缝连接，即播放到第五张的时候，紧接着第一张。<br>5个span标签即 5 个小圆点，用来指示当前为第几张图片。<br>两个a标签用来进行上一张和下一张的点击。<br>这里给ul设置 left: -600px; 是为了正确地显示第一张图片，而不是显示第五张。</p>
+<h2 id="CSS代码"><a href="#CSS代码" class="headerlink" title="CSS代码"></a>CSS代码</h2><p>建立了基本的页面布局后，首先重置下css,如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0;</span><br><span class="line">&#125;</span><br><span class="line">li&#123;</span><br><span class="line">    list-style: none;</span><br><span class="line">&#125;</span><br><span class="line">a&#123;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接着，我们给 id 为 banner 的容器设置宽度为 600px,高度为 400px,给它设置一个 overflow 为 hidden.这个属性可以将超出容器宽高的部分隐藏掉，原理是将 7 张图片放在同一行上，然后只保留一张，把其余的图片 hidden 掉，给父容器设置相对定位，在让 7 张图片相对于父容器进行绝对定位，于是便可以通过 style.left 属性来控制图片的更换了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#banner&#123;</span></span><br><span class="line">    width: 600px;</span><br><span class="line">    height: 400px;</span><br><span class="line">    position: relative;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    margin: 0 auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>图片相对父容器绝对定位，z-index显示层级，这里为1。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.list&#123;</span><br><span class="line">    width: 4200px;</span><br><span class="line">    height: 400px;</span><br><span class="line">    position: absolute;</span><br><span class="line">    z-index: 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>使用浮动让7张图片排成一排：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.list li img&#123;</span><br><span class="line">    width: 600px;</span><br><span class="line">    height: 400px;</span><br><span class="line">    <span class="built_in">float</span>: left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接下来设置5个小圆点的样式，依然使用绝对定位将它们放在图片正下方并给第一个圆点设置一个 .on 类指示当前轮播图片<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">.buttons&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    bottom: 10px;</span><br><span class="line">    right: 250px;</span><br><span class="line">    z-index: 2;    //这里为2，意味着层级比刚刚的图片容器1要高，所以圆点会覆盖在图片的上方</span><br><span class="line">&#125;</span><br><span class="line">.buttons span&#123;</span><br><span class="line">    margin-left: 5px;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    width: 10px;</span><br><span class="line">    height: 10px;</span><br><span class="line">    border-radius: 50%;</span><br><span class="line">    background-color: \<span class="comment">#fff;</span></span><br><span class="line">    color:white;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line">.buttons .on&#123;</span><br><span class="line">    background-color: \<span class="comment">#00acec;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后就是前进与后退箭头了，依然如前面一样绝对定位，z-index为2<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">.arrow&#123;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">    display: none;</span><br><span class="line">    line-height: 38px;</span><br><span class="line">    text-align: center;</span><br><span class="line">    font-size: 36px;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">    width: 40px;</span><br><span class="line">    height: 40px;</span><br><span class="line">    position: absolute;</span><br><span class="line">    z-index: 2;</span><br><span class="line">    top: 180px;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">    color: <span class="comment">#fff;</span></span><br><span class="line">&#125;</span><br><span class="line">.arrow:hover&#123;</span><br><span class="line">    background: <span class="comment">#ececec;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#banner:hover .arrow&#123;</span></span><br><span class="line">    display: block;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#prev&#123;</span></span><br><span class="line">    left: 10px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#next&#123;</span></span><br><span class="line">    right: 10px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>至此，CSS样式已经添加完毕，来看下当前的静态效果:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-5-1/22492119.jpg" alt="效果图" title="">
+                </div>
+                <div class="image-caption">效果图</div>
+            </figure></p>
+<h2 id="JavaScript代码"><a href="#JavaScript代码" class="headerlink" title="JavaScript代码"></a>JavaScript代码</h2><p>页面布局与样式设置好后，使用 js 来添加轮播逻辑:<br>首先我们获取到 list 容器，通过控制它的left值来轮播图片，即每次点击触发一个 onclick 事件，将 list 的 left 值加/减上 600（1张图片的宽度），这里特别注意的是，当 left<br>的值向右一直加到 -3600px 时，也就是此时播到我们用来无缝衔接的第 1 张图片，这个时候就要手动将 left 值更改为 -1200 ，也就是说，在点击则调回到第 1 张图片播放，这样每次播到最后一张图片的时候，它就会跳回到第 2 张图片，这样就能循环下去；同理，当点击向左的按钮时，left值不断地在往回退，一直到 left 为 0,此时已经到最左边的第一张了，我们把<br>它的值重置到第倒数第二张图片那里，这样就又继续循环下去。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">var list = document.querySelector(<span class="string">'.list'</span>);</span><br><span class="line">var prev = document.getElementById(<span class="string">'prev'</span>);</span><br><span class="line">var next = document.getElementById(<span class="string">'next'</span>);</span><br><span class="line">   next.onclick = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">       next_pic();</span><br><span class="line">   &#125;;</span><br><span class="line">   prev.onclick = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">       prev_pic();</span><br><span class="line">   &#125;;</span><br><span class="line">   <span class="keyword">function</span> <span class="function"><span class="title">next_pic</span></span>()&#123;</span><br><span class="line">       var newleft;</span><br><span class="line">       <span class="keyword">if</span>(list.style.left === <span class="string">'-3600px'</span>)&#123;</span><br><span class="line">           newleft = -1200;</span><br><span class="line">       &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">           newleft = parseInt(list.style.left)-600;</span><br><span class="line">       &#125;</span><br><span class="line">       list.style.left = newleft + <span class="string">'px'</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">function</span> <span class="function"><span class="title">prev_pic</span></span>()&#123;</span><br><span class="line">       var newleft;</span><br><span class="line">       <span class="keyword">if</span>(list.style.left === <span class="string">'0px'</span>)&#123;</span><br><span class="line">           newleft = -2400;</span><br><span class="line">       &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">           newleft = parseInt(list.style.left) + 600;</span><br><span class="line">       &#125;</span><br><span class="line">       list.style.left = newleft + <span class="string">'px'</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>看下效果:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-5-2/7768017.jpg" alt="效果图" title="">
+                </div>
+                <div class="image-caption">效果图</div>
+            </figure></p>
+<p>现在图片已经可以手动点击播放了，我们希望能自动播放，只需添加下面这个函数:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var timer;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">autoplay</span></span>()&#123;</span><br><span class="line">      clearInterval(timer);</span><br><span class="line">      timer = setInterval(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">         next_pic();</span><br><span class="line">      &#125;,2000);</span><br><span class="line">&#125;</span><br><span class="line">autoplay();</span><br></pre></td></tr></table></figure></p>
+<p>现在它可以自动播放了，效果是这样子：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-5-2/900720.jpg" alt="效果图" title="">
+                </div>
+                <div class="image-caption">效果图</div>
+            </figure></p>
+<p>此时在给它添加一个函数，鼠标移上去的时候停止播放，当鼠标移出的时候就让它自动播放:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var banner = document.getElementById(<span class="string">'banner'</span>);</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">stop</span></span>()&#123;</span><br><span class="line">        clearInterval(timer);</span><br><span class="line">&#125;</span><br><span class="line">banner.onmouseover = stop;</span><br><span class="line">banner.onmouseout = autoplay;</span><br></pre></td></tr></table></figure></p>
+<p>做到现在，我们发现当图片轮播的时候，下方的小圆点没有跟着变，现在我们来改变它。实现原理是设置一个全局的变量 index,当点击右箭头时，在 next_pic 函数里让 index++；当点击左箭头时，在 prev_pic 函数里让 index–，然后设置当前 index 的圆点的 class 为 on,同样，当 index++ 到 5 时，要归为 0 从头开始；当 index– 到 0 时，归为 4 使其向左继续递减，代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var index = 0;</span><br><span class="line">var buttons = document.querySelector(<span class="string">'.buttons'</span>).getElementsByTagName(<span class="string">'span'</span>);</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">showButton</span></span>()&#123;</span><br><span class="line">        <span class="keyword">for</span>(var i = 0;i&lt;buttons.length;i++)&#123;</span><br><span class="line">            buttons[i].className = <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        buttons[index].className = <span class="string">"on"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在 next_pic() 函数里添加:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">index++;</span><br><span class="line"><span class="keyword">if</span>(index &gt; 4)&#123;</span><br><span class="line">    index = 0;</span><br><span class="line">&#125;</span><br><span class="line">showButton();</span><br></pre></td></tr></table></figure></p>
+<p>在 prev_pic() 函数里添加:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">index--;</span><br><span class="line"><span class="keyword">if</span>(index &lt; 0)&#123;</span><br><span class="line">    index = 4;</span><br><span class="line">&#125;</span><br><span class="line">showButton();</span><br></pre></td></tr></table></figure></p>
+<p>此时小圆点就可以跟着图片的改变而改变当前圆点的颜色了。<br>最后一个功能就是，当点击小圆点时，相应的图片也要跟着变化，这里可以用闭包来实现,当点击小圆点时，通过比较当前圆点的 index 值与全局变量 index 来重新计算 left 值。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (var i = 0;i&lt;buttons.length;i++)&#123;</span><br><span class="line">        (<span class="keyword">function</span>(i)&#123;</span><br><span class="line">            buttons[i].onclick = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">                var curr = index - i;</span><br><span class="line">                <span class="keyword">if</span>(index === 4 &amp;&amp; parseInt(list.style.left)!==-3000)&#123;</span><br><span class="line">                    curr = curr - 5;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(index === 0 &amp;&amp; parseInt(list.style.left)!== -600)&#123;</span><br><span class="line">                    curr = 5 + curr;</span><br><span class="line">                &#125;</span><br><span class="line">                list.style.left = (parseInt(list.style.left) +  curr * 600)+<span class="string">"px"</span>;</span><br><span class="line">                index = i;</span><br><span class="line">                showButton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)(i);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>最终就实现了一个轮播图的效果:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-5-3/8792901.jpg" alt="效果图" title="">
+                </div>
+                <div class="image-caption">效果图</div>
+            </figure></p>
+<p>完整代码:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;js轮播图效果&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    *&#123;</span><br><span class="line">        margin: 0;</span><br><span class="line">        padding: 0;</span><br><span class="line">      &#125;</span><br><span class="line">      li&#123;</span><br><span class="line">        list-style: none;</span><br><span class="line">      &#125;</span><br><span class="line">      a&#123;</span><br><span class="line">        text-decoration: none;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">#banner&#123;</span></span><br><span class="line">        width: 600px;</span><br><span class="line">        height: 400px;</span><br><span class="line">        position: relative;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">        margin: 0 auto;</span><br><span class="line">      &#125;</span><br><span class="line">      .list&#123;</span><br><span class="line">        width: 4200px;</span><br><span class="line">        height: 400px;</span><br><span class="line">        position: absolute;</span><br><span class="line">        z-index: 1;</span><br><span class="line">      &#125;</span><br><span class="line">      .list li img&#123;</span><br><span class="line">        width: 600px;</span><br><span class="line">        height: 400px;</span><br><span class="line">        <span class="built_in">float</span>: left;</span><br><span class="line">      &#125;</span><br><span class="line">      .buttons&#123;</span><br><span class="line">        position: absolute;</span><br><span class="line">        bottom: 10px;</span><br><span class="line">        right: 250px;</span><br><span class="line">        z-index: 2;</span><br><span class="line">      &#125;</span><br><span class="line">      .buttons span&#123;</span><br><span class="line">        margin-left: 5px;</span><br><span class="line">        display: inline-block;</span><br><span class="line">        width: 10px;</span><br><span class="line">        height: 10px;</span><br><span class="line">        border-radius: 50%;</span><br><span class="line">        background-color: <span class="comment">#fff;</span></span><br><span class="line">        color:white;</span><br><span class="line">        cursor: pointer;</span><br><span class="line">      &#125;</span><br><span class="line">      .buttons .on&#123;</span><br><span class="line">        background-color: <span class="comment">#00acec;</span></span><br><span class="line">      &#125;</span><br><span class="line">      .arrow&#123;</span><br><span class="line">        cursor: pointer;</span><br><span class="line">        display: none;</span><br><span class="line">        line-height: 38px;</span><br><span class="line">        text-align: center;</span><br><span class="line">        font-size: 36px;</span><br><span class="line">        font-weight: bold;</span><br><span class="line">        width: 40px;</span><br><span class="line">        height: 40px;</span><br><span class="line">        position: absolute;</span><br><span class="line">        z-index: 2;</span><br><span class="line">        top: 180px;</span><br><span class="line">        text-decoration: none;</span><br><span class="line">        color: <span class="comment">#fff;</span></span><br><span class="line">      &#125;</span><br><span class="line">      .arrow:hover&#123;</span><br><span class="line">        background: <span class="comment">#ececec;</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">#banner:hover .arrow&#123;</span></span><br><span class="line">        display: block;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">#prev&#123;</span></span><br><span class="line">        left: 10px;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">#next&#123;</span></span><br><span class="line">        right: 10px;</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">"banner"</span>&gt;</span><br><span class="line">        &lt;ul class=<span class="string">"list"</span> style=<span class="string">"left: -600px"</span>&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                &lt;img src=<span class="string">"5.jpg"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                &lt;img src=<span class="string">"1.jpg"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                &lt;img src=<span class="string">"2.jpg"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                &lt;img src=<span class="string">"3.jpg"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                &lt;img src=<span class="string">"4.jpg"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                &lt;img src=<span class="string">"5.jpg"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                &lt;img src=<span class="string">"1.jpg"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">        &lt;div class=<span class="string">"buttons"</span>&gt;</span><br><span class="line">            &lt;span class=<span class="string">"on"</span>&gt;&lt;/span&gt;</span><br><span class="line">            &lt;span&gt;&lt;/span&gt;</span><br><span class="line">            &lt;span&gt;&lt;/span&gt;</span><br><span class="line">            &lt;span&gt;&lt;/span&gt;</span><br><span class="line">            &lt;span&gt;&lt;/span&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;a href=<span class="string">"javascript:;"</span> class=<span class="string">"arrow"</span> id=<span class="string">"prev"</span>&gt;&amp;lt;&lt;/a&gt;</span><br><span class="line">        &lt;a href=<span class="string">"javascript:;"</span> class=<span class="string">"arrow"</span> id=<span class="string">"next"</span>&gt;&amp;gt;&lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="string">'use strict'</span>;</span><br><span class="line">        window.onload = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">          var banner = document.getElementById(<span class="string">'banner'</span>);</span><br><span class="line">          var list = document.querySelector(<span class="string">'.list'</span>);</span><br><span class="line">          var prev = document.getElementById(<span class="string">'prev'</span>);</span><br><span class="line">          var next = document.getElementById(<span class="string">'next'</span>);</span><br><span class="line">          var buttons = document.querySelector(<span class="string">'.buttons'</span>).getElementsByTagName(<span class="string">'span'</span>);</span><br><span class="line">          var timer;</span><br><span class="line">          var index = 0;</span><br><span class="line">          next.onclick = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">              next_pic();</span><br><span class="line">          &#125;;</span><br><span class="line">          prev.onclick = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">              prev_pic();</span><br><span class="line">          &#125;;</span><br><span class="line">          <span class="keyword">function</span> <span class="function"><span class="title">next_pic</span></span>()&#123;</span><br><span class="line">              var newleft;</span><br><span class="line">              <span class="keyword">if</span>(list.style.left === <span class="string">'-3600px'</span>)&#123;</span><br><span class="line">                  newleft = -1200;</span><br><span class="line">              &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                  newleft = parseInt(list.style.left)-600;</span><br><span class="line">              &#125;</span><br><span class="line">              list.style.left = newleft + <span class="string">'px'</span>;</span><br><span class="line">              index++;</span><br><span class="line">              <span class="keyword">if</span>(index &gt; 4)&#123;</span><br><span class="line">                  index = 0;</span><br><span class="line">              &#125;</span><br><span class="line">              showButton();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">function</span> <span class="function"><span class="title">prev_pic</span></span>()&#123;</span><br><span class="line">              var newleft;</span><br><span class="line">              <span class="keyword">if</span>(list.style.left === <span class="string">'0px'</span>)&#123;</span><br><span class="line">                  newleft = -2400;</span><br><span class="line">              &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                  newleft = parseInt(list.style.left) + 600;</span><br><span class="line">              &#125;</span><br><span class="line">              list.style.left = newleft + <span class="string">'px'</span>;</span><br><span class="line">              index--;</span><br><span class="line">              <span class="keyword">if</span>(index &lt; 0)&#123;</span><br><span class="line">                  index = 4;</span><br><span class="line">              &#125;</span><br><span class="line">              showButton();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">function</span> <span class="function"><span class="title">autoplay</span></span>()&#123;</span><br><span class="line">              clearInterval(timer);</span><br><span class="line">              timer = setInterval(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">                 next_pic();</span><br><span class="line">              &#125;,2000);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">function</span> <span class="function"><span class="title">stop</span></span>()&#123;</span><br><span class="line">              clearInterval(timer);</span><br><span class="line">          &#125;</span><br><span class="line">          autoplay();</span><br><span class="line">          banner.onmouseover = stop;</span><br><span class="line">          banner.onmouseout = autoplay;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">function</span> <span class="function"><span class="title">showButton</span></span>()&#123;</span><br><span class="line">              <span class="keyword">for</span>(var i = 0;i&lt;buttons.length;i++)&#123;</span><br><span class="line">                  buttons[i].className = <span class="string">""</span>;</span><br><span class="line">              &#125;</span><br><span class="line">              buttons[index].className = <span class="string">"on"</span>;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">for</span> (var i = 0;i&lt;buttons.length;i++)&#123;</span><br><span class="line">              (<span class="keyword">function</span>(i)&#123;</span><br><span class="line">                  buttons[i].onclick = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">                      var curr = index - i;</span><br><span class="line">                      <span class="keyword">if</span>(index === 4 &amp;&amp; parseInt(list.style.left)!==-3000)&#123;</span><br><span class="line">                          curr = curr - 5;</span><br><span class="line">                      &#125;</span><br><span class="line">                      //和使用prev和next相同，在最开始的照片5和最终的照片1在使用时会出现问题，导致符号和位数的出错，做相应地处理即可</span><br><span class="line">                      <span class="keyword">if</span>(index === 0 &amp;&amp; parseInt(list.style.left)!== -600)&#123;</span><br><span class="line">                          curr = 5 + curr;</span><br><span class="line">                      &#125;</span><br><span class="line">                      list.style.left = (parseInt(list.style.left) +  curr * 600)+<span class="string">"px"</span>;</span><br><span class="line">                      index = i;</span><br><span class="line">                      showButton();</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;)(i);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-05-02T16:37:04.265Z" itemprop="dateUpdated">2018-05-03 00:37:04</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/images.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/04/30/js实现轮播图效果/&title=《js实现轮播图效果》 — 「Stay hungry，stay foolish.」&pic=http://yoursite.com/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/04/30/js实现轮播图效果/&title=《js实现轮播图效果》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/04/30/js实现轮播图效果/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js实现轮播图效果》 — 「Stay hungry，stay foolish.」&url=http://yoursite.com/2018/04/30/js实现轮播图效果/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/04/30/js实现轮播图效果/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/27/js面向对象编程-三/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">js面向对象编程(三)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请我吃糖果
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.jpg" data-alipay="/img/wechatpay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2015 - 2018</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/04/30/js实现轮播图效果/&title=《js实现轮播图效果》 — 「Stay hungry，stay foolish.」&pic=http://yoursite.com/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/04/30/js实现轮播图效果/&title=《js实现轮播图效果》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/04/30/js实现轮播图效果/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js实现轮播图效果》 — 「Stay hungry，stay foolish.」&url=http://yoursite.com/2018/04/30/js实现轮播图效果/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/04/30/js实现轮播图效果/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/04/30/js实现轮播图效果/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
