@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>JS学堂:小米商城右侧导航栏效果 | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript,前端,jQuery">
+    <meta name="description" content="侧边导航栏以及回到顶部已经越来越成为每个网站的必要功能之一，主要向网站的访客展示一些电话、客服QQ、邮箱或者其它信息，通常附带一个「回到顶部」的箭头。网上有很多关于这类效果的例子，姑且自己也总结一个出来，有需要的可以参考。不同的样式效果虽然不同，但原理都是差不多的，下面以小米商城的右侧栏为例">
+<meta name="keywords" content="JavaScript,前端,jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS学堂:小米商城右侧导航栏效果">
+<meta property="og:url" content="http://yoursite.com/2018/05/18/JS学堂-小米商城右侧导航栏效果/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="侧边导航栏以及回到顶部已经越来越成为每个网站的必要功能之一，主要向网站的访客展示一些电话、客服QQ、邮箱或者其它信息，通常附带一个「回到顶部」的箭头。网上有很多关于这类效果的例子，姑且自己也总结一个出来，有需要的可以参考。不同的样式效果虽然不同，但原理都是差不多的，下面以小米商城的右侧栏为例">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-5-18/90992859.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-5-19/46926608.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-5-20/24608015.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-5-20/9284860.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-5-20/99525935.jpg">
+<meta property="og:updated_time" content="2018-05-20T03:21:18.527Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS学堂:小米商城右侧导航栏效果">
+<meta name="twitter:description" content="侧边导航栏以及回到顶部已经越来越成为每个网站的必要功能之一，主要向网站的访客展示一些电话、客服QQ、邮箱或者其它信息，通常附带一个「回到顶部」的箭头。网上有很多关于这类效果的例子，姑且自己也总结一个出来，有需要的可以参考。不同的样式效果虽然不同，但原理都是差不多的，下面以小米商城的右侧栏为例">
+<meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-5-18/90992859.jpg">
+    
+    <link rel="shortcut icon" href="/img/favicon32x32.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/images.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:1072770248@qq.com" title="1072770248@qq.com" class="mail">1072770248@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JS学堂:小米商城右侧导航栏效果</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JS学堂:小米商城右侧导航栏效果</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-18T15:03:01.000Z" itemprop="datePublished" class="page-time">
+  2018-05-18
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-JS学堂-小米商城右侧导航栏效果"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JS学堂:小米商城右侧导航栏效果</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-18 23:03:01" datetime="2018-05-18T15:03:01.000Z"  itemprop="datePublished">2018-05-18</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>侧边导航栏以及回到顶部已经越来越成为每个网站的必要功能之一，主要向网站的访客展示一些电话、客服QQ、邮箱或者其它信息，通常附带一个「回到顶部」的箭头。网上有很多关于这类效果的例子，姑且自己也总结一个出来，有需要的可以参考。不同的样式效果虽然不同，但原理都是差不多的，下面以小米商城的右侧栏为例<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-5-18/90992859.jpg" alt="小米商城" title="">
+                </div>
+                <div class="image-caption">小米商城</div>
+            </figure></p>
+<p>用到的主要知识点：<br> 1.css display 属性;<br> 2.jQuery mouseenter 以及 mouseleave 属性<br> 3.jQuery 动画</p>
+<p> 从上面的演示图可以看到，小米商城的右侧边栏是由五个带图标及文字的正方形盒子竖着排列的，每一个盒子的宽高都是相等的，分别有 1px 的描边。最后一个盒子「回到顶部」与上边四个有一定的间隙，默认是隐藏的，只有当鼠标滚动滚轮到一定高度后才显示出来。</p>
+<p> 了解了基本的布局后下面开始写 HTML 布局，在开始之前，先做一些准备工作，引入本次效果需要用到的 jQuery 文件，并且新建一个 demo.css 样式文件以及 demo.js 逻辑文件将其引入到新建好的 HTML 文件中 :<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"css/demo.css"</span> <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</span><br><span class="line">&lt;script src=<span class="string">"js/jquery-3.1.1.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"js/demo.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>现在，创建一个 id 为 top 的 div 盒子，在里面创建一个 id 为 izl_rmenu，class 也为 izl_rmenu 的 div 标签，接着分别用 1 个 a 标签以及 4 个 div 标签代表侧边栏的五个盒子按钮，代码如下 :<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"top"</span>&gt;</span><br><span class="line">        &lt;div id=<span class="string">"izl_rmenu"</span> class=<span class="string">"izl-rmenu"</span>&gt;</span><br><span class="line">            &lt;a href=<span class="string">"javascript:;"</span> class=<span class="string">"btn btn-sao"</span>&gt;</span><br><span class="line">                &lt;img src=<span class="string">"https://i8.mifile.cn/b2c-mimall-media/cc0b8948a88a08f6f3b7cd826e09ace6.png"</span> alt=<span class="string">""</span> class=<span class="string">"sao-before"</span>&gt;</span><br><span class="line">                &lt;img src=<span class="string">"https://i8.mifile.cn/b2c-mimall-media/1012b08b8f0268aab455c56027109a34.png"</span> alt=<span class="string">""</span> style=<span class="string">"display: none"</span> class=<span class="string">"sao-hover"</span>&gt;</span><br><span class="line">                &lt;p&gt;扫一扫&lt;/p&gt;</span><br><span class="line">            &lt;/a&gt;</span><br><span class="line">            &lt;div class=<span class="string">"btn btn-user"</span>&gt;</span><br><span class="line">                &lt;img class=<span class="string">"pic"</span> src=<span class="string">"https://i8.mifile.cn/b2c-mimall-media/55cad219421bee03a801775e7309b920.png"</span> onclick=<span class="string">"window.location.href='http://%77%77%77%2e%73%75%63%61%69%6a%69%61%79%75%61%6e%2e%63%6f%6d'"</span>&gt;</span><br><span class="line">                &lt;p&gt;个人中心&lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=<span class="string">"btn btn-kefu"</span>&gt;</span><br><span class="line">                &lt;img src=<span class="string">"https://i8.mifile.cn/b2c-mimall-media/4f036ae4d45002b2a6fb6756cedebf02.png"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">                &lt;p&gt;联系客服&lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=<span class="string">"btn btn-shop"</span>&gt;</span><br><span class="line">                &lt;img src=<span class="string">"https://i8.mifile.cn/b2c-mimall-media/d7db56d1d850113f016c95e289e36efa.png"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">                &lt;p&gt;购物车&lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=<span class="string">"btn btn-top"</span>&gt;</span><br><span class="line">                &lt;img src=<span class="string">"//i1.mifile.cn/f/i/2018/home/totop.png"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">                &lt;p&gt;回顶部&lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>由于没有添加任何样式，现在的效果是这样子的 :<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-5-19/46926608.jpg" alt="仿小米商城的侧边栏" title="">
+                </div>
+                <div class="image-caption">仿小米商城的侧边栏</div>
+            </figure></p>
+<p>现在我们给它添加一些 css 样式，在 demo.css 文件中添加<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*&#123;margin:0;padding:0;list-style:none;border:none;text-decoration: none&#125;</span><br><span class="line">body&#123;height:2000px;font-family: 微软雅黑;background-color: <span class="comment">#f5f5f5;&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>这样就重置了默认的 css 样式。接着我们给整个容器设置一个「固定定位」，好让它始终固定在页面的特定位置处，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.izl-rmenu&#123;</span><br><span class="line">    position: fixed;</span><br><span class="line">    left: 50%;</span><br><span class="line">    margin-left: 532px;</span><br><span class="line">    bottom: 10px;</span><br><span class="line">    padding-bottom: 73px;</span><br><span class="line">    z-index: 999;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后，我们给每个按钮设置一些共同的样式，包括定义他们的宽高以及水平居中排布，特别注意的是，这里我使用了 display:table ，再结合 vertical-align 还有 text-align 两个属性来使它水平垂直居中，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.izl-rmenu .btn&#123;</span><br><span class="line">    width: 82px;</span><br><span class="line">    height: 90px;</span><br><span class="line">    margin-bottom:1px;</span><br><span class="line">    cursor:pointer;</span><br><span class="line">    position:relative;</span><br><span class="line">    border: 1px solid <span class="comment">#f5f5f5;</span></span><br><span class="line">    color: <span class="comment">#757575;</span></span><br><span class="line">    display: table;</span><br><span class="line">    vertical-align: center;</span><br><span class="line">    text-align: center;</span><br><span class="line">    background-color: <span class="comment">#fff;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后，分别给每个 img 标签也就是每个小图标设置宽度还有高度，给回到顶部这个容器添加一些样式，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.izl-rmenu .btn img&#123;</span><br><span class="line">    padding-top: 20px;</span><br><span class="line">    width: 30px;</span><br><span class="line">    height: 30px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.izl-rmenu .btn-top&#123;</span><br><span class="line">    background-color: <span class="comment">#fff;</span></span><br><span class="line">    margin-top: 15px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>现在的效果如图，<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-5-20/24608015.jpg" alt="仿小米商城的侧边栏" title="">
+                </div>
+                <div class="image-caption">仿小米商城的侧边栏</div>
+            </figure><br>可以看到，目前的样式与小米商城里的样式已基本差不多了，但现在的效果都是静态的，鼠标滑过并没有什么特效，点击回到顶部也没任何反应，下面就来添加 js 来使它有交互效果<br>样例效果中当鼠标滑过时会有图标及文字变色的效果，原理是在 HTML 中设置两张图片，一张是鼠标未经过时的图片，一张是鼠标滑过的时候变色的图片，这里我们用 JavaScript 的框架之一 jQuery 来制作动效。<br>首先，在原先 HTML 布局中添加一张鼠标滑过时的 img ,并且分别设置它们的 class ，以便使用 jQuery 选择器来获取，依次在每个 class 为 btn 的容器下追加一个 img 标签<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"javascript:;"</span> class=<span class="string">"btn btn-sao"</span>&gt;</span><br><span class="line">   &lt;img src=<span class="string">"https://i8.mifile.cn/b2c-mimall-media/cc0b8948a88a08f6f3b7cd826e09ace6.png"</span> alt=<span class="string">""</span> class=<span class="string">"sao-before"</span>&gt;</span><br><span class="line">   &lt;img src=<span class="string">"https://i8.mifile.cn/b2c-mimall-media/1012b08b8f0268aab455c56027109a34.png"</span> alt=<span class="string">""</span> style=<span class="string">"display: none"</span> class=<span class="string">"sao-hover"</span>&gt;</span><br><span class="line">   &lt;p&gt;扫一扫&lt;/p&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">&lt;div class=<span class="string">"btn btn-user"</span>&gt;</span><br><span class="line">   &lt;img class=<span class="string">"user-before"</span> src=<span class="string">"https://i8.mifile.cn/b2c-mimall-media/55cad219421bee03a801775e7309b920.png"</span> onclick=<span class="string">"window.location.href='http://%77%77%77%2e%73%75%63%61%69%6a%69%61%79%75%61%6e%2e%63%6f%6d'"</span>&gt;</span><br><span class="line">   &lt;img src=<span class="string">"https://i8.mifile.cn/b2c-mimall-media/41f858550f42eb1770b97faf219ae215.png"</span> alt=<span class="string">""</span> style=<span class="string">"display: none"</span> class=<span class="string">"user-hover"</span>&gt;</span><br><span class="line">   &lt;p&gt;个人中心&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=<span class="string">"btn btn-kefu"</span>&gt;</span><br><span class="line">   &lt;img src=<span class="string">"https://i8.mifile.cn/b2c-mimall-media/4f036ae4d45002b2a6fb6756cedebf02.png"</span> alt=<span class="string">""</span> class=<span class="string">"kefu-before"</span>&gt;</span><br><span class="line">   &lt;img src=<span class="string">"https://i8.mifile.cn/b2c-mimall-media/5e9f2b1b0da09ac3b3961378284ef2d4.png"</span> alt=<span class="string">""</span> style=<span class="string">"display: none"</span> class=<span class="string">"kefu-hover"</span>&gt;</span><br><span class="line">   &lt;p&gt;联系客服&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=<span class="string">"btn btn-shop"</span>&gt;</span><br><span class="line">   &lt;img src=<span class="string">"https://i8.mifile.cn/b2c-mimall-media/d7db56d1d850113f016c95e289e36efa.png"</span> alt=<span class="string">""</span> class=<span class="string">"shop-before"</span>&gt;</span><br><span class="line">   &lt;img src=<span class="string">"https://i8.mifile.cn/b2c-mimall-media/692a6c3b0a93a24f74a29c0f9d68ec71.png"</span> alt=<span class="string">""</span> style=<span class="string">"display: none"</span> class=<span class="string">"shop-hover"</span>&gt;</span><br><span class="line">   &lt;p&gt;购物车&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=<span class="string">"btn btn-top"</span>&gt;</span><br><span class="line">   &lt;img src=<span class="string">"//i1.mifile.cn/f/i/2018/home/totop.png"</span> alt=<span class="string">""</span> class=<span class="string">"top-before"</span>&gt;</span><br><span class="line">   &lt;img src=<span class="string">"//i1.mifile.cn/f/i/2018/home/totop_hover.png"</span> alt=<span class="string">""</span> style=<span class="string">"display: none"</span> class=<span class="string">"top-hover"</span>&gt;</span><br><span class="line">   &lt;p&gt;回顶部&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p> 打开 demo.js 文件，添加如下代码 :<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready(<span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">  /* 使用 jq 的 each() 方法遍历整个大的 div 容器，在用 find() 方法寻找当前容器下的子容器，mouseenter 和 mouseleave分别</span><br><span class="line">     为鼠标滑过和鼠标移出时的事件，css() 方法设置所选元素的样式，这里只列举了一个示例代码，要让五个容器都有鼠标滑过的效果，</span><br><span class="line">     只需复制黏贴代码，更改其 find 方法对应的 class 名称就能作用到所有容器上。</span><br><span class="line">  */</span><br><span class="line">  $(<span class="string">'#izl_rmenu'</span>).each(<span class="function"><span class="title">function</span></span> () &#123;        </span><br><span class="line">    $(this).find(<span class="string">".btn-sao"</span>).mouseenter(<span class="function"><span class="title">function</span></span> () &#123;  </span><br><span class="line">          $(this).find(<span class="string">".sao-before"</span>).css(<span class="string">'display'</span>,<span class="string">'none'</span>);</span><br><span class="line">          $(this).find(<span class="string">".sao-hover"</span>).css(&#123;</span><br><span class="line">              <span class="string">'display'</span>:<span class="string">'table'</span>,</span><br><span class="line">              <span class="string">'position'</span>:<span class="string">'relative'</span>,</span><br><span class="line">              <span class="string">'left'</span>:<span class="string">'26px'</span></span><br><span class="line">          &#125;);</span><br><span class="line">          $(this).find(<span class="string">'p'</span>).css(&#123;</span><br><span class="line">              <span class="string">'position'</span>:<span class="string">'relative'</span>,</span><br><span class="line">              <span class="string">'top'</span>:<span class="string">'4px'</span>,</span><br><span class="line">              <span class="string">'color'</span>:<span class="string">'#ff6700'</span></span><br><span class="line">          &#125;);</span><br><span class="line">       &#125;);</span><br><span class="line">    $(this).find(<span class="string">".btn-sao"</span>).mouseleave(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">           $(this).find(<span class="string">".sao-before"</span>).css(<span class="string">'display'</span>,<span class="string">''</span>);</span><br><span class="line">           $(this).find(<span class="string">".sao-hover"</span>).css(&#123;</span><br><span class="line">               <span class="string">'display'</span>:<span class="string">'none'</span></span><br><span class="line">           &#125;);</span><br><span class="line">           $(this).find(<span class="string">'p'</span>).css(&#123;</span><br><span class="line">               <span class="string">'position'</span>:<span class="string">''</span>,</span><br><span class="line">               <span class="string">'top'</span>:<span class="string">''</span>,</span><br><span class="line">               <span class="string">'color'</span>:<span class="string">''</span></span><br><span class="line">           &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p> 做完这个效果后，可以看到当鼠标滑动到「扫一扫」容器时，会显示一个二维码，原理是在父容器内设置一个 div ，里面存放二维码文字，默认为隐藏状态，当鼠标滑过的时候，就将其显示出来。下面来实现这个效果。<br> 首先在 HTML 文件中 class 为 ‘btn btn-sao’ 的 a 标签中添加布局代码<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> &lt;div class=<span class="string">"pic"</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">"pic_content"</span>&gt;</span><br><span class="line">       &lt;img class=<span class="string">"pic_img"</span> src=<span class="string">"https://i8.mifile.cn/b2c-mimall-media/2ecd36165b6c2a820a0488fa7a2c4942.png"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">       &lt;span style=<span class="string">"display: block"</span>&gt;微信扫一扫&lt;br&gt;一分钱拼团&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>  添加 css ,设置样式并将其隐藏 :<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">.izl-rmenu .pic&#123;</span><br><span class="line">  position: absolute;</span><br><span class="line">  left: -136px;</span><br><span class="line">  top: 0;</span><br><span class="line">  height: 187px;</span><br><span class="line">  display: none;</span><br><span class="line"> &#125;</span><br><span class="line">.izl-rmenu .pic .pic_content&#123;</span><br><span class="line">  <span class="built_in">float</span>: left;</span><br><span class="line">  height: 187px;</span><br><span class="line">  background-color: <span class="comment">#fff;</span></span><br><span class="line">  border: 1px solid <span class="comment">#f5f5f5;</span></span><br><span class="line">&#125;</span><br><span class="line">.izl-rmenu .pic .pic_content img&#123;</span><br><span class="line">  width: 100px;</span><br><span class="line">  height: 100px;</span><br><span class="line">  border: none;</span><br><span class="line">  margin: 5px 14px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>  使用 jQuery ，在 $(this).find(“.btn-sao”).mouseenter(function () { … } 代码块中添加鼠标经过时显示二维码的代码 :<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(this).find(<span class="string">'.pic'</span>).fadeIn();</span><br></pre></td></tr></table></figure></p>
+<p>  在 $(this).find(“.btn-sao”).mouseleave(function () { … } 代码块中添加鼠标移出时隐藏的代码 :<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(this).find(<span class="string">'.pic'</span>).fadeOut();</span><br></pre></td></tr></table></figure></p>
+<p>  来看下当前页面的效果 :<br>  <img src="http://p81yl6eww.bkt.clouddn.com/18-5-20/9284860.jpg" alt="仿小米商城的侧边栏"></p>
+<p>  现在还差最后一个「回到顶部」效果，这个使用 jQuery 也非常简单，只需在 $(‘#izl_rmenu’).each(function () { … } 代码块中添加如下代码 :<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(this).find(<span class="string">".btn-top"</span>).click(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">  $(<span class="string">"html, body"</span>).animate(&#123;</span><br><span class="line">      <span class="string">"scroll-top"</span>:0</span><br><span class="line">  &#125;,<span class="string">"fast"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>  这样就能轻松实现回到顶部，但是一般的网站默认会吧「回到顶部」隐藏起来，只有当鼠标滚轮滚到一定高度后才显示按钮，这样的交互效果显然更符合用户需求。于是我们在将其优化一下，在全局 $(document).ready(function (){ … } 代码块里加上如下代码 :<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> var lastRmenuStatus=<span class="literal">false</span>;</span><br><span class="line">   $(window).scroll(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">       var _top=$(window).scrollTop();</span><br><span class="line">       <span class="keyword">if</span>(_top&gt;200)&#123;</span><br><span class="line">           $(<span class="string">"#izl_rmenu"</span>).data(<span class="string">"expanded"</span>,<span class="literal">true</span>);</span><br><span class="line">       &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">           $(<span class="string">"#izl_rmenu"</span>).data(<span class="string">"expanded"</span>,<span class="literal">false</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>($(<span class="string">"#izl_rmenu"</span>).data(<span class="string">"expanded"</span>)!=lastRmenuStatus)&#123;</span><br><span class="line">           lastRmenuStatus=$(<span class="string">"#izl_rmenu"</span>).data(<span class="string">"expanded"</span>);</span><br><span class="line">           <span class="keyword">if</span>(lastRmenuStatus)&#123;</span><br><span class="line">               $(<span class="string">"#izl_rmenu .btn-top"</span>).slideDown(<span class="string">"fast"</span>);</span><br><span class="line">           &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">               $(<span class="string">"#izl_rmenu .btn-top"</span>).slideUp(<span class="string">"fast"</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>别忘了在 HTML 标签里加上 display: none 属性来使页面加载时默认隐藏按钮 :<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"btn btn-top"</span> style=<span class="string">"display: none"</span>&gt; ... &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>好了，至此所有效果都有了，一个小米商城的右侧栏呈现在眼前 :<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-5-20/99525935.jpg" alt="仿小米商城的侧边栏" title="">
+                </div>
+                <div class="image-caption">仿小米商城的侧边栏</div>
+            </figure></p>
+<p>查看源码请移步 GitHub :<a href="https://github.com/myLightLin/jQuery-" target="_blank" rel="noopener">jQuery制作小米商城侧边栏效果</a><br>喜欢就 star 一下吧。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-05-20T03:21:18.527Z" itemprop="dateUpdated">2018-05-20 11:21:18</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/images.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/05/18/JS学堂-小米商城右侧导航栏效果/&title=《JS学堂:小米商城右侧导航栏效果》 — 「Stay hungry，stay foolish.」&pic=http://yoursite.com/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/05/18/JS学堂-小米商城右侧导航栏效果/&title=《JS学堂:小米商城右侧导航栏效果》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/05/18/JS学堂-小米商城右侧导航栏效果/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS学堂:小米商城右侧导航栏效果》 — 「Stay hungry，stay foolish.」&url=http://yoursite.com/2018/05/18/JS学堂-小米商城右侧导航栏效果/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/05/18/JS学堂-小米商城右侧导航栏效果/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/09/PS婚纱抠图/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">PS婚纱抠图</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请我吃糖果
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.jpg" data-alipay="/img/wechatpay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2015 - 2018</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/05/18/JS学堂-小米商城右侧导航栏效果/&title=《JS学堂:小米商城右侧导航栏效果》 — 「Stay hungry，stay foolish.」&pic=http://yoursite.com/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/05/18/JS学堂-小米商城右侧导航栏效果/&title=《JS学堂:小米商城右侧导航栏效果》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/05/18/JS学堂-小米商城右侧导航栏效果/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JS学堂:小米商城右侧导航栏效果》 — 「Stay hungry，stay foolish.」&url=http://yoursite.com/2018/05/18/JS学堂-小米商城右侧导航栏效果/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/05/18/JS学堂-小米商城右侧导航栏效果/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/05/18/JS学堂-小米商城右侧导航栏效果/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
