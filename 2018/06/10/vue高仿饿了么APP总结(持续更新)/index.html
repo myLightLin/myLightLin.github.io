@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>vue高仿饿了么APP总结(持续更新) | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="vue">
+    <meta name="description" content="##vue基础环境搭建使用 vue 脚手架 vue-cli 开启项目,npm 全局安装1npm install -g vue-cli 查看是否安装成功 vue listcd 进入到创建好的 sell (项目名称，可自取)目录下,执行 vue init webpack, 这样就创建好了一个完整项目所需的配置文件。webpack 是一个环境，它可以将各种资源打包，然后输出 js,css,渲染图片等。接">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue高仿饿了么APP总结(持续更新)">
+<meta property="og:url" content="http://yoursite.com/2018/06/10/vue高仿饿了么APP总结(持续更新)/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="##vue基础环境搭建使用 vue 脚手架 vue-cli 开启项目,npm 全局安装1npm install -g vue-cli 查看是否安装成功 vue listcd 进入到创建好的 sell (项目名称，可自取)目录下,执行 vue init webpack, 这样就创建好了一个完整项目所需的配置文件。webpack 是一个环境，它可以将各种资源打包，然后输出 js,css,渲染图片等。接">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-10T03:45:59.697Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue高仿饿了么APP总结(持续更新)">
+<meta name="twitter:description" content="##vue基础环境搭建使用 vue 脚手架 vue-cli 开启项目,npm 全局安装1npm install -g vue-cli 查看是否安装成功 vue listcd 进入到创建好的 sell (项目名称，可自取)目录下,执行 vue init webpack, 这样就创建好了一个完整项目所需的配置文件。webpack 是一个环境，它可以将各种资源打包，然后输出 js,css,渲染图片等。接">
+    
+    <link rel="shortcut icon" href="/img/favicon32x32.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/images.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:1072770248@qq.com" title="1072770248@qq.com" class="mail">1072770248@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/JavaScript"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/aboutme"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">vue高仿饿了么APP总结(持续更新)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">vue高仿饿了么APP总结(持续更新)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-09T16:11:06.000Z" itemprop="datePublished" class="page-time">
+  2018-06-10
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-vue高仿饿了么APP总结(持续更新)"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">vue高仿饿了么APP总结(持续更新)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-10 00:11:06" datetime="2018-06-09T16:11:06.000Z"  itemprop="datePublished">2018-06-10</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>##vue基础环境搭建<br>使用 vue 脚手架 vue-cli 开启项目,npm 全局安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g vue-cli</span><br></pre></td></tr></table></figure></p>
+<p>查看是否安装成功 <code>vue list</code><br>cd 进入到创建好的 sell (项目名称，可自取)目录下,执行 <code>vue init webpack</code>, 这样就创建好了一个完整项目所需的配置文件。webpack 是一个环境，它可以将各种资源打包，然后输出 js,css,渲染图片等。<br>接着同样在主目录 sell 下执行 <code>npm install</code> 安装所需的依赖插件，同时建立 node_modules 目录，此目录存放所有需要用到的插件路由。<br>如果没出现任何错误的话，执行 <code>npm run dev</code> ，打开浏览器输入 localhost:8080 就能进入到项目的页面了，这个页面是 vue 准备的起始页面。</p>
+<p>##准备工作<br>流程：需求分析——项目资源准备——图标字体制作——项目目录设计——mock 数据</p>
+<p>######需求分析<br>根据设计稿确定页面的主体结构，从内容上看，页面分为头部商家信息区以及中间的食品选择区还有最后的购物车。头部商家信息又包括左侧 logo 图片，右侧商家名称、配送信息、优惠信息，上中下排布；以及一个详细的商品信息浮窗。中间部分分为商品页、评论页和商品信息页，点击每一个标题能不刷新的切换相应的内容。底部的购物车能根据顾客所选的商品数计算价格并给予不同的信息提示。</p>
+<p>######项目资源准备<br>导入一些设计师给的切图以及素材，方便随时查看制作。</p>
+<p>######图标字体制作<br>进入图标制作网站 icomoon.io,点击制作按钮，选择素材图中的 SVG 图片，将其生成图标字体，点击右下角的 download 按钮下载这些图标。最后将 font 目录以及 style.css 文件拷贝到我们的项目目录下，就能使用这些图标字体了。</p>
+<p>######项目目录设计<br>所有的代码都放在 src 目录下，其中 App.vue 是整个项目的入口文件，一般建立几个目录如 common，components 用来存放对应的文件，组件化模块的思想体现在 components 下建立各个模块的单独目录，在里面存放素材图片以及 .vue 文件，这样是为了方便就近维护。</p>
+<p>######mock数据<br>这是很重要的一个环节，前端自己做页面，需要一些假的数据来模拟操作，后台数据存放在 data.json 中。<br>vue2.0的话首先在 webpack.dev.conf.js 中，引入文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var appData = require(&apos;../data.json&apos;);</span><br><span class="line">var seller = appData.seller;</span><br><span class="line">var goods = appData.goods;</span><br><span class="line">var ratings = appData.ratings;</span><br></pre></td></tr></table></figure></p>
+<p>接着需要编写路由，vue2 的语法跟 vue1 不同，是这样子写路由的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">  before(app)&#123;</span><br><span class="line">      app.get(&apos;/api/seller&apos;,(req,res) =&gt; &#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">            errno:0,</span><br><span class="line">            data:seller</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;),</span><br><span class="line">      app.get(&apos;/api/goods&apos;,(req,res) =&gt; &#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">            errno:0,</span><br><span class="line">            data:goods</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;),</span><br><span class="line">      app.get(&apos;/api/ratings&apos;,(req,res) =&gt; &#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">            errno:0,</span><br><span class="line">            data:ratings</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>##页面骨架</p>
+<p>######vue-router<br>安装一个插件，现在 package.json 里配置依赖，然后执行 <code>npm install</code> 会自动安装好 vue-router ,如果失败报错了的话可以手动去 GitHub 下载，然后导入到项目目录下的 node_modules 下即可。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-10T03:45:59.697Z" itemprop="dateUpdated">2018-06-10 11:45:59</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/images.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/06/10/vue高仿饿了么APP总结(持续更新)/&title=《vue高仿饿了么APP总结(持续更新)》 — 「Stay hungry，stay foolish.」&pic=http://yoursite.com/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/06/10/vue高仿饿了么APP总结(持续更新)/&title=《vue高仿饿了么APP总结(持续更新)》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/06/10/vue高仿饿了么APP总结(持续更新)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue高仿饿了么APP总结(持续更新)》 — 「Stay hungry，stay foolish.」&url=http://yoursite.com/2018/06/10/vue高仿饿了么APP总结(持续更新)/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/06/10/vue高仿饿了么APP总结(持续更新)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/06/05/轻松实现响应式——CSS变量/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">轻松实现响应式——CSS变量</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请我吃糖果
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.jpg" data-alipay="/img/wechatpay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2015 - 2018</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/06/10/vue高仿饿了么APP总结(持续更新)/&title=《vue高仿饿了么APP总结(持续更新)》 — 「Stay hungry，stay foolish.」&pic=http://yoursite.com/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/06/10/vue高仿饿了么APP总结(持续更新)/&title=《vue高仿饿了么APP总结(持续更新)》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/06/10/vue高仿饿了么APP总结(持续更新)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue高仿饿了么APP总结(持续更新)》 — 「Stay hungry，stay foolish.」&url=http://yoursite.com/2018/06/10/vue高仿饿了么APP总结(持续更新)/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/06/10/vue高仿饿了么APP总结(持续更新)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/06/10/vue高仿饿了么APP总结(持续更新)/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
