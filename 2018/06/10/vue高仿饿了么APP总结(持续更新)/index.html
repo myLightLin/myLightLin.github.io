@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="vue">
-    <meta name="description" content="##vue基础环境搭建使用 vue 脚手架 vue-cli 开启项目,npm 全局安装1npm install -g vue-cli 查看是否安装成功 vue listcd 进入到创建好的 sell (项目名称，可自取)目录下,执行 vue init webpack, 这样就创建好了一个完整项目所需的配置文件。webpack 是一个环境，它可以将各种资源打包，然后输出 js,css,渲染图片等。接">
+    <meta name="description" content="vue基础环境搭建使用 vue 脚手架 vue-cli 开启项目,npm 全局安装1npm install -g vue-cli 查看是否安装成功 vue listcd 进入到创建好的 sell (项目名称，可自取)目录下,执行 vue init webpack, 这样就创建好了一个完整项目所需的配置文件。webpack 是一个环境，它可以将各种资源打包，然后输出 js,css,渲染图片等。接着同">
 <meta name="keywords" content="vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue高仿饿了么APP总结(持续更新)">
 <meta property="og:url" content="http://yoursite.com/2018/06/10/vue高仿饿了么APP总结(持续更新)/index.html">
 <meta property="og:site_name" content="「Stay hungry，stay foolish.」">
-<meta property="og:description" content="##vue基础环境搭建使用 vue 脚手架 vue-cli 开启项目,npm 全局安装1npm install -g vue-cli 查看是否安装成功 vue listcd 进入到创建好的 sell (项目名称，可自取)目录下,执行 vue init webpack, 这样就创建好了一个完整项目所需的配置文件。webpack 是一个环境，它可以将各种资源打包，然后输出 js,css,渲染图片等。接">
+<meta property="og:description" content="vue基础环境搭建使用 vue 脚手架 vue-cli 开启项目,npm 全局安装1npm install -g vue-cli 查看是否安装成功 vue listcd 进入到创建好的 sell (项目名称，可自取)目录下,执行 vue init webpack, 这样就创建好了一个完整项目所需的配置文件。webpack 是一个环境，它可以将各种资源打包，然后输出 js,css,渲染图片等。接着同">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-10T03:45:59.697Z">
+<meta property="og:updated_time" content="2018-06-10T05:34:09.824Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue高仿饿了么APP总结(持续更新)">
-<meta name="twitter:description" content="##vue基础环境搭建使用 vue 脚手架 vue-cli 开启项目,npm 全局安装1npm install -g vue-cli 查看是否安装成功 vue listcd 进入到创建好的 sell (项目名称，可自取)目录下,执行 vue init webpack, 这样就创建好了一个完整项目所需的配置文件。webpack 是一个环境，它可以将各种资源打包，然后输出 js,css,渲染图片等。接">
+<meta name="twitter:description" content="vue基础环境搭建使用 vue 脚手架 vue-cli 开启项目,npm 全局安装1npm install -g vue-cli 查看是否安装成功 vue listcd 进入到创建好的 sell (项目名称，可自取)目录下,执行 vue init webpack, 这样就创建好了一个完整项目所需的配置文件。webpack 是一个环境，它可以将各种资源打包，然后输出 js,css,渲染图片等。接着同">
     
     <link rel="shortcut icon" href="/img/favicon32x32.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -160,6 +160,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vue基础环境搭建"><span class="post-toc-number">1.</span> <span class="post-toc-text">vue基础环境搭建</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#准备工作"><span class="post-toc-number">2.</span> <span class="post-toc-text">准备工作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#需求分析"><span class="post-toc-number">2.0.0.0.1.</span> <span class="post-toc-text">需求分析</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#项目资源准备"><span class="post-toc-number">2.0.0.0.2.</span> <span class="post-toc-text">项目资源准备</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#图标字体制作"><span class="post-toc-number">2.0.0.0.3.</span> <span class="post-toc-text">图标字体制作</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#项目目录设计"><span class="post-toc-number">2.0.0.0.4.</span> <span class="post-toc-text">项目目录设计</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#mock数据"><span class="post-toc-number">2.0.0.0.5.</span> <span class="post-toc-text">mock数据</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#页面骨架"><span class="post-toc-number">3.</span> <span class="post-toc-text">页面骨架</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#vue-router"><span class="post-toc-number">3.0.0.0.1.</span> <span class="post-toc-text">vue-router</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
 
 <article id="post-vue高仿饿了么APP总结(持续更新)"
   class="post-article article-type-post fade" itemprop="blogPost">
@@ -180,17 +187,16 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>##vue基础环境搭建<br>使用 vue 脚手架 vue-cli 开启项目,npm 全局安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g vue-cli</span><br></pre></td></tr></table></figure></p>
+            <h2 id="vue基础环境搭建"><a href="#vue基础环境搭建" class="headerlink" title="vue基础环境搭建"></a>vue基础环境搭建</h2><p>使用 vue 脚手架 vue-cli 开启项目,npm 全局安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g vue-cli</span><br></pre></td></tr></table></figure></p>
 <p>查看是否安装成功 <code>vue list</code><br>cd 进入到创建好的 sell (项目名称，可自取)目录下,执行 <code>vue init webpack</code>, 这样就创建好了一个完整项目所需的配置文件。webpack 是一个环境，它可以将各种资源打包，然后输出 js,css,渲染图片等。<br>接着同样在主目录 sell 下执行 <code>npm install</code> 安装所需的依赖插件，同时建立 node_modules 目录，此目录存放所有需要用到的插件路由。<br>如果没出现任何错误的话，执行 <code>npm run dev</code> ，打开浏览器输入 localhost:8080 就能进入到项目的页面了，这个页面是 vue 准备的起始页面。</p>
-<p>##准备工作<br>流程：需求分析——项目资源准备——图标字体制作——项目目录设计——mock 数据</p>
-<p>######需求分析<br>根据设计稿确定页面的主体结构，从内容上看，页面分为头部商家信息区以及中间的食品选择区还有最后的购物车。头部商家信息又包括左侧 logo 图片，右侧商家名称、配送信息、优惠信息，上中下排布；以及一个详细的商品信息浮窗。中间部分分为商品页、评论页和商品信息页，点击每一个标题能不刷新的切换相应的内容。底部的购物车能根据顾客所选的商品数计算价格并给予不同的信息提示。</p>
-<p>######项目资源准备<br>导入一些设计师给的切图以及素材，方便随时查看制作。</p>
-<p>######图标字体制作<br>进入图标制作网站 icomoon.io,点击制作按钮，选择素材图中的 SVG 图片，将其生成图标字体，点击右下角的 download 按钮下载这些图标。最后将 font 目录以及 style.css 文件拷贝到我们的项目目录下，就能使用这些图标字体了。</p>
-<p>######项目目录设计<br>所有的代码都放在 src 目录下，其中 App.vue 是整个项目的入口文件，一般建立几个目录如 common，components 用来存放对应的文件，组件化模块的思想体现在 components 下建立各个模块的单独目录，在里面存放素材图片以及 .vue 文件，这样是为了方便就近维护。</p>
-<p>######mock数据<br>这是很重要的一个环节，前端自己做页面，需要一些假的数据来模拟操作，后台数据存放在 data.json 中。<br>vue2.0的话首先在 webpack.dev.conf.js 中，引入文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var appData = require(&apos;../data.json&apos;);</span><br><span class="line">var seller = appData.seller;</span><br><span class="line">var goods = appData.goods;</span><br><span class="line">var ratings = appData.ratings;</span><br></pre></td></tr></table></figure></p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>流程：需求分析——项目资源准备——图标字体制作——项目目录设计——mock 数据</p>
+<h6 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h6><p>根据设计稿确定页面的主体结构，从内容上看，页面分为头部商家信息区以及中间的食品选择区还有最后的购物车。头部商家信息又包括左侧 logo 图片，右侧商家名称、配送信息、优惠信息，上中下排布；以及一个详细的商品信息浮窗。中间部分分为商品页、评论页和商品信息页，点击每一个标题能不刷新的切换相应的内容。底部的购物车能根据顾客所选的商品数计算价格并给予不同的信息提示。</p>
+<h6 id="项目资源准备"><a href="#项目资源准备" class="headerlink" title="项目资源准备"></a>项目资源准备</h6><p>导入一些设计师给的切图以及素材，方便随时查看制作。</p>
+<h6 id="图标字体制作"><a href="#图标字体制作" class="headerlink" title="图标字体制作"></a>图标字体制作</h6><p>进入图标制作网站 icomoon.io,点击制作按钮，选择素材图中的 SVG 图片，将其生成图标字体，点击右下角的 download 按钮下载这些图标。最后将 font 目录以及 style.css 文件拷贝到我们的项目目录下，就能使用这些图标字体了。</p>
+<h6 id="项目目录设计"><a href="#项目目录设计" class="headerlink" title="项目目录设计"></a>项目目录设计</h6><p>所有的代码都放在 src 目录下，其中 App.vue 是整个项目的入口文件，一般建立几个目录如 common，components 用来存放对应的文件，组件化模块的思想体现在 components 下建立各个模块的单独目录，在里面存放素材图片以及 .vue 文件，这样是为了方便就近维护。</p>
+<h6 id="mock数据"><a href="#mock数据" class="headerlink" title="mock数据"></a>mock数据</h6><p>这是很重要的一个环节，前端自己做页面，需要一些假的数据来模拟操作，后台数据存放在 data.json 中。<br>vue2.0的话首先在 webpack.dev.conf.js 中，引入文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var appData = require(&apos;../data.json&apos;);</span><br><span class="line">var seller = appData.seller;</span><br><span class="line">var goods = appData.goods;</span><br><span class="line">var ratings = appData.ratings;</span><br></pre></td></tr></table></figure></p>
 <p>接着需要编写路由，vue2 的语法跟 vue1 不同，是这样子写路由的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">  before(app)&#123;</span><br><span class="line">      app.get(&apos;/api/seller&apos;,(req,res) =&gt; &#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">            errno:0,</span><br><span class="line">            data:seller</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;),</span><br><span class="line">      app.get(&apos;/api/goods&apos;,(req,res) =&gt; &#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">            errno:0,</span><br><span class="line">            data:goods</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;),</span><br><span class="line">      app.get(&apos;/api/ratings&apos;,(req,res) =&gt; &#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">            errno:0,</span><br><span class="line">            data:ratings</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>##页面骨架</p>
-<p>######vue-router<br>安装一个插件，现在 package.json 里配置依赖，然后执行 <code>npm install</code> 会自动安装好 vue-router ,如果失败报错了的话可以手动去 GitHub 下载，然后导入到项目目录下的 node_modules 下即可。</p>
+<h2 id="页面骨架"><a href="#页面骨架" class="headerlink" title="页面骨架"></a>页面骨架</h2><h6 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h6><p>安装一个插件，现在 package.json 里配置依赖，然后执行 <code>npm install</code> 会自动安装好 vue-router ,如果失败报错了的话可以手动去 GitHub 下载，然后导入到项目目录下的 node_modules 下即可。</p>
 
         </div>
 
@@ -199,7 +205,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-06-10T03:45:59.697Z" itemprop="dateUpdated">2018-06-10 11:45:59</time>
+    最后更新时间：<time datetime="2018-06-10T05:34:09.824Z" itemprop="dateUpdated">2018-06-10 13:34:09</time>
 </span><br>
 
 
