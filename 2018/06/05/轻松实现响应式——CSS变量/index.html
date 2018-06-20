@@ -38,19 +38,19 @@
     
     
     <meta name="keywords" content="CSS">
-    <meta name="description" content="CSS 变量是 CSS 引入的一个新特性，目前绝大多数浏览器已经支持了，它可以帮助我们用更少的代码写出同样多的样式，大大提高了工作效率，本篇文章将教你如何使用 CSS 变量（css variable）。 ##变量声明使用 :root 来声明 css 变量，root 相当于根元素 html，例如声明一个背景颜色为红色的 red 变量,示例如下123:root&amp;#123;    --red: #f00">
+    <meta name="description" content="CSS 变量是 CSS 引入的一个新特性，目前绝大多数浏览器已经支持了，它可以帮助我们用更少的代码写出同样多的样式，大大提高了工作效率，本篇文章将教你如何使用 CSS 变量（css variable）。 变量声明使用 :root 来声明 css 变量，root 相当于根元素 html，例如声明一个背景颜色为红色的 red 变量,示例如下123:root&amp;#123;    --red: #f00;&amp;">
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="轻松实现响应式——CSS变量">
 <meta property="og:url" content="http://www.brightlam.top/2018/06/05/轻松实现响应式——CSS变量/index.html">
 <meta property="og:site_name" content="「Stay hungry，stay foolish.」">
-<meta property="og:description" content="CSS 变量是 CSS 引入的一个新特性，目前绝大多数浏览器已经支持了，它可以帮助我们用更少的代码写出同样多的样式，大大提高了工作效率，本篇文章将教你如何使用 CSS 变量（css variable）。 ##变量声明使用 :root 来声明 css 变量，root 相当于根元素 html，例如声明一个背景颜色为红色的 red 变量,示例如下123:root&amp;#123;    --red: #f00">
+<meta property="og:description" content="CSS 变量是 CSS 引入的一个新特性，目前绝大多数浏览器已经支持了，它可以帮助我们用更少的代码写出同样多的样式，大大提高了工作效率，本篇文章将教你如何使用 CSS 变量（css variable）。 变量声明使用 :root 来声明 css 变量，root 相当于根元素 html，例如声明一个背景颜色为红色的 red 变量,示例如下123:root&amp;#123;    --red: #f00;&amp;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-6-5/9695588.jpg">
-<meta property="og:updated_time" content="2018-06-05T14:27:43.815Z">
+<meta property="og:updated_time" content="2018-06-20T10:07:29.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="轻松实现响应式——CSS变量">
-<meta name="twitter:description" content="CSS 变量是 CSS 引入的一个新特性，目前绝大多数浏览器已经支持了，它可以帮助我们用更少的代码写出同样多的样式，大大提高了工作效率，本篇文章将教你如何使用 CSS 变量（css variable）。 ##变量声明使用 :root 来声明 css 变量，root 相当于根元素 html，例如声明一个背景颜色为红色的 red 变量,示例如下123:root&amp;#123;    --red: #f00">
+<meta name="twitter:description" content="CSS 变量是 CSS 引入的一个新特性，目前绝大多数浏览器已经支持了，它可以帮助我们用更少的代码写出同样多的样式，大大提高了工作效率，本篇文章将教你如何使用 CSS 变量（css variable）。 变量声明使用 :root 来声明 css 变量，root 相当于根元素 html，例如声明一个背景颜色为红色的 red 变量,示例如下123:root&amp;#123;    --red: #f00;&amp;">
 <meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-6-5/9695588.jpg">
     
     <link rel="shortcut icon" href="/img/favicon32x32.ico">
@@ -192,6 +192,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#变量声明"><span class="post-toc-number">1.</span> <span class="post-toc-text">变量声明</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#全局变量与局部变量"><span class="post-toc-number">2.</span> <span class="post-toc-text">全局变量与局部变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JavaScript-操作变量"><span class="post-toc-number">3.</span> <span class="post-toc-text">JavaScript 操作变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#响应式布局"><span class="post-toc-number">4.</span> <span class="post-toc-text">响应式布局</span></a></li></ol>
+        </nav>
+    </aside>
+
 
 <article id="post-轻松实现响应式——CSS变量"
   class="post-article article-type-post fade" itemprop="blogPost">
@@ -213,13 +220,13 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>CSS 变量是 CSS 引入的一个新特性，目前绝大多数浏览器已经支持了，它可以帮助我们用更少的代码写出同样多的样式，大大提高了工作效率，本篇文章将教你如何使用 CSS 变量（css variable）。</p>
-<p>##变量声明<br>使用 :root 来声明 css 变量，root 相当于根元素 html，例如声明一个背景颜色为红色的 red 变量,示例如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:root&#123;</span><br><span class="line">    --red: #f00;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h2><p>使用 :root 来声明 css 变量，root 相当于根元素 html，例如声明一个背景颜色为红色的 red 变量,示例如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:root&#123;</span><br><span class="line">    --red: #f00;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>如何应用这个变量呢？使用 var() 函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">    background-color: var(--red);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这样，我们就给一个 div 盒子添加了一个属性，即设置它的背景颜色为红色。当然也可以同时定义多个变量，方便使用，注意：变量名对大小写敏感，nav-color 和 Nav-color 是完全不同的变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">:root&#123;</span><br><span class="line">    --margin-top: 20px;</span><br><span class="line">    --nav-color: #ff0;</span><br><span class="line">    --Nav-color: #fff;</span><br><span class="line">    --transition-duration: .5s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>##全局变量与局部变量<br>前面我们在 :root里声明的变量都属于全局变量，也就是可以在 html 包裹下的任一class，id 都可以使用它；除此之外也可以定义局部变量，例如我们在 class 为 left 的 div 下定义局部变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.left&#123;</span><br><span class="line">    --left-margin: 60px;</span><br><span class="line">    --left-background-color: #333;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="全局变量与局部变量"><a href="#全局变量与局部变量" class="headerlink" title="全局变量与局部变量"></a>全局变量与局部变量</h2><p>前面我们在 :root里声明的变量都属于全局变量，也就是可以在 html 包裹下的任一class，id 都可以使用它；除此之外也可以定义局部变量，例如我们在 class 为 left 的 div 下定义局部变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.left&#123;</span><br><span class="line">    --left-margin: 60px;</span><br><span class="line">    --left-background-color: #333;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这个时候，–left-margin 和 –left-background-color 就只能在 .left 包含下的容器才能使用这两个属性，同样是使用<code>margin:var(--left-margin);</code>来书写。</p>
-<p>##JavaScript 操作变量<br>JavaScript 可以操纵 css 变量，例如在 index.js 文件中有如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var root = document.querySelector(&apos;:root&apos;);     //获取根元素</span><br><span class="line">var rootStyle = getComputedStyle(root);       //获取元素的 css</span><br><span class="line">var red = rootStyle.getPropertyValue(&apos;--left-margin&apos;);   //获取 css 的样式值   60px</span><br><span class="line">root.style.setProperty(&apos;--left-margin&apos;,&apos;50px&apos;);          //更改样式</span><br></pre></td></tr></table></figure></p>
-<p>##响应式布局<br>由于事先定义好了变量，只需引入就可以使用，这样的话当我们想要修改一个属性值，例如修改某个盒子的背景颜色，只需更改变量的值，就可以全局应用到所有元素中，利用这一特性可以做响应式布局。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">:root&#123;</span><br><span class="line">    --bg-color: #fff;</span><br><span class="line">    --height: 1080px;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    background-color: var(--bg-color);</span><br><span class="line">    height: var(--height);</span><br><span class="line">&#125;</span><br><span class="line">@media all and (max-width:450px) &#123;</span><br><span class="line">    :root&#123;</span><br><span class="line">        --bg-color: #000;</span><br><span class="line">        --height: auto;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="JavaScript-操作变量"><a href="#JavaScript-操作变量" class="headerlink" title="JavaScript 操作变量"></a>JavaScript 操作变量</h2><p>JavaScript 可以操纵 css 变量，例如在 index.js 文件中有如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var root = document.querySelector(&apos;:root&apos;);     //获取根元素</span><br><span class="line">var rootStyle = getComputedStyle(root);       //获取元素的 css</span><br><span class="line">var red = rootStyle.getPropertyValue(&apos;--left-margin&apos;);   //获取 css 的样式值   60px</span><br><span class="line">root.style.setProperty(&apos;--left-margin&apos;,&apos;50px&apos;);          //更改样式</span><br></pre></td></tr></table></figure></p>
+<h2 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h2><p>由于事先定义好了变量，只需引入就可以使用，这样的话当我们想要修改一个属性值，例如修改某个盒子的背景颜色，只需更改变量的值，就可以全局应用到所有元素中，利用这一特性可以做响应式布局。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">:root&#123;</span><br><span class="line">    --bg-color: #fff;</span><br><span class="line">    --height: 1080px;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    background-color: var(--bg-color);</span><br><span class="line">    height: var(--height);</span><br><span class="line">&#125;</span><br><span class="line">@media all and (max-width:450px) &#123;</span><br><span class="line">    :root&#123;</span><br><span class="line">        --bg-color: #000;</span><br><span class="line">        --height: auto;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>上面的代码表示正常宽度下的 body 背景颜色为白色，高度为 1080 像素,而当宽度为 450px 大小的时候，此时 body 的背景颜色就变为了黑色，高度也变成自适应，只需要更改变量的值就可以实现响应，是不是很方便呢？</p>
 <p>最后，附上一张 css variables 的浏览器兼容图：<br><figure class="image-bubble">
                 <div class="img-lightbox">
@@ -236,12 +243,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-06-05T14:27:43.815Z" itemprop="dateUpdated">2018-06-05 22:27:43</time>
+    最后更新时间：<time datetime="2018-06-20T10:07:29.049Z" itemprop="dateUpdated">2018-06-20 18:07:29</time>
 </span><br>
 
 
         
-        欢迎关注个人微信公众号，扫描下方二维码,一起学习交流前端知识<br><img src="/img/weixin.jpg">
+        欢迎关注个人微信公众号，扫描下方二维码,一起学习交流前端知识<br><img src="../../public/img/weixin.jpg" style="text-align:center">
         
     </div>
     
