@@ -1,3 +1,4 @@
+http://www.brightlam.top/2018/06/30/你真的了解闭包么/
 http://www.brightlam.top/2018/06/20/ES6-新特性总结/
 http://www.brightlam.top/2018/06/10/vue高仿饿了么APP总结(持续更新)/
 http://www.brightlam.top/2018/06/05/轻松实现响应式——CSS变量/
