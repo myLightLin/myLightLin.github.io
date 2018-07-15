@@ -1,3 +1,4 @@
+http://www.brightlam.top/2018/07/15/数据结构之列表的定义/
 http://www.brightlam.top/2018/07/09/数据结构之数组/
 http://www.brightlam.top/2018/06/30/你真的了解闭包么/
 http://www.brightlam.top/2018/06/20/ES6-新特性总结/
