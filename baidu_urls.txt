@@ -1,3 +1,4 @@
+http://www.brightlam.top/2018/07/24/数据结构之栈和队列/
 http://www.brightlam.top/2018/07/15/数据结构之列表的定义/
 http://www.brightlam.top/2018/07/09/数据结构之数组/
 http://www.brightlam.top/2018/06/30/你真的了解闭包么/
@@ -12,4 +13,3 @@ http://www.brightlam.top/2018/04/30/js实现轮播图效果/
 http://www.brightlam.top/2018/04/27/js面向对象编程-三/
 http://www.brightlam.top/2018/04/26/js面向对象编程-二/
 http://www.brightlam.top/2018/04/24/js面向对象编程-一/
-http://www.brightlam.top/2018/04/18/hello-world/

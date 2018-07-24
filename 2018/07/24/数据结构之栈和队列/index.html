@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>数据结构之栈和队列 | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="数据结构与算法">
+    <meta name="description" content="数据结构有许多种，上篇文章分享的是可以存储简单数据的列表，例如待办事项，购物清单等。今天要跟大家分享的是两种非常常见的也必须了解的数据结构——栈与队列。 栈的定义什么是栈呢？它是一种“后入先出”的数据结构，它跟列表一样，都是可以用来存储数据，但是却要比列表严格的多，栈的数据只能在栈顶添加或删除。举个例子，在麦当劳用餐时的那些盘子，捡餐员在拿盘子时，总是从一摞盘子的最上端拿（栈顶），然后放上食品在端">
+<meta name="keywords" content="数据结构与算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构之栈和队列">
+<meta property="og:url" content="http://www.brightlam.top/2018/07/24/数据结构之栈和队列/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="数据结构有许多种，上篇文章分享的是可以存储简单数据的列表，例如待办事项，购物清单等。今天要跟大家分享的是两种非常常见的也必须了解的数据结构——栈与队列。 栈的定义什么是栈呢？它是一种“后入先出”的数据结构，它跟列表一样，都是可以用来存储数据，但是却要比列表严格的多，栈的数据只能在栈顶添加或删除。举个例子，在麦当劳用餐时的那些盘子，捡餐员在拿盘子时，总是从一摞盘子的最上端拿（栈顶），然后放上食品在端">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-7-20/7478973.jpg">
+<meta property="og:updated_time" content="2018-07-24T05:14:01.354Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构之栈和队列">
+<meta name="twitter:description" content="数据结构有许多种，上篇文章分享的是可以存储简单数据的列表，例如待办事项，购物清单等。今天要跟大家分享的是两种非常常见的也必须了解的数据结构——栈与队列。 栈的定义什么是栈呢？它是一种“后入先出”的数据结构，它跟列表一样，都是可以用来存储数据，但是却要比列表严格的多，栈的数据只能在栈顶添加或删除。举个例子，在麦当劳用餐时的那些盘子，捡餐员在拿盘子时，总是从一摞盘子的最上端拿（栈顶），然后放上食品在端">
+<meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-7-20/7478973.jpg">
+    
+    <link rel="shortcut icon" href="/img/favicon32x32.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+    <script>
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/images.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:1072770248@qq.com" title="1072770248@qq.com" class="mail">1072770248@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/JavaScript"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/aboutme"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">数据结构之栈和队列</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">数据结构之栈和队列</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-24T05:09:52.000Z" itemprop="datePublished" class="page-time">
+  2018-07-24
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#栈的定义"><span class="post-toc-number">1.</span> <span class="post-toc-text">栈的定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#栈的主要操作方法"><span class="post-toc-number">2.</span> <span class="post-toc-text">栈的主要操作方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#栈的实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">栈的实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#栈的完整代码"><span class="post-toc-number">4.</span> <span class="post-toc-text">栈的完整代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#队列的定义"><span class="post-toc-number">5.</span> <span class="post-toc-text">队列的定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#队列的主要操作方法"><span class="post-toc-number">6.</span> <span class="post-toc-text">队列的主要操作方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#队列的实现"><span class="post-toc-number">7.</span> <span class="post-toc-text">队列的实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#队列完整代码及测试"><span class="post-toc-number">8.</span> <span class="post-toc-text">队列完整代码及测试</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-数据结构之栈和队列"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">数据结构之栈和队列</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-24 13:09:52" datetime="2018-07-24T05:09:52.000Z"  itemprop="datePublished">2018-07-24</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>数据结构有许多种，上篇文章分享的是可以存储简单数据的列表，例如待办事项，购物清单等。今天要跟大家分享的是两种非常常见的也必须了解的数据结构——栈与队列。</p>
+<h2 id="栈的定义"><a href="#栈的定义" class="headerlink" title="栈的定义"></a>栈的定义</h2><p>什么是栈呢？它是一种“后入先出”的数据结构，它跟列表一样，都是可以用来存储数据，但是却要比列表严格的多，栈的数据只能在栈顶添加或删除。举个例子，在麦当劳用餐时的那些盘子，捡餐员在拿盘子时，总是从一摞盘子的最上端拿（栈顶），然后放上食品在端给客人，而那些擦餐盘的人，也总是在最上面拿起餐盘擦拭后不断地叠放成一摞餐盘，这里的餐盘就可看成是栈，数据的添加或删除总是在最上端进行。下图展示了栈的构成以及简单的入栈与出栈过程。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-7-20/7478973.jpg" alt="图片来自网络" title="">
+                </div>
+                <div class="image-caption">图片来自网络</div>
+            </figure></p>
+<h2 id="栈的主要操作方法"><a href="#栈的主要操作方法" class="headerlink" title="栈的主要操作方法"></a>栈的主要操作方法</h2><p>栈的常用操作就是入栈和出栈，入栈用的是 push() 方法，出栈用的是 pop() 方法，还有一个方法是 peek() ，该方法可以返回栈顶的元素而不删除它，相应的 pop() 方法虽然也可以得到栈顶的元素，但会将它删除。</p>
+<h2 id="栈的实现"><a href="#栈的实现" class="headerlink" title="栈的实现"></a>栈的实现</h2><p>在 JavaScript 中，通常使用<strong>数组</strong>来实现栈。下面我们定义一个名为 Stack 的构造函数用来表示栈。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function Stack() &#123;</span><br><span class="line">  this.dataStore = [];</span><br><span class="line">  this,top = 0;</span><br><span class="line">  this.push = push;</span><br><span class="line">  this.pop = pop;</span><br><span class="line">  this.peek = peek;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>dataStore 是一个数组，用来存储栈中的元素，而变量 top 记录栈顶的位置，初始位置为 0，push 、pop 和 peek 分别对应三个方法，下面来实现这些方法。<br>首先是 push() ,入栈。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function push() &#123;</span><br><span class="line">  this.dataStore[this.top++] = element;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里 top++ 很有意思，要知道 + 号在变量后和变量前是不同的，这里的逻辑是，当元素入栈后，变量 top 的值就对应当前入栈元素的位置，然后 top++ ，自增后的值就是下一个元素入栈时的位置了。<br>接下来是出栈方法 pop() 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function pop() &#123;</span><br><span class="line">  return this.dataStore[--this.top];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>前面说了，栈只能在最顶端添加、删除数据，所以我们必须要知道栈顶现在存放的是哪个数值才能将它删除，于是我们使用 top 来标记它的位置，现在出栈，只需要把指向栈顶的位置的节点数据拿掉就行了。<br>最后一个方法是取栈顶元素的 peek() 方法,相信也不难理解，就把栈顶元素直接返回就行，注意栈顶元素的位置是第 top - 1 个位置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function peek() &#123;</span><br><span class="line">  return this.dataStore[this.top - 1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>除了上述的基本操作方法外，还有其它方法可以有作用。来看下面这两个方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function length() &#123;</span><br><span class="line">  return this.top;</span><br><span class="line">&#125;</span><br><span class="line">function clear() &#123;</span><br><span class="line">  this.top = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面的方法一个是可以获取栈内存储了多少个元素的 length() 方法， 另一个是 clear() ,听名字就知道是把一个栈清空，通过将 top 的值归零。</p>
+<h2 id="栈的完整代码"><a href="#栈的完整代码" class="headerlink" title="栈的完整代码"></a>栈的完整代码</h2><p>栈的完整代码以及测试如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">function Stack() &#123;</span><br><span class="line">  this.dataStore = [];</span><br><span class="line">  this,top = 0;</span><br><span class="line">  this.push = push;</span><br><span class="line">  this.pop = pop;</span><br><span class="line">  this.peek = peek;</span><br><span class="line">  this.length = length;</span><br><span class="line">  this.clear = clear;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function push() &#123;</span><br><span class="line">  this.dataStore[this.top++] = element;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function pop() &#123;</span><br><span class="line">  return this.dataStore[--this.top];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function peek() &#123;</span><br><span class="line">  return this.dataStore[this.top - 1];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function length() &#123;</span><br><span class="line">  return this.top;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function clear() &#123;</span><br><span class="line">  this.top = 0;</span><br><span class="line">&#125;</span><br><span class="line">var s = new Stack();</span><br><span class="line">s.push(&quot;xiaoming&quot;);</span><br><span class="line">s.push(&quot;xiaohong&quot;);</span><br><span class="line">s.push(&quot;Mike&quot;);</span><br><span class="line">console.log(&quot;栈的长度为： &quot;+s.length());</span><br><span class="line">console.log(s.peek());   </span><br><span class="line">s.clear();</span><br><span class="line">console.log(&quot;当前长度为： &quot;+s.length());</span><br></pre></td></tr></table></figure></p>
+<p>运行结果为：</p>
+<blockquote>
+<p>栈的长度为： 3<br>Mike<br>当前长度为： 0</p>
+</blockquote>
+<h2 id="队列的定义"><a href="#队列的定义" class="headerlink" title="队列的定义"></a>队列的定义</h2><p>队列是一种与栈截然不同的数据结构，栈的特点是<strong>后入先出</strong>，最后入栈的元素会优先处理而弹出，而队列的特点则是<strong>先入先出</strong>，最先进栈的也会最终先出栈，这有点类似于银行窗口前排队办业务的人群，排在最前面的先办理业务，后面来的就依次排队。</p>
+<h2 id="队列的主要操作方法"><a href="#队列的主要操作方法" class="headerlink" title="队列的主要操作方法"></a>队列的主要操作方法</h2><p>与栈一样，队列也是用数组来实现，它的主要操作方法同样是入队（enqueue）,出队（dequeue）和读取队头的元素（peek）,读取队头元素同样不会删除元素，只返回。此外还有清空队列元素（clear）和获取队列元素个数（length）。</p>
+<h2 id="队列的实现"><a href="#队列的实现" class="headerlink" title="队列的实现"></a>队列的实现</h2><p>首先定义一个 Queue 类用来表示队列。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Queue() &#123;</span><br><span class="line">  this.dataStore = [];     // 存储队列元素</span><br><span class="line">  this.enqueue = enqueue;</span><br><span class="line">  this.dequeue = dequeue;</span><br><span class="line">  this.front = front;</span><br><span class="line">  this.back = back;</span><br><span class="line">  this.toString = toString;</span><br><span class="line">  this.empty = empty;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接下来实现入队方法 enqueue() ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function enqueue(element) &#123;</span><br><span class="line">  this.dataStore.push(element);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，用数组来实现队列非常简单，入队只需一个 push() 方法即可向队尾添加元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function dequeue() &#123;</span><br><span class="line">  return this.dataStore.shift();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>shift 是数组的一个操作方法，可以将数组的第一个元素删除。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function front() &#123;</span><br><span class="line">  return this,dataStore[0];</span><br><span class="line">&#125;</span><br><span class="line">function back() &#123;</span><br><span class="line">  return this.dataStore[this.dataStore.length - 1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这两个分别是读取队列的第一个元素和最后一个元素，很简单，直接返回数组的第一个元素和最后一个元素即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function toString() &#123;</span><br><span class="line">  var str = &quot;&quot;;</span><br><span class="line">  for (var i = 0; i &lt; this.dataStore.length; i++) &#123;</span><br><span class="line">    str += this.dataStore[i] + &quot;\n&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  return str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个方法显示队列元素，类似控制台 console 输出元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function empty() &#123;</span><br><span class="line">  if (this.dataStore.length == 0) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">  else &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这是一个判空方法，每次使用队列前要判断是否为空才可进行下一步的操作。</p>
+<h2 id="队列完整代码及测试"><a href="#队列完整代码及测试" class="headerlink" title="队列完整代码及测试"></a>队列完整代码及测试</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">function Queue() &#123;</span><br><span class="line">  this.dataStore = [];     // 存储队列元素</span><br><span class="line">  this.enqueue = enqueue;</span><br><span class="line">  this.dequeue = dequeue;</span><br><span class="line">  this.front = front;</span><br><span class="line">  this.back = back;</span><br><span class="line">  this.toString = toString;</span><br><span class="line">  this.empty = empty;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function enqueue(element) &#123;</span><br><span class="line">  this.dataStore.push(element);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function dequeue() &#123;</span><br><span class="line">  return this.dataStore.shift();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function front() &#123;</span><br><span class="line">  return this,dataStore[0];</span><br><span class="line">&#125;</span><br><span class="line">function back() &#123;</span><br><span class="line">  return this.dataStore[this.dataStore.length - 1];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function toString() &#123;</span><br><span class="line">  var str = &quot;&quot;;</span><br><span class="line">  for (var i = 0; i &lt; this.dataStore.length; i++) &#123;</span><br><span class="line">    str += this.dataStore[i] + &quot;\n&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  return str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function empty() &#123;</span><br><span class="line">  if (this.dataStore.length == 0) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">  else &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var q = new Queue();</span><br><span class="line">q.enqueue(&quot;Mike&quot;);</span><br><span class="line">q.enqueue(&quot;Hello&quot;);</span><br><span class="line">q.enqueue(&quot;hhhh&quot;);</span><br><span class="line">console.log(q.toString());</span><br><span class="line">q.dequeue();</span><br><span class="line">console.log(q.toString());</span><br><span class="line">console.log(&quot;队列的第一个元素是: &quot; + q.front());</span><br><span class="line">console.log(&quot;队列的最后一个元素是: &quot; + q.back());</span><br></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<blockquote>
+<p>Mike<br>Hello<br>hhhh<br>Hello<br>hhhh<br>队列的第一个元素是: Hello<br>队列的最后一个元素是: hhhh</p>
+</blockquote>
+<p>以上，对数据结构中栈和队列的简单介绍，想看关于栈和队列的更多实例代码，戳这里<a href="https://github.com/myLightLin/data-practice" target="_blank" rel="noopener">栈与队列实例代码</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-07-24T05:14:01.354Z" itemprop="dateUpdated">2018-07-24 13:14:01</time>
+</span><br>
+
+
+        
+        欢迎关注个人微信公众号，扫描下方二维码,一起学习交流前端知识<br><div style="display:flex;justify-content:center;align-items:center;padding-top:10px;"><img src="http://p81yl6eww.bkt.clouddn.com/18-6-20/9523480.jpg" width="150" height="150"></div>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.brightlam.top">
+            <img src="/img/images.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构与算法/">数据结构与算法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/07/24/数据结构之栈和队列/&title=《数据结构之栈和队列》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/07/24/数据结构之栈和队列/&title=《数据结构之栈和队列》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/07/24/数据结构之栈和队列/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《数据结构之栈和队列》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/07/24/数据结构之栈和队列/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/07/24/数据结构之栈和队列/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/15/数据结构之列表的定义/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">数据结构之列表的定义</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请我吃糖果
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.jpg" data-alipay="/img/wechatpay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2015 - 2018</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/07/24/数据结构之栈和队列/&title=《数据结构之栈和队列》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/07/24/数据结构之栈和队列/&title=《数据结构之栈和队列》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/07/24/数据结构之栈和队列/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《数据结构之栈和队列》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/07/24/数据结构之栈和队列/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/07/24/数据结构之栈和队列/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/07/24/数据结构之栈和队列/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
