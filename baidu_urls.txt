@@ -1,3 +1,4 @@
+http://www.brightlam.top/2018/08/21/数据结构之链表/
 http://www.brightlam.top/2018/07/24/数据结构之栈和队列/
 http://www.brightlam.top/2018/07/15/数据结构之列表的定义/
 http://www.brightlam.top/2018/07/09/数据结构之数组/
