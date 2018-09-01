@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>CSS Grid布局 | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="CSS">
+    <meta name="description" content="网格布局（CSS grid）是一种网页设计的新布局，目前许多主流浏览器已经支持了这一布局，对前端开发人员来说，是需要了解并学会使用的一种很方便快捷的布局。接下来我会用一段代码来展示 grid 布局的效果，然后在对代码中的每一个属性进行说明，希望读者能通过这篇文章对 CSS 的网格布局有一个大致的了解。12345678910&amp;lt;div class=&amp;quot;grid&amp;quot;&amp;gt;  &amp;l">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS Grid布局">
+<meta property="og:url" content="http://www.brightlam.top/2018/09/01/CSS-Grid布局/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="网格布局（CSS grid）是一种网页设计的新布局，目前许多主流浏览器已经支持了这一布局，对前端开发人员来说，是需要了解并学会使用的一种很方便快捷的布局。接下来我会用一段代码来展示 grid 布局的效果，然后在对代码中的每一个属性进行说明，希望读者能通过这篇文章对 CSS 的网格布局有一个大致的了解。12345678910&amp;lt;div class=&amp;quot;grid&amp;quot;&amp;gt;  &amp;l">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-9-1/89517815.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-9-1/64854510.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-9-1/20342700.jpg">
+<meta property="og:updated_time" content="2018-09-01T09:19:06.853Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS Grid布局">
+<meta name="twitter:description" content="网格布局（CSS grid）是一种网页设计的新布局，目前许多主流浏览器已经支持了这一布局，对前端开发人员来说，是需要了解并学会使用的一种很方便快捷的布局。接下来我会用一段代码来展示 grid 布局的效果，然后在对代码中的每一个属性进行说明，希望读者能通过这篇文章对 CSS 的网格布局有一个大致的了解。12345678910&amp;lt;div class=&amp;quot;grid&amp;quot;&amp;gt;  &amp;l">
+<meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-9-1/89517815.jpg">
+    
+    <link rel="shortcut icon" href="/img/favicon32x32.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+    <script>
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/images.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:1072770248@qq.com" title="1072770248@qq.com" class="mail">1072770248@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/JavaScript"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/aboutme"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">CSS Grid布局</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">CSS Grid布局</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-01T09:16:01.000Z" itemprop="datePublished" class="page-time">
+  2018-09-01
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-CSS-Grid布局"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">CSS Grid布局</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-01 17:16:01" datetime="2018-09-01T09:16:01.000Z"  itemprop="datePublished">2018-09-01</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>网格布局（CSS grid）是一种网页设计的新布局，目前许多主流浏览器已经支持了这一布局，对前端开发人员来说，是需要了解并学会使用的一种很方便快捷的布局。<br>接下来我会用一段代码来展示 grid 布局的效果，然后在对代码中的每一个属性进行说明，希望读者能通过这篇文章对 CSS 的网格布局有一个大致的了解。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;grid&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;title&quot;&gt;title&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;header&quot;&gt;header&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;sidebar&quot;&gt;sidebar&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;content&quot;&gt;</span><br><span class="line">    &lt;p&gt;contentA&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;contentB&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;footer&quot;&gt;footer&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>上面的 HTML 就是一段简单的 grid 布局，我们先看看它的运行效果，其中我加了一些其他样式<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-9-1/89517815.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>现在，让我们为它加上网格布局代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">.grid&#123;</span><br><span class="line">  display:grid;</span><br><span class="line">  grid-template-columns:1fr 600px 600px 1fr;</span><br><span class="line">  grid-template-rows:1fr 1fr 1fr 1fr;</span><br><span class="line">  grid-template-areas:</span><br><span class="line">  &quot;. title title .&quot;</span><br><span class="line">  &quot;. header header .&quot;</span><br><span class="line">  &quot;. sidebar content .&quot;</span><br><span class="line">  &quot;. footer footer .&quot;</span><br><span class="line">&#125;</span><br><span class="line">.title&#123;</span><br><span class="line">  grid-area:title;</span><br><span class="line">&#125;</span><br><span class="line">.header&#123;</span><br><span class="line">  grid-area:header;</span><br><span class="line">&#125;</span><br><span class="line">.sidebar&#123;</span><br><span class="line">  grid-area:sidebar;</span><br><span class="line">&#125;</span><br><span class="line">.content&#123;</span><br><span class="line">  grid-area:content;</span><br><span class="line">&#125;</span><br><span class="line">.footer&#123;</span><br><span class="line">  grid-area:footer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>突然间代码有点多，一个一个解释下。首先在父元素 div 中设置<code>display:grid;</code>表示将其设置为网格布局；然后<code>grid-template-columns</code>属性是设置网格中列的尺寸大小及其占据空间，上面的参数是<code>1fr 600px 600px 1fr</code>表示左右各留 1fr 的距离，中间网格部分占据总共 1200px；接着<code>grid-template-rows</code>顾名思义就是行的意思，规定以几行来呈现布局，可以看到上面有四个参数，分别为<code>1fr</code>，所以整个布局总共有四行，每一行的高度为 1fr , fr 是一个单位，比 px 要大些。根据上面的描述可以看到目前的预览效果是这样：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-9-1/64854510.jpg" alt="Chrome 浏览器" title="">
+                </div>
+                <div class="image-caption">Chrome 浏览器</div>
+            </figure><br>也许细心的你已经发现了，上面的代码还有两个属性<code>grid-template-areas</code> 和 <code>grid-area</code>,这两个属性官方文档里面解释了一大堆文字，我的简单理解是：规定网格布局中的区域，也就是每一行中放几个内容块。可以看到，我在 title、header、sidebar、content 和 footer 中都写上了一个属性：<code>grid-area: 模块名</code>,然后在<code>grid-template-areas</code>中把些模块名都写了上去，左右两边还多了两个<code>.</code>，这是为什么呢？<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-9-1/20342700.jpg" alt="浏览器中的效果" title="">
+                </div>
+                <div class="image-caption">浏览器中的效果</div>
+            </figure><br>其实就是把网页分成了四列，左右两边的空白就对应上面的两个”  . “，然后中间” title title “表示 title 这个 div 占了两列，而第三行中的” sidebar content “就是 sidebar 和 content 这两块各占一半平分，最后的 footer 也是占了两块的。<br>最后，附上网格布局常用属性的官方定义，供读者参考理解</p>
+<blockquote>
+<p>grid-template-columns：定义网格列的线名称和跟踪大小调整功能。<br>grid-template-rows：该属性是基于网格行的维度，去定义网格线的名称和网格轨道的尺寸大小。<br>grid-template-areas：属性是 grid areas 在CSS中的特定命名.<br>grid areas：是一种对于 grid-row-start、grid-column-start、grid-row-end 和 grid-column-end 的简写，通过基线（line），跨度（span）或没有（自动）的网格放置在 grid row 中指定一个网格项的大小和位置，继而确定 grid area 的边界。<br>grid-gap：指定行和列之间的间隙。</p>
+</blockquote>
+<p>以上属性的定义来源于 MDN web ,谷歌翻译。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-09-01T09:19:06.853Z" itemprop="dateUpdated">2018-09-01 17:19:06</time>
+</span><br>
+
+
+        
+        欢迎关注个人微信公众号，扫描下方二维码,一起学习交流前端知识<br><div style="display:flex;justify-content:center;align-items:center;padding-top:10px;"><img src="http://p81yl6eww.bkt.clouddn.com/18-6-20/9523480.jpg" width="150" height="150"></div>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.brightlam.top">
+            <img src="/img/images.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/09/01/CSS-Grid布局/&title=《CSS Grid布局》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/09/01/CSS-Grid布局/&title=《CSS Grid布局》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/09/01/CSS-Grid布局/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CSS Grid布局》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/09/01/CSS-Grid布局/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/09/01/CSS-Grid布局/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/08/26/常用正则表达式整理/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">常用正则表达式整理</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请我吃糖果
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.jpg" data-alipay="/img/wechatpay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2015 - 2018</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/09/01/CSS-Grid布局/&title=《CSS Grid布局》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/09/01/CSS-Grid布局/&title=《CSS Grid布局》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/09/01/CSS-Grid布局/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CSS Grid布局》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/09/01/CSS-Grid布局/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/09/01/CSS-Grid布局/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/09/01/CSS-Grid布局/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
