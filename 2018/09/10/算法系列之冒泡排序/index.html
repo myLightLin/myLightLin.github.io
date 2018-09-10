@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>算法系列之冒泡排序 | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="数据结构与算法">
+    <meta name="description" content="作为一个程序员，一些基本的排序算法是必须要掌握的。以前人们总觉得算法是后端程序员去学的，前端只需要专注于网页的美观以及 JS 的基本逻辑交互就行，然而，近几年随着前端行业的发展，前端越来越注重逻辑交互，如果你还像很久之前那样只知道用 HTML + CSS 去构建网页，那就落伍了。如今，前端程序员也需要对算法有一定的了解，不说别的，多掌握点东西总是好的。这篇文章记录下很常见的一种排序算法——冒泡排序">
+<meta name="keywords" content="数据结构与算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法系列之冒泡排序">
+<meta property="og:url" content="http://www.brightlam.top/2018/09/10/算法系列之冒泡排序/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="作为一个程序员，一些基本的排序算法是必须要掌握的。以前人们总觉得算法是后端程序员去学的，前端只需要专注于网页的美观以及 JS 的基本逻辑交互就行，然而，近几年随着前端行业的发展，前端越来越注重逻辑交互，如果你还像很久之前那样只知道用 HTML + CSS 去构建网页，那就落伍了。如今，前端程序员也需要对算法有一定的了解，不说别的，多掌握点东西总是好的。这篇文章记录下很常见的一种排序算法——冒泡排序">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-9-10/64285389.jpg">
+<meta property="og:updated_time" content="2018-09-10T08:51:31.131Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法系列之冒泡排序">
+<meta name="twitter:description" content="作为一个程序员，一些基本的排序算法是必须要掌握的。以前人们总觉得算法是后端程序员去学的，前端只需要专注于网页的美观以及 JS 的基本逻辑交互就行，然而，近几年随着前端行业的发展，前端越来越注重逻辑交互，如果你还像很久之前那样只知道用 HTML + CSS 去构建网页，那就落伍了。如今，前端程序员也需要对算法有一定的了解，不说别的，多掌握点东西总是好的。这篇文章记录下很常见的一种排序算法——冒泡排序">
+<meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-9-10/64285389.jpg">
+    
+    <link rel="shortcut icon" href="/img/favicon32x32.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+    <script>
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/images.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:1072770248@qq.com" title="1072770248@qq.com" class="mail">1072770248@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/JavaScript"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/aboutme"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">算法系列之冒泡排序</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">算法系列之冒泡排序</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-10T08:48:38.000Z" itemprop="datePublished" class="page-time">
+  2018-09-10
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#什么是排序"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#什么是冒泡排序"><span class="post-toc-number">2.</span> <span class="post-toc-text">什么是冒泡排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现代码"><span class="post-toc-number">3.</span> <span class="post-toc-text">实现代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#时间和空间复杂度"><span class="post-toc-number">4.</span> <span class="post-toc-text">时间和空间复杂度</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-算法系列之冒泡排序"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">算法系列之冒泡排序</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-10 16:48:38" datetime="2018-09-10T08:48:38.000Z"  itemprop="datePublished">2018-09-10</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>作为一个程序员，一些基本的排序算法是必须要掌握的。以前人们总觉得算法是后端程序员去学的，前端只需要专注于网页的美观以及 JS 的基本逻辑交互就行，然而，近几年随着前端行业的发展，前端越来越注重逻辑交互，如果你还像很久之前那样只知道用 HTML + CSS 去构建网页，那就落伍了。如今，前端程序员也需要对算法有一定的了解，不说别的，多掌握点东西总是好的。这篇文章记录下很常见的一种排序算法——冒泡排序，文章不会太长，方便你快速看完。</p>
+<h4 id="什么是排序"><a href="#什么是排序" class="headerlink" title="什么是排序"></a>什么是排序</h4><p>维基百科中这样说明：一种能将一串数据依照特定排序方式进行排列的一种算法。生活中也有很多排序的例子：超市购物排队，学生成绩排序，班级座位排序等。排序可以分为内部排序还有外部排序。内部排序是指待排序列完全存放在内存中所进行的排序过程，适合不太大的元素序列；外部排序能够处理极大量数据的排序算法，通常需要结合外存储器（硬盘）使用。下图是排序的分类，下面的冒泡排序就属于交换排序的一种。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-9-10/64285389.jpg" alt="各种排序归类" title="">
+                </div>
+                <div class="image-caption">各种排序归类</div>
+            </figure></p>
+<h4 id="什么是冒泡排序"><a href="#什么是冒泡排序" class="headerlink" title="什么是冒泡排序"></a>什么是冒泡排序</h4><p>顾名思义，冒泡排序就是比较一个待排序的数组中相邻的两个数，如果一个数大于它后面的数，那就将它们交换，这样较大的数就被“冒泡”到后面了，所以第一次冒泡排序后，第一个数肯定是数组中最大的数，接着数组中较大的数会不断排到后面去，这就是冒泡排序。</p>
+<h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><p>下面是冒泡排序的代码，由于比较的是相邻两个数，所以只需比较到倒数第二个元素，最后一个元素例外，因此<code>i = arr.length - 1</code>.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function bubbleSort(arr)&#123;</span><br><span class="line">  console.time(&apos;冒泡排序耗时: &apos;);</span><br><span class="line">  var i = arr.length - 1;</span><br><span class="line">  while(i&gt;0)&#123;</span><br><span class="line">    var pos = 0;      // 标记每次排序的位置，这样只需循环到这里，后面的数已排好</span><br><span class="line">    for(var j=0;j&lt;i;j++)&#123;</span><br><span class="line">      if(arr[j] &gt; arr[j+1])&#123;</span><br><span class="line">        pos = j;</span><br><span class="line">        var temp = arr[j];     // 交换两个数</span><br><span class="line">        arr[j] = arr[j+1];</span><br><span class="line">        arr[j+1] = temp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">        i = pos;      // 准备下一次排序</span><br><span class="line">  &#125;</span><br><span class="line">  console.timeEnd(&apos;冒泡排序耗时: &apos;);</span><br><span class="line">  return arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var arr=[9,2,38,4,16,36,22,68,46,1,42,48];</span><br><span class="line">console.log(bubbleSort(arr));    // 冒泡排序耗时: : 0.27294921875ms</span><br><span class="line">                                 // 1, 2, 4, 9, 16, 22, 36, 38, 42, 46, 48, 68</span><br></pre></td></tr></table></figure></p>
+<p>也许上面的代码看着不是很懂，没关系，算法代码这种东西不是看一次就能懂的，大神忽略，多看几遍多学习，一定能有所收获。</p>
+<h4 id="时间和空间复杂度"><a href="#时间和空间复杂度" class="headerlink" title="时间和空间复杂度"></a>时间和空间复杂度</h4><p>最好的情况：T(n) = O(n)<br>最坏的情况：T(n) = O(n²)<br>平均时间复杂度是：T(n) = O(n²)<br>空间复杂度为：O(1)</p>
+<p><hr><br>最近在网上看到了一段代码，很有意思，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.red&#123;</span><br><span class="line">  color: red;</span><br><span class="line">&#125;</span><br><span class="line">.blue&#123;</span><br><span class="line">  color: blue;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div class=&quot;red blue&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;blue red&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>猜猜两个 div 各自的颜色，在心中有了自己的结果后可以去验证下看看自己想得对不对哦。欢迎关注下方的公众号，一起学习交流！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-09-10T08:51:31.131Z" itemprop="dateUpdated">2018-09-10 16:51:31</time>
+</span><br>
+
+
+        
+        欢迎关注个人微信公众号，扫描下方二维码,一起学习交流前端知识<br><div style="display:flex;justify-content:center;align-items:center;padding-top:10px;"><img src="http://p81yl6eww.bkt.clouddn.com/18-6-20/9523480.jpg" width="150" height="150"></div>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.brightlam.top">
+            <img src="/img/images.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构与算法/">数据结构与算法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/09/10/算法系列之冒泡排序/&title=《算法系列之冒泡排序》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/09/10/算法系列之冒泡排序/&title=《算法系列之冒泡排序》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/09/10/算法系列之冒泡排序/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《算法系列之冒泡排序》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/09/10/算法系列之冒泡排序/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/09/10/算法系列之冒泡排序/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/09/06/Chrome-69-正式发布，新-UI-来了/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Chrome 69 正式发布，新 UI 来了</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请我吃糖果
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.jpg" data-alipay="/img/wechatpay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2015 - 2018</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/09/10/算法系列之冒泡排序/&title=《算法系列之冒泡排序》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/09/10/算法系列之冒泡排序/&title=《算法系列之冒泡排序》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/09/10/算法系列之冒泡排序/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《算法系列之冒泡排序》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/09/10/算法系列之冒泡排序/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/09/10/算法系列之冒泡排序/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/09/10/算法系列之冒泡排序/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

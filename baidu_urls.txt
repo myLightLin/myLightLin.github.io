@@ -1,3 +1,4 @@
+http://www.brightlam.top/2018/09/10/算法系列之冒泡排序/
 http://www.brightlam.top/2018/09/06/Chrome-69-正式发布，新-UI-来了/
 http://www.brightlam.top/2018/09/01/CSS-Grid布局/
 http://www.brightlam.top/2018/08/26/常用正则表达式整理/
