@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>时间复杂度、空间复杂度以及分析方法 | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="数据结构与算法">
+    <meta name="description" content="在学习数据结构与算法的时候，总不免提到时间复杂度以及空间复杂度这两个概念，以及每次对所写代码进行的复杂度分析等，最近这段时间学习数据结构与算法时对这两个概念的理解比之前好些了，这篇文章记录下最基础的概念以及常见的时间/空间复杂度。 时间复杂度先说下时间复杂度：描述一个算法执行时间与数据规模的增长关系，通常用 T(n) = O(f(n)) 来表示，这里的 n 表示数据的规模，f(n) 每行代码执行的">
+<meta name="keywords" content="数据结构与算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="时间复杂度、空间复杂度以及分析方法">
+<meta property="og:url" content="http://www.brightlam.top/2018/10/02/时间复杂度、空间复杂度以及分析方法/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="在学习数据结构与算法的时候，总不免提到时间复杂度以及空间复杂度这两个概念，以及每次对所写代码进行的复杂度分析等，最近这段时间学习数据结构与算法时对这两个概念的理解比之前好些了，这篇文章记录下最基础的概念以及常见的时间/空间复杂度。 时间复杂度先说下时间复杂度：描述一个算法执行时间与数据规模的增长关系，通常用 T(n) = O(f(n)) 来表示，这里的 n 表示数据的规模，f(n) 每行代码执行的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-02T09:41:15.803Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="时间复杂度、空间复杂度以及分析方法">
+<meta name="twitter:description" content="在学习数据结构与算法的时候，总不免提到时间复杂度以及空间复杂度这两个概念，以及每次对所写代码进行的复杂度分析等，最近这段时间学习数据结构与算法时对这两个概念的理解比之前好些了，这篇文章记录下最基础的概念以及常见的时间/空间复杂度。 时间复杂度先说下时间复杂度：描述一个算法执行时间与数据规模的增长关系，通常用 T(n) = O(f(n)) 来表示，这里的 n 表示数据的规模，f(n) 每行代码执行的">
+    
+    <link rel="shortcut icon" href="/img/favicon32x32.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+    <script>
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/images.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:1072770248@qq.com" title="1072770248@qq.com" class="mail">1072770248@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/JavaScript"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/aboutme"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">时间复杂度、空间复杂度以及分析方法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">时间复杂度、空间复杂度以及分析方法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-02T09:40:18.000Z" itemprop="datePublished" class="page-time">
+  2018-10-02
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#时间复杂度"><span class="post-toc-number">1.</span> <span class="post-toc-text">时间复杂度</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分析小技巧"><span class="post-toc-number">2.</span> <span class="post-toc-text">分析小技巧</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#空间复杂度"><span class="post-toc-number">3.</span> <span class="post-toc-text">空间复杂度</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常见的复杂度"><span class="post-toc-number">4.</span> <span class="post-toc-text">常见的复杂度</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="w-时间复杂度、空间复杂度以及分析方法"
+  class="post-article article-type-w fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">时间复杂度、空间复杂度以及分析方法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-02 17:40:18" datetime="2018-10-02T09:40:18.000Z"  itemprop="datePublished">2018-10-02</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>在学习数据结构与算法的时候，总不免提到时间复杂度以及空间复杂度这两个概念，以及每次对所写代码进行的复杂度分析等，最近这段时间学习数据结构与算法时对这两个概念的理解比之前好些了，这篇文章记录下最基础的概念以及常见的时间/空间复杂度。</p>
+<h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><p>先说下时间复杂度：<strong>描述一个算法执行时间与数据规模的增长关系</strong>，通常用 T(n) = O(f(n)) 来表示，这里的 n 表示数据的规模，f(n) 每行代码执行的次数总和。这里重点在于<strong>增长关系</strong>这几个字，一个算法的时间复杂度，通常只需要考虑 n 的增长规模，这里的 n 指的是每段代码的执行次数，所以时间复杂度大多都只看循环、递归来分析，而与那些常数、系数等无关。举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function calc(n)&#123;</span><br><span class="line">  var sum = 0;</span><br><span class="line">  var i = 1;</span><br><span class="line">  for (; i &lt; n; i++ )&#123;</span><br><span class="line">    sum += i;</span><br><span class="line">  &#125;</span><br><span class="line">  return sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码可以累加从 0 到 n 的和，我们这样对它进行分析：第 2、3 行代码需要执行一次，第 4、5 行需要执行 n 次，总的就是 2n 次，所以它的时间复杂度为 O(2n + 2)，但是因为系数、常数这些对 n 的增长规模没有影响，不需要考虑，可以忽略，如果是 n² 那就有影响了，都已经到平方阶了。所以这样看其时间复杂度为 O(n) 。<br>类似于这样的代码不用分析，时间复杂度都是常量级的 O(1)，因为它并没有体现出 n 的增长规模关系，就算代码在多时间复杂度也是一样的，换句话说，一段代码里没有循环啊、递归等语句，通常时间复杂度都是 O(1) 。再下面在看下这段代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function(n)&#123;</span><br><span class="line">  var sum = 0;</span><br><span class="line">  for(var i = 1; i &lt;= n; i++)&#123;</span><br><span class="line">    for(var j = 1; j &lt;= n; j++)&#123;</span><br><span class="line">      sum += i*j;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>像这种嵌套了两层 for 循环的代码，两行代码分别执行了 n 遍，并且是嵌套，时间复杂度就是 O(n²)。</p>
+<h4 id="分析小技巧"><a href="#分析小技巧" class="headerlink" title="分析小技巧"></a>分析小技巧</h4><ol>
+<li>如果没有循环或递归，都是常量级的代码，时间复杂度就是 O(1)</li>
+<li>只关注循环次数最多的一段代码，它的量级就可作为整段代码的时间复杂度</li>
+<li>如果是 for 循环嵌套的代码，采用乘法计算其内外复杂度；如果是一个函数里有多段代码，则分析出每一段代码的时间复杂度，在将它们相加，最后去掉系数以及常数，取最大量级的作为整段代码的时间复杂度。例如，O(2n²+n+2) 则简化为 O(n²)<h4 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h4>类比时间复杂度，空间复杂度的概念在几个字上不一样，完整表述为:<strong>描述一个算法占用空间与数据规模的增长关系</strong>。如下代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function print(n)&#123;</span><br><span class="line">  var i = 0;</span><br><span class="line">  var arr = new Array(n);</span><br><span class="line">  for(i;i&lt;n;i++)&#123;</span><br><span class="line">    arr[i] = i * i;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>同样的，第二行代码申请了存储空间 i，但它是常量阶的，跟数据的增长规模没有关系，所以不用理；第三行代码申请了一个容量为 n 的数组，剩下的代码都没有涉及到占用空间了，所以整段代码的空间复杂度为 O(n) 。常见的空间复杂度不多，就 O(1)、O(n)、O(n²) 这几个，其余对数阶的那些一般很少应用到。</p>
+<h4 id="常见的复杂度"><a href="#常见的复杂度" class="headerlink" title="常见的复杂度"></a>常见的复杂度</h4><p>常见的复杂度从低阶到高阶有：O(1)、O(logn)、O(n)、O(nlogn)、O(n²)</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-02T09:41:15.803Z" itemprop="dateUpdated">2018-10-02 17:41:15</time>
+</span><br>
+
+
+        
+        欢迎关注个人微信公众号，扫描下方二维码,一起学习交流前端知识<br><div style="display:flex;justify-content:center;align-items:center;padding-top:10px;"><img src="http://p81yl6eww.bkt.clouddn.com/18-6-20/9523480.jpg" width="150" height="150"></div>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.brightlam.top">
+            <img src="/img/images.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构与算法/">数据结构与算法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/10/02/时间复杂度、空间复杂度以及分析方法/&title=《时间复杂度、空间复杂度以及分析方法》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/10/02/时间复杂度、空间复杂度以及分析方法/&title=《时间复杂度、空间复杂度以及分析方法》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/10/02/时间复杂度、空间复杂度以及分析方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《时间复杂度、空间复杂度以及分析方法》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/10/02/时间复杂度、空间复杂度以及分析方法/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/10/02/时间复杂度、空间复杂度以及分析方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/09/25/算法系列之插入排序/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">算法系列之插入排序</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请我吃糖果
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.jpg" data-alipay="/img/wechatpay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2015 - 2018</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/10/02/时间复杂度、空间复杂度以及分析方法/&title=《时间复杂度、空间复杂度以及分析方法》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/10/02/时间复杂度、空间复杂度以及分析方法/&title=《时间复杂度、空间复杂度以及分析方法》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/10/02/时间复杂度、空间复杂度以及分析方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《时间复杂度、空间复杂度以及分析方法》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/10/02/时间复杂度、空间复杂度以及分析方法/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/10/02/时间复杂度、空间复杂度以及分析方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/10/02/时间复杂度、空间复杂度以及分析方法/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
