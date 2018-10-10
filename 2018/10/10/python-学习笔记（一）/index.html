@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>python 学习笔记（一） | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="python">
+    <meta name="description" content="这学期的课程有需要学到 python，国庆利用几天时间刷了一下题，在刷的过程中遇到许多问题，都是一些零零碎碎的知识点，记录一下。  如何在控制台接收一个输入数据 123x = input()x = int(input())   // 输入的数必须为整数，同理还有 str()，float()x,y = map(int,input().split())   // 同时输入两个整数，用空格隔开  如何计">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python 学习笔记（一）">
+<meta property="og:url" content="http://www.brightlam.top/2018/10/10/python-学习笔记（一）/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="这学期的课程有需要学到 python，国庆利用几天时间刷了一下题，在刷的过程中遇到许多问题，都是一些零零碎碎的知识点，记录一下。  如何在控制台接收一个输入数据 123x = input()x = int(input())   // 输入的数必须为整数，同理还有 str()，float()x,y = map(int,input().split())   // 同时输入两个整数，用空格隔开  如何计">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-10T09:38:59.306Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python 学习笔记（一）">
+<meta name="twitter:description" content="这学期的课程有需要学到 python，国庆利用几天时间刷了一下题，在刷的过程中遇到许多问题，都是一些零零碎碎的知识点，记录一下。  如何在控制台接收一个输入数据 123x = input()x = int(input())   // 输入的数必须为整数，同理还有 str()，float()x,y = map(int,input().split())   // 同时输入两个整数，用空格隔开  如何计">
+    
+    <link rel="shortcut icon" href="/img/favicon32x32.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+    <script>
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/images.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:1072770248@qq.com" title="1072770248@qq.com" class="mail">1072770248@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/JavaScript"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/aboutme"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">python 学习笔记（一）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">python 学习笔记（一）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-10T09:38:11.000Z" itemprop="datePublished" class="page-time">
+  2018-10-10
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-python-学习笔记（一）"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">python 学习笔记（一）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-10 17:38:11" datetime="2018-10-10T09:38:11.000Z"  itemprop="datePublished">2018-10-10</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>这学期的课程有需要学到 python，国庆利用几天时间刷了一下题，在刷的过程中遇到许多问题，都是一些零零碎碎的知识点，记录一下。</p>
+<ol>
+<li><p>如何在控制台接收一个输入数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = input()</span><br><span class="line">x = int(input())   // 输入的数必须为整数，同理还有 str()，float()</span><br><span class="line">x,y = map(int,input().split())   // 同时输入两个整数，用空格隔开</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如何计算长度? 用 <code>len()</code> 函数，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = [&apos;string&apos;,5,1,&apos;hello&apos;]</span><br><span class="line">print(len(a))    // 4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>三角函数，引入 <code>math</code> 模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import math</span><br><span class="line">C = math.acos((a**2 + b**2 - c**2)/(2*a*b))*180/math.pi   // 利用 acos 函数求三角形一边的对角</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串打印输出格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&apos;%.2f&apos;%a)  // 输出的 a 保留两位小数</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>for 循环书写格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr = [1,2,3,4,5,6,7]</span><br><span class="line">for i in arr</span><br><span class="line">  print(i,end=&quot;&quot;)    // 1234567, end=&quot;&quot; 表示不换行</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>range 函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 创建一个整数列表，一般用在 for 循环中</span><br><span class="line"># 在 python 中，用 ‘#’ 注释</span><br><span class="line">range(0,5)    # 0,1,2,3,4</span><br><span class="line">range(0,10,2) # 0,2,4,6,8  间隔为 2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打印一个右对齐直角三角形</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">    *</span><br><span class="line">  ***</span><br><span class="line">*****</span><br><span class="line">*/</span><br><span class="line">for i in range(0,5,2):</span><br><span class="line">    for j in range(0,4-i):</span><br><span class="line">        print(&quot; &quot;,end=&quot;&quot;)</span><br><span class="line">    for k in range(0,1+i):</span><br><span class="line">        print(&quot;*&quot;,end=&quot;&quot;)</span><br><span class="line">    print(&quot;&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找某个数，find() 和 index()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.index(&apos;a&apos;) # 查找字符串 str 是否存在 a,查到返回位置，否则抛出异常</span><br><span class="line">str.find(&apos;a&apos;)   # 与 index 一样,不过查不到返回的是 -1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断字母是大写，用 <code>isupper()</code>;判断是否小写，用 <code>islower()</code></p>
+</li>
+<li><p>求绝对值、自然对数以及平方根</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import math</span><br><span class="line">abs(x)   # 求 x 的绝对值</span><br><span class="line">math.sqrt(x) # 对 x 进行开平方根</span><br><span class="line">math.log(4,2)  # 以 2 为底 4 的对数，第二个参数为空则默认以 e 为底，返回的是浮点数</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>转义字符 \</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;Please write letter &apos;A&apos;.&quot;)   # Please write letter &apos;A&apos;.</span><br><span class="line">print(&quot;The path is \&quot;D:\study\computer\\\&quot;.&quot;)   # The path is &quot;D:\study\computer\&quot;.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用 <code>strip()</code> 去字符串空格，用 <code>isalpha()</code> 判断是否由字母组成，用 <code>isdigit()</code> 判断字符串是否都是数字</p>
+</li>
+<li><p>列表(相当于其它语言的数组)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">arr = [5,8,7,2,4]   # 定义列表 arr</span><br><span class="line">list() # 将一组数转换为列表</span><br><span class="line">del l[2]  # 删除列表中第三个数</span><br><span class="line">&apos; &apos;.join(列表名称)  # 去除列表的 [] ,转为空格隔开的字符串</span><br><span class="line">append()   # 在列表后添加元素</span><br><span class="line">arr = [x for x in arr if x != 2]   # 把列表值等于 2 的删除</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果一个列表包含数字，不能直接转换为字符串，需要用 <code>&#39;%s&#39;</code> 格式转为字符串</p>
+</li>
+<li><p>列表的排序函数 sort()  和 sorted()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">arr = [5,1,3,8,7,6]</span><br><span class="line">sorted(arr)</span><br><span class="line">arr.sort()</span><br><span class="line">print(arr)</span><br><span class="line"># [1, 3, 5, 6, 7, 8],区别：sort 是在原位排序列表，而 sorted 是产生一个新列表</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>算术运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+ - * /  // 分别代表加、减、乘、除</span><br><span class="line">% 取模  // 例如 361 % 10 结果为 1</span><br><span class="line">// 整除,向下取整   例如 9 // 2 结果为 4,  302 // 100 为 3</span><br><span class="line">**  n 次方  // 例如 a ** 2 表示 a 的平方</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-10T09:38:59.306Z" itemprop="dateUpdated">2018-10-10 17:38:59</time>
+</span><br>
+
+
+        
+        欢迎关注个人微信公众号，扫描下方二维码,一起学习交流前端知识<br><div style="display:flex;justify-content:center;align-items:center;padding-top:10px;"><img src="http://p81yl6eww.bkt.clouddn.com/18-6-20/9523480.jpg" width="150" height="150"></div>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.brightlam.top">
+            <img src="/img/images.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/10/10/python-学习笔记（一）/&title=《python 学习笔记（一）》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/10/10/python-学习笔记（一）/&title=《python 学习笔记（一）》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/10/10/python-学习笔记（一）/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《python 学习笔记（一）》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/10/10/python-学习笔记（一）/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/10/10/python-学习笔记（一）/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/02/时间复杂度、空间复杂度以及分析方法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">时间复杂度、空间复杂度以及分析方法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请我吃糖果
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.jpg" data-alipay="/img/wechatpay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2015 - 2018</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/10/10/python-学习笔记（一）/&title=《python 学习笔记（一）》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/10/10/python-学习笔记（一）/&title=《python 学习笔记（一）》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/10/10/python-学习笔记（一）/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《python 学习笔记（一）》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/10/10/python-学习笔记（一）/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/10/10/python-学习笔记（一）/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/10/10/python-学习笔记（一）/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
