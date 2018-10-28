@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>css 实现元素水平垂直居中的几种方法 | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="CSS">
+    <meta name="description" content="在做网页的时候经常会需要让某一个元素水平垂直居中，而要实现水平垂直居中有很多种方法，不知道你们有没遇到这种情况：方法倒是知道，甚至还知道许多种，可一到真正用到的时候，却突然在努力地回想，这或许就是人们经常说的「脑子短路」，所以，这篇文章和大家一起来温故而知新，梳理一下常见的几种元素水平垂直居中的方法，以后突然短路了，就翻出来看一看，而且万一以后面试就问到了，那就更好不过了。 div 元素的水平垂直">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css 实现元素水平垂直居中的几种方法">
+<meta property="og:url" content="http://www.brightlam.top/2018/10/28/css-实现元素水平垂直居中的几种方法/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="在做网页的时候经常会需要让某一个元素水平垂直居中，而要实现水平垂直居中有很多种方法，不知道你们有没遇到这种情况：方法倒是知道，甚至还知道许多种，可一到真正用到的时候，却突然在努力地回想，这或许就是人们经常说的「脑子短路」，所以，这篇文章和大家一起来温故而知新，梳理一下常见的几种元素水平垂直居中的方法，以后突然短路了，就翻出来看一看，而且万一以后面试就问到了，那就更好不过了。 div 元素的水平垂直">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-10-28/96507186.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-10-28/85289493.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-10-28/24489030.jpg">
+<meta property="og:updated_time" content="2018-10-28T09:40:18.774Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css 实现元素水平垂直居中的几种方法">
+<meta name="twitter:description" content="在做网页的时候经常会需要让某一个元素水平垂直居中，而要实现水平垂直居中有很多种方法，不知道你们有没遇到这种情况：方法倒是知道，甚至还知道许多种，可一到真正用到的时候，却突然在努力地回想，这或许就是人们经常说的「脑子短路」，所以，这篇文章和大家一起来温故而知新，梳理一下常见的几种元素水平垂直居中的方法，以后突然短路了，就翻出来看一看，而且万一以后面试就问到了，那就更好不过了。 div 元素的水平垂直">
+<meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-10-28/96507186.jpg">
+    
+    <link rel="shortcut icon" href="/img/favicon32x32.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+    <script>
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/images.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:1072770248@qq.com" title="1072770248@qq.com" class="mail">1072770248@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/JavaScript"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/aboutme"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">css 实现元素水平垂直居中的几种方法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">css 实现元素水平垂直居中的几种方法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-28T09:38:56.000Z" itemprop="datePublished" class="page-time">
+  2018-10-28
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#div-元素的水平垂直居中"><span class="post-toc-number">1.</span> <span class="post-toc-text">div 元素的水平垂直居中</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#HTML代码"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">HTML代码</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#CSS代码"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">CSS代码</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#效果如下"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">效果如下</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#HTML代码-1"><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">HTML代码</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#CSS代码-1"><span class="post-toc-number">1.0.5.</span> <span class="post-toc-text">CSS代码</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#HTML代码-2"><span class="post-toc-number">1.0.6.</span> <span class="post-toc-text">HTML代码</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#CSS代码-2"><span class="post-toc-number">1.0.7.</span> <span class="post-toc-text">CSS代码</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#HTML代码-3"><span class="post-toc-number">1.0.8.</span> <span class="post-toc-text">HTML代码</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#CSS代码-3"><span class="post-toc-number">1.0.9.</span> <span class="post-toc-text">CSS代码</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#HTML代码-4"><span class="post-toc-number">1.0.10.</span> <span class="post-toc-text">HTML代码</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#CSS代码-4"><span class="post-toc-number">1.0.11.</span> <span class="post-toc-text">CSS代码</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内联文字的水平垂直居中"><span class="post-toc-number">2.</span> <span class="post-toc-text">内联文字的水平垂直居中</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#HTML代码-5"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">HTML代码</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#CSS代码-5"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">CSS代码</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#效果如下-1"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">效果如下</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-css-实现元素水平垂直居中的几种方法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">css 实现元素水平垂直居中的几种方法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-28 17:38:56" datetime="2018-10-28T09:38:56.000Z"  itemprop="datePublished">2018-10-28</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>在做网页的时候经常会需要让某一个元素水平垂直居中，而要实现水平垂直居中有很多种方法，不知道你们有没遇到这种情况：方法倒是知道，甚至还知道许多种，可一到真正用到的时候，却突然在努力地回想，这或许就是人们经常说的「脑子短路」，所以，这篇文章和大家一起来温故而知新，梳理一下常见的几种元素水平垂直居中的方法，以后突然短路了，就翻出来看一看，而且万一以后面试就问到了，那就更好不过了。</p>
+<h4 id="div-元素的水平垂直居中"><a href="#div-元素的水平垂直居中" class="headerlink" title="div 元素的水平垂直居中"></a>div 元素的水平垂直居中</h4><p>让一个 div 元素水平垂直居中，有很多种方法。</p>
+<ol>
+<li>最先想到的就是使用<strong>绝对定位 + margin: auto</strong>的实现方式，这也是最靠谱的一种实现方式，兼容性还不错。为什么说它靠谱呢？因为它利用了 css 流体的特性，即页面的默认文档流是自上而下，自左向右。我们先来看下它的实现代码：<h6 id="HTML代码"><a href="#HTML代码" class="headerlink" title="HTML代码"></a>HTML代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;dialog&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;text&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h6 id="CSS代码"><a href="#CSS代码" class="headerlink" title="CSS代码"></a>CSS代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.dialog&#123;</span><br><span class="line">   width: 500px;</span><br><span class="line">   height: 500px;</span><br><span class="line">   background-color: #cccccc;</span><br><span class="line">   position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.text&#123;</span><br><span class="line">   width: 200px;</span><br><span class="line">   height: 200px;</span><br><span class="line">   background-color: #e8491d;</span><br><span class="line">   position: absolute;</span><br><span class="line">   left: 0;</span><br><span class="line">   top: 0;</span><br><span class="line">   right: 0;</span><br><span class="line">   bottom: 0;</span><br><span class="line">   margin: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="效果如下"><a href="#效果如下" class="headerlink" title="效果如下"></a>效果如下</h6><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-10-28/96507186.jpg" alt="中间的色块已居中" title="">
+                </div>
+                <div class="image-caption">中间的色块已居中</div>
+            </figure>
+<p>此方法对父元素使用相对定位，然后子元素使用绝对定位，这样子元素将相对父元素进行定位，接着设置各个方向的 left/top/right/bottom 为 0，再设置 margin: auto ，然后就非常巧妙了：<strong>把它的各个定位值置为 0 后，剩下的空间交由 margin 去自动分配，由于流特性，它将均匀评分剩下的空间，于是便水平垂直地居中了。</strong></p>
+<p>上面这种方法推荐使用，除此之外还有其它方法，相信很多人也经常看到，这里也列举下，有些都差不多，只是属性的不同使用。</p>
+<ol start="2">
+<li><strong>第二种是已知宽度，margin 负值的方法</strong>，代码如下：<h6 id="HTML代码-1"><a href="#HTML代码-1" class="headerlink" title="HTML代码"></a>HTML代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;dialog&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;text&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h6 id="CSS代码-1"><a href="#CSS代码-1" class="headerlink" title="CSS代码"></a>CSS代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.dialog&#123;</span><br><span class="line">   width: 500px;</span><br><span class="line">   height: 500px;</span><br><span class="line">   background-color: #cccccc;</span><br><span class="line">   position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.text&#123;</span><br><span class="line">   width: 200px;</span><br><span class="line">   height: 200px;</span><br><span class="line">   background-color: #e8491d;</span><br><span class="line">   position: absolute;</span><br><span class="line">   left: 50%;</span><br><span class="line">   top: 50%;</span><br><span class="line">   margin-left: -100px;</span><br><span class="line">   margin-top: -100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果跟上面的是一样的，有种像把人往右和往下拽，然后有拉回来对准的感觉，可以试试。</p>
+<ol start="3">
+<li><strong>第三种跟第一种差不多，只不过把 margin 换成了 transform 属性</strong>，代码如下：<h6 id="HTML代码-2"><a href="#HTML代码-2" class="headerlink" title="HTML代码"></a>HTML代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;dialog&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;text&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h6 id="CSS代码-2"><a href="#CSS代码-2" class="headerlink" title="CSS代码"></a>CSS代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.dialog&#123;</span><br><span class="line">   width: 500px;</span><br><span class="line">   height: 500px;</span><br><span class="line">   background-color: #cccccc;</span><br><span class="line">   position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.text&#123;</span><br><span class="line">   width: 200px;</span><br><span class="line">   height: 200px;</span><br><span class="line">   background-color: #e8491d;</span><br><span class="line">   position: absolute;</span><br><span class="line">   left: 50%;</span><br><span class="line">   top: 50%;</span><br><span class="line">   transform: translate(-50%,-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果依旧是一样的。有没发现代码很相似，只改了一句<code>transform: translate(-50%,-50%);</code>实际上这样就不用去知道已知元素的宽度了，直接用 transform 的 translate 来移动。</p>
+<ol start="4">
+<li><strong>第四种是 flex 布局</strong>，关于 flex 布局之前的博客文章也有做过简单的介绍，这里就不再赘述，忘记了的戳这篇 <a href="https://www.brightlam.top/2018/05/27/CSS%E5%B8%83%E5%B1%80%E4%B9%8B-flex-%E5%B8%83%E5%B1%80/">CSS布局之 flex 布局</a> ，如何实现呢，代码如下：<h6 id="HTML代码-3"><a href="#HTML代码-3" class="headerlink" title="HTML代码"></a>HTML代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;dialog&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;text&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h6 id="CSS代码-3"><a href="#CSS代码-3" class="headerlink" title="CSS代码"></a>CSS代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.dialog&#123;</span><br><span class="line">   width: 500px;</span><br><span class="line">   height: 500px;</span><br><span class="line">   background-color: #cccccc;</span><br><span class="line">   display: flex;</span><br><span class="line">   justify-content: center;</span><br><span class="line">   align-items: center;</span><br><span class="line">&#125;</span><br><span class="line">.text&#123;</span><br><span class="line">   width: 200px;</span><br><span class="line">   height: 200px;</span><br><span class="line">   background-color: #e8491d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果同见最上面的那张图，这次的代码不一样了，不一样在哪里呢？flex 布局针对的是父元素，可以看到，在父元素的 div 中写的居中代码，子元素不需要写什么，躺着居中就可以了，不过个人觉得 flex 布局真正用到的时候不止是实现这么简单的布局，它可以实现用更简洁的代码实现更多常见的布局。</p>
+<ol start="5">
+<li><strong>第五种是使用 table 布局，这种不推荐使用</strong>，主要上面有那么多种方法，没必要用到这种，具体原理是给父元素设置<code>display:table</code>，子元素设置<code>display:table-cell</code>，table-cell 相当于表格中的 <td> ，再结合<code>vertical-align: middle</code> 即可。<h6 id="HTML代码-4"><a href="#HTML代码-4" class="headerlink" title="HTML代码"></a>HTML代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;dialog&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;text&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;son&quot;&gt;&lt;/div&gt;</span><br><span class="line">   &lt;/div&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</td></li>
+</ol>
+<h6 id="CSS代码-4"><a href="#CSS代码-4" class="headerlink" title="CSS代码"></a>CSS代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.dialog&#123;</span><br><span class="line">   width: 500px;</span><br><span class="line">   height: 500px;</span><br><span class="line">   background-color: #cccccc;</span><br><span class="line">   display: table;</span><br><span class="line">&#125;</span><br><span class="line">.text&#123;</span><br><span class="line">   background-color: #e8491d;</span><br><span class="line">   display: table-cell;</span><br><span class="line">   text-align: center;</span><br><span class="line">   vertical-align: middle;</span><br><span class="line">&#125;</span><br><span class="line">.son&#123;</span><br><span class="line">   background-color: #d0d6d9;</span><br><span class="line">   display: inline-block;</span><br><span class="line">   width: 200px;</span><br><span class="line">   height: 200px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果如下，这个效果跟上面那张有些许不一样，仔细瞧瞧代码跟背景色。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-10-28/85289493.jpg" alt="如图" title="">
+                </div>
+                <div class="image-caption">如图</div>
+            </figure></p>
+<h4 id="内联文字的水平垂直居中"><a href="#内联文字的水平垂直居中" class="headerlink" title="内联文字的水平垂直居中"></a>内联文字的水平垂直居中</h4><p>上面介绍的几种方法大多更偏向布局之类的水平垂直居中，接下来介绍一种让文字水平居中的方法。我们都知道，让文字水平居中，只需要一行 <code>text-align: center</code> 就可以搞定，那垂直居中呢？我从网上找到了解决方法，可以试试下面这样。</p>
+<h6 id="HTML代码-5"><a href="#HTML代码-5" class="headerlink" title="HTML代码"></a>HTML代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;box&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;content&quot;&gt;</span><br><span class="line">        这个公众号是一个值得关注的号，不定期会分享一些有关前端类的文章，推荐大家关注，同时点赞转发分享到朋友圈，让更多的人看到。</span><br><span class="line">   &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="CSS代码-5"><a href="#CSS代码-5" class="headerlink" title="CSS代码"></a>CSS代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">   width: 300px;</span><br><span class="line">   line-height: 220px;</span><br><span class="line">   background-color: #f4f4f4;</span><br><span class="line">   margin: auto;</span><br><span class="line">   font-family: &apos;Microsoft YaHei&apos;,sans-serif;</span><br><span class="line">   font-size: 14px;</span><br><span class="line">&#125;</span><br><span class="line">.content&#123;</span><br><span class="line">   display: inline-block;</span><br><span class="line">   ine-height: 20px;</span><br><span class="line">   margin: 0 20px;</span><br><span class="line">   text-align: center;</span><br><span class="line">   vertical-align: middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="效果如下-1"><a href="#效果如下-1" class="headerlink" title="效果如下"></a>效果如下</h6><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-10-28/24489030.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>实现垂直居中的方法有很多，每一种都有各自的实现路径，但是兼容性却是各不相同，感兴趣的可以自己去测试下兼容。如果你有耐心从头看到这里，已经是很不错了，不过，看完可以敲一遍代码过一遍，可能记忆会来得更深刻些，希望这篇文章对你有帮助！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-28T09:40:18.774Z" itemprop="dateUpdated">2018-10-28 17:40:18</time>
+</span><br>
+
+
+        
+        欢迎关注个人微信公众号，扫描下方二维码,一起学习交流前端知识<br><div style="display:flex;justify-content:center;align-items:center;padding-top:10px;"><img src="http://p81yl6eww.bkt.clouddn.com/18-6-20/9523480.jpg" width="150" height="150"></div>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.brightlam.top">
+            <img src="/img/images.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/10/28/css-实现元素水平垂直居中的几种方法/&title=《css 实现元素水平垂直居中的几种方法》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/10/28/css-实现元素水平垂直居中的几种方法/&title=《css 实现元素水平垂直居中的几种方法》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/10/28/css-实现元素水平垂直居中的几种方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《css 实现元素水平垂直居中的几种方法》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/10/28/css-实现元素水平垂直居中的几种方法/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/10/28/css-实现元素水平垂直居中的几种方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/21/一些有趣的-CSS-demo/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">一些有趣的 CSS demo</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请我吃糖果
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.jpg" data-alipay="/img/wechatpay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2015 - 2018</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/10/28/css-实现元素水平垂直居中的几种方法/&title=《css 实现元素水平垂直居中的几种方法》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/10/28/css-实现元素水平垂直居中的几种方法/&title=《css 实现元素水平垂直居中的几种方法》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/10/28/css-实现元素水平垂直居中的几种方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《css 实现元素水平垂直居中的几种方法》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/10/28/css-实现元素水平垂直居中的几种方法/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/10/28/css-实现元素水平垂直居中的几种方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/10/28/css-实现元素水平垂直居中的几种方法/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
