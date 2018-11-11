@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>你可能不知道的两个CSS属性 | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="CSS">
+    <meta name="description" content="今天是双十一，不知道各位剁手了没有，每年的狂欢节全民都在烧钱，在这里也温馨提醒大家：赶紧准备好土，该吃土了！话说自从知道马云和他的淘宝后，我拥有了一辆车——购物车，也终于认识到自己最大的不足——余额不足，所以这个双十一什么都没有买，听说今年仅 2 分 05 秒交易额就破百亿，一不小心错失参与一个百亿大项目，真是遗憾啊！ 言归正传，这次要介绍的两个属性就是 css 中改变水平流向的direction">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你可能不知道的两个CSS属性">
+<meta property="og:url" content="http://www.brightlam.top/2018/11/11/你可能不知道的两个CSS属性/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="今天是双十一，不知道各位剁手了没有，每年的狂欢节全民都在烧钱，在这里也温馨提醒大家：赶紧准备好土，该吃土了！话说自从知道马云和他的淘宝后，我拥有了一辆车——购物车，也终于认识到自己最大的不足——余额不足，所以这个双十一什么都没有买，听说今年仅 2 分 05 秒交易额就破百亿，一不小心错失参与一个百亿大项目，真是遗憾啊！ 言归正传，这次要介绍的两个属性就是 css 中改变水平流向的direction">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-11-11/99451299.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-11-11/82537621.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-11-11/79925051.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-11-11/4202854.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-11-11/9494993.jpg">
+<meta property="og:image" content="http://p81yl6eww.bkt.clouddn.com/18-11-11/36787191.jpg">
+<meta property="og:updated_time" content="2018-11-11T09:50:14.504Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你可能不知道的两个CSS属性">
+<meta name="twitter:description" content="今天是双十一，不知道各位剁手了没有，每年的狂欢节全民都在烧钱，在这里也温馨提醒大家：赶紧准备好土，该吃土了！话说自从知道马云和他的淘宝后，我拥有了一辆车——购物车，也终于认识到自己最大的不足——余额不足，所以这个双十一什么都没有买，听说今年仅 2 分 05 秒交易额就破百亿，一不小心错失参与一个百亿大项目，真是遗憾啊！ 言归正传，这次要介绍的两个属性就是 css 中改变水平流向的direction">
+<meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-11-11/99451299.jpg">
+    
+    <link rel="shortcut icon" href="/img/favicon32x32.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+    <script>
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/images.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:1072770248@qq.com" title="1072770248@qq.com" class="mail">1072770248@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/JavaScript"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/aboutme"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">你可能不知道的两个CSS属性</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">你可能不知道的两个CSS属性</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-11-11T09:48:43.000Z" itemprop="datePublished" class="page-time">
+  2018-11-11
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#direction"><span class="post-toc-number">1.</span> <span class="post-toc-text">direction</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#writing-mode"><span class="post-toc-number">2.</span> <span class="post-toc-text">writing-mode</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-你可能不知道的两个CSS属性"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">你可能不知道的两个CSS属性</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-11-11 17:48:43" datetime="2018-11-11T09:48:43.000Z"  itemprop="datePublished">2018-11-11</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>今天是双十一，不知道各位剁手了没有，每年的狂欢节全民都在烧钱，在这里也温馨提醒大家：赶紧准备好土，该吃土了！话说自从知道马云和他的淘宝后，我拥有了一辆车——购物车，也终于认识到自己最大的不足——余额不足，所以这个双十一什么都没有买，听说今年仅 2 分 05 秒交易额就破百亿，一不小心错失参与一个百亿大项目，真是遗憾啊！</p>
+<p>言归正传，这次要介绍的两个属性就是 css 中改变水平流向的<code>direction</code>属性和改变文本流的<code>writing-mode</code>属性，如果你没听过这两个属性，那正好学习下，没准以后会遇到它们。</p>
+<h4 id="direction"><a href="#direction" class="headerlink" title="direction"></a>direction</h4><p>这个属性的兼容性特别好，所有浏览器包括 IE 都支持它，w3school 对该属性的介绍是<strong><em>规定文本的方向 / 书写方向。</em></strong>简单讲就是让文字从左向右还是从右向左显示，所以它有以下两个属性值</p>
+<blockquote>
+<p>direction: ltr | rtl ;</p>
+</blockquote>
+<p>默认值是 ltr，也就是 left-to-right，表示文字从左至右显示，很形象好记。它可以让图片或者按钮不按原本顺序显示，例如下面的例子<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-11-11/99451299.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div dir=&quot;rtl&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;elephant.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;boy.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>本来正常大象的图片 img 标签在男孩之前，但是因为我们设置了<code>dir=&quot;rtl&quot;</code>这是写在元素标签的缩写方法，也可以在 css 中写成<code>direction: rtl</code>，所以水平流向的顺序改变了，现在是从右往左，所以上面的图片显示男孩在大象图片的左边。通过这个例子现在知道 direction 的用处了，但是如果你把 div 里的内容换成文字，此时这个属性就不起作用了，你看不到什么反转的效果，这就需要介绍接下来的这个<code>unicode-bidi</code>属性</p>
+<blockquote>
+<p>unicode-bidi: bidi-override;</p>
+</blockquote>
+<p><code>direction: rtl</code>只能作用于图片或者按钮标签，而上面这个属性的作用就是对文字起作用的，多说无益，来看下实现效果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div dir=&quot;rtl&quot;&gt;</span><br><span class="line">   我是 Light Lin，欢迎来到我的公众号</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>在浏览器的效果是这样<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-11-11/82537621.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>我们现在修改下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        div&#123;</span><br><span class="line">           unicode-bidi: bidi-override;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;div dir=&quot;rtl&quot;&gt;</span><br><span class="line">   我是 Light Lin，欢迎来到我的公众号</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>运行出来后是这个效果<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-11-11/79925051.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>可以看到，有了<code>unicode-bidi: bidi-override;</code> 的作用，现在文字已经能改变水平流向了，关于该属性的更多详细信息可以去网上查阅。</p>
+<h4 id="writing-mode"><a href="#writing-mode" class="headerlink" title="writing-mode"></a>writing-mode</h4><p>这个属性同样兼容性非常好，浏览器都支持它。MDN文档说它<strong><em>定义了文本水平或垂直排布以及在块级元素中文本的行进方向。</em></strong>它的主要取值有以下几个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 关键字</span><br><span class="line">writing-mode: horizontal-tb;</span><br><span class="line">writing-mode: vertical-rl;</span><br><span class="line">writing-mode: vertical-lr;</span><br><span class="line"></span><br><span class="line">// 全局属性值</span><br><span class="line">writing-mode: inherit;</span><br><span class="line">writing-mode: initial;</span><br><span class="line">writing-mode: unset;</span><br></pre></td></tr></table></figure></p>
+<p><code>horizontal-tb</code> 默认值，表示了文本是水平方向（horizontal）的，从上至下堆叠（top-bottom）。<br><code>vertical-rl</code> 表示了文本是垂直方向的，从右往左堆叠。<br><code>vertical-lr</code> 表示了文本是垂直方向的，从左往右堆叠。<br>看看下面的例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;writing-mode: horizontal-tb&quot;&gt;</span><br><span class="line">   我是 Light Lin，欢迎&lt;br&gt;来到我的公众号和博客,&lt;br&gt;现在是默认显示</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>运行截图如下<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-11-11/4202854.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>现在改改代码，换下 css 值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;writing-mode: vertical-rl&quot;&gt;</span><br><span class="line">    我是 Light Lin，欢迎&lt;br&gt;来到我的公众号和博客,&lt;br&gt;现在是从右往左显示</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>效果变成了下面这样<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-11-11/9494993.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>在改下代码，看看又变了什么<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;writing-mode: vertical-lr&quot;&gt;</span><br><span class="line">    我是 Light Lin，欢迎&lt;br&gt;来到我的公众号和博客,&lt;br&gt;现在是从左往右显示</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p81yl6eww.bkt.clouddn.com/18-11-11/36787191.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>通过上面这三个效果演示，应该就能理解<code>writing-mode</code>以及它的三个属性值的作用效果了，有没发现第二种从右往左实际上就是古诗词的排版方式？<br>值得注意的是，在 IE 浏览器里有另外的一套写法，如下</p>
+<blockquote>
+<p>writing-mode: lr-tb;        // 相当于默认值 horizontal-tb<br>writing-mode: tb-rl;      // 相当于 vertical-rl</p>
+</blockquote>
+<p>IE 浏览器里支持的不止上面这两个，多达 11 个，感兴趣的可以上网去查阅更多。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>css 有很多很多属性值，<code>writing-mode</code> 和 <code>direction</code> 平常可能比较少见，但是我们学习东西就是要广泛涉猎，虽然现在对它们的实际应用知道得较少，但说不定以后的某天就用到并解决问题了呢，所以先好好认识下他们吧！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-11-11T09:50:14.504Z" itemprop="dateUpdated">2018-11-11 17:50:14</time>
+</span><br>
+
+
+        
+        欢迎关注个人微信公众号，扫描下方二维码,一起学习交流前端知识<br><div style="display:flex;justify-content:center;align-items:center;padding-top:10px;"><img src="http://p81yl6eww.bkt.clouddn.com/18-6-20/9523480.jpg" width="150" height="150"></div>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.brightlam.top">
+            <img src="/img/images.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/11/11/你可能不知道的两个CSS属性/&title=《你可能不知道的两个CSS属性》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/11/11/你可能不知道的两个CSS属性/&title=《你可能不知道的两个CSS属性》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/11/11/你可能不知道的两个CSS属性/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《你可能不知道的两个CSS属性》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/11/11/你可能不知道的两个CSS属性/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/11/11/你可能不知道的两个CSS属性/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/11/04/CSS-font-face-的使用/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">CSS @font face 的使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你请我吃糖果
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.jpg" data-alipay="/img/wechatpay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2015 - 2018</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/11/11/你可能不知道的两个CSS属性/&title=《你可能不知道的两个CSS属性》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/images.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/11/11/你可能不知道的两个CSS属性/&title=《你可能不知道的两个CSS属性》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/11/11/你可能不知道的两个CSS属性/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《你可能不知道的两个CSS属性》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/11/11/你可能不知道的两个CSS属性/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/11/11/你可能不知道的两个CSS属性/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/11/11/你可能不知道的两个CSS属性/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
