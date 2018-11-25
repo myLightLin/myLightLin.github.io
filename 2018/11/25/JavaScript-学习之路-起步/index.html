@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>JavaScript 学习之路-起步 | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript">
+    <meta name="description" content="这是一篇讲 JavaScript 基础的文章，接下来会更新这个系列文章。 JavaScript 诞生于 1995 年，至今已经有 20 几年了，在最新的 JavaScript 2018 年度报告 中，许多人依旧认为这门语言正在朝着好的方向去发展，从最开始的默默无闻到如今的未来可期，JavaScript 作为前端开发者的一门学习语言，一定会被更多爱好编程的人喜欢。如果想了解和学习 JavaScrip">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 学习之路-起步">
+<meta property="og:url" content="http://www.brightlam.top/2018/11/25/JavaScript-学习之路-起步/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="这是一篇讲 JavaScript 基础的文章，接下来会更新这个系列文章。 JavaScript 诞生于 1995 年，至今已经有 20 几年了，在最新的 JavaScript 2018 年度报告 中，许多人依旧认为这门语言正在朝着好的方向去发展，从最开始的默默无闻到如今的未来可期，JavaScript 作为前端开发者的一门学习语言，一定会被更多爱好编程的人喜欢。如果想了解和学习 JavaScrip">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/0076KlMqgy1fxkfe4vfmmj30ow04z3yv.jpg">
+<meta property="og:updated_time" content="2018-11-25T10:21:22.034Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 学习之路-起步">
+<meta name="twitter:description" content="这是一篇讲 JavaScript 基础的文章，接下来会更新这个系列文章。 JavaScript 诞生于 1995 年，至今已经有 20 几年了，在最新的 JavaScript 2018 年度报告 中，许多人依旧认为这门语言正在朝着好的方向去发展，从最开始的默默无闻到如今的未来可期，JavaScript 作为前端开发者的一门学习语言，一定会被更多爱好编程的人喜欢。如果想了解和学习 JavaScrip">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/0076KlMqgy1fxkfe4vfmmj30ow04z3yv.jpg">
+    
+    <link rel="shortcut icon" href="/img/bitbug_favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+    <script>
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/imagesA.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:1072770248@qq.com" title="1072770248@qq.com" class="mail">1072770248@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/JavaScript"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/aboutme"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScript 学习之路-起步</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JavaScript 学习之路-起步</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-11-25T10:18:01.000Z" itemprop="datePublished" class="page-time">
+  2018-11-25
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ECMAScript"><span class="post-toc-number">1.</span> <span class="post-toc-text">ECMAScript</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#两种使用方式"><span class="post-toc-number">2.</span> <span class="post-toc-text">两种使用方式</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-JavaScript-学习之路-起步"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScript 学习之路-起步</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-11-25 18:18:01" datetime="2018-11-25T10:18:01.000Z"  itemprop="datePublished">2018-11-25</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>这是一篇讲 JavaScript 基础的文章，接下来会更新这个系列文章。</p>
+<p>JavaScript 诞生于 1995 年，至今已经有 20 几年了，在最新的 <a href="https://2018.stateofjs.com" target="_blank" rel="noopener">JavaScript 2018 年度报告</a> 中，许多人依旧认为这门语言正在朝着好的方向去发展，从最开始的默默无闻到如今的未来可期，JavaScript 作为前端开发者的一门学习语言，一定会被更多爱好编程的人喜欢。如果想了解和学习 JavaScript，请往下看。</p>
+<h4 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h4><p>在了解 JavaScript 前，首先要了解 ECMAScript ，它是由 ECMA-262 定义的一门语言。它规定了一些基本的语法、变量、语句、操作符以及对象等等内容，<strong>而 JavaScript 去实现了它</strong>，也就是说，JavaScript 去实现了 ECMAScript，我们经常说 JS 的新版本，实际上是 ECMAScript 的新版本，最被人经常用的是第五个版本(ES5) 还有ES6，它包含了许多新知识新特性。简而言之，JavaScript 的概念更广，它包含了 ECMAScript ，除此之外还有文档对象模型 (DOM) 和浏览器对象模型 (BOM) 。</p>
+<h4 id="两种使用方式"><a href="#两种使用方式" class="headerlink" title="两种使用方式"></a>两种使用方式</h4><p>不同于其它编程语言，JavaScript 内嵌于浏览器中，许多主流浏览器都支持 JavaScript。打开 Chrome 浏览器，按 F12 或鼠标右键选择审查元素，就可以看到控制台，在控制台上就可以书写 JS 代码，例如你可以在控制台输入<code>console.log(&#39;hello world!&#39;);</code>就可以看到下方出现了一句熟悉<code>hello world!</code>。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://ws1.sinaimg.cn/large/0076KlMqgy1fxkfe4vfmmj30ow04z3yv.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>这是写 JS 代码最快速便捷的方式，但一般我们都是在编辑器中完整地完成整个项目，关于编辑器各人有各人的爱好，稍后会列出常用的几个编写 JS 代码的编辑器。</p>
+<p>来到了编辑器中，我们新建一个后缀名为 .html 的文件，在里面写有关 JS 的代码，如果你连 HTML 都不认识，可以到 w3school 去在线学习基础的 HTML 知识。不出所料，一个基本的 html 文件的头应该是下面这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;!-- 这里是内容代码 --&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>JavaScript 使用 <script> 标签来嵌套代码，所有的 JS 相关的代码都放在里面，而 <script> 标签可以放在 <head></head> 中，也可放在 <body></body> 中，最好放在后者，因为浏览器解析时是从上至下解析这段代码，放在 <head> 中很容易因为解析慢而导致下方 <body> 中的内容未渲染出来，从而影响用户体验。</p>
+<p><script> 有几个常用的属性，最常看到的就是 type 和 src 了，type 属性顾名思义，指定了属性含义，常用值是<code>text/javascript</code>，让人知道这里面写的都是 JavaScript 类型的标签代码；src 属性也是经常看见的，指定了一个外部的 href 链接，<strong>JavaScript 有两种引入方式，一种是直接在 <script></script> 标签里面写代码，另外一种就是创建一个后缀名为 .js 的文件，然后通过 src 链接进来使用。</p>
+<p><script> 标签有一个 defer 属性，这个属性的作用是告诉浏览器等所有内容都解析完后再来执行这个脚本，也就是起到一个<strong>延迟执行脚本</strong>的作用。</p>
+<p><script> 标签还有一个 async 属性，适用于外部引入的 .js 文件，作用是告诉浏览器不比等它执行，可以异步先去加载其它内容。</p>
+<p>以上几个属性的使用方式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; defer=&quot;defer&quot; src=&quot;××.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; async src=&quot;××.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;!-- 这里是内容代码 --&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="文档模式"><a href="#文档模式" class="headerlink" title="文档模式"></a>文档模式</h4><p> IE5.5 开始引入了文档模式这个概念，它会影响 css 内容的呈现，也会一定程度上影响到 JavaScript 的执行。文档模式只需要记住有混杂模式和标准模式两个，在混杂模式下，不同浏览器下执行的会有很大差异，因此不被人所推荐，一般都是用的标准模式，这个标准模式我们也很熟悉了，就是在 html 文件经常看到的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="标签"><a href="#标签" class="headerlink" title=" 标签"></a><noscript> 标签</h4><p>当遇到浏览器不支持 JavaScript 脚本或者脚本被禁用了怎么办？这时候可以用到 <noscript> 标签，它会在浏览器不支持 JS 脚本时候显示，而其他情况下不会有什么影响，所以为了用户体验，可以在代码里加上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;!-- 这里是内容代码 --&gt;</span><br><span class="line">  &lt;noscript&gt;</span><br><span class="line">    &lt;p&gt;您的浏览器不支持 JavaScript ，请升级。&lt;/p&gt;</span><br><span class="line">  &lt;/noscript&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这样，当遇到不支持 JS 时，这段文字就会显示出来，提醒用户升级或更换浏览器。</p>
+<h4 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h4><p>最后，有许多可以编写 JavaScript 代码的软件。就我知道的有以下这些：</p>
+<ul>
+<li>WebStorm</li>
+<li>PhpStorm</li>
+<li>Sublime Text</li>
+<li>VS code</li>
+<li>Dreamweaver</li>
+<li>HBuilder</li>
+</ul>
+<p>以上这几个软件基本都用过，现在在用 PhpStorm ，它跟 WebStorm 差不多，只不过多了对 php 文件的支持，很多人都是用的 WebStorm ，它代码提示等做得很好，页面看起来也还行，缺点应该是打开的时候挺慢，最重要的是，时不时地就过期需要去找注册码，当然，有条件的话还是付费支持正版的好，听说学生去申请可以有授权使用，不过太麻烦了懒得去弄。</p>
+<p>欢迎批评指正！</p>
+</script></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-11-25T10:21:22.034Z" itemprop="dateUpdated">2018-11-25 18:21:22</time>
+</span><br>
+
+
+        
+        欢迎关注个人微信公众号，扫描下方二维码,一起学习交流前端知识<br><div style="display:flex;justify-content:center;align-items:center;padding-top:10px;"><img src="http://p81yl6eww.bkt.clouddn.com/18-6-20/9523480.jpg" width="150" height="150"></div>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.brightlam.top">
+            <img src="/img/imagesA.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/11/25/JavaScript-学习之路-起步/&title=《JavaScript 学习之路-起步》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/imagesA.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/11/25/JavaScript-学习之路-起步/&title=《JavaScript 学习之路-起步》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/11/25/JavaScript-学习之路-起步/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 学习之路-起步》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/11/25/JavaScript-学习之路-起步/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/11/25/JavaScript-学习之路-起步/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/11/11/你可能不知道的两个CSS属性/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">你可能不知道的两个CSS属性</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "iUCPVe2VLChefffS2w2mDHFO-gzGzoHsz",
+            appKey: "sOwlIg1a5fSQf3ve1mgBaoag",
+            avatar: "",
+            placeholder: "留下你的评论，一起交流学习!",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励支持
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/WeChatPay.png" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2015 - 2018</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/11/25/JavaScript-学习之路-起步/&title=《JavaScript 学习之路-起步》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/imagesA.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/11/25/JavaScript-学习之路-起步/&title=《JavaScript 学习之路-起步》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/11/25/JavaScript-学习之路-起步/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 学习之路-起步》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/11/25/JavaScript-学习之路-起步/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/11/25/JavaScript-学习之路-起步/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/11/25/JavaScript-学习之路-起步/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
