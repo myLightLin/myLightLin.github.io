@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>JavaScript 学习之路-语法篇(上) | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript">
+    <meta name="description" content="上篇文章介绍了 JavaScript 的基本概念和发展概况，这篇文章将开始讲 JavaScript 的一些基本语法概念。 前言学一门编程语言，首先无非就是了解它的基本语法，例如变量、标识符、关键字、数据类型以及函数等等，然后应用这些东西去写出你相要的程序，当然程序也分很多种，就像只输出一句hello world也是一个程序对吧。那么这些在 JavaScript 里是如何规定和体现的呢？ 语法(不基">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 学习之路-语法篇(上)">
+<meta property="og:url" content="http://www.brightlam.top/2018/12/01/JavaScript-学习之路-语法篇-上/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="上篇文章介绍了 JavaScript 的基本概念和发展概况，这篇文章将开始讲 JavaScript 的一些基本语法概念。 前言学一门编程语言，首先无非就是了解它的基本语法，例如变量、标识符、关键字、数据类型以及函数等等，然后应用这些东西去写出你相要的程序，当然程序也分很多种，就像只输出一句hello world也是一个程序对吧。那么这些在 JavaScript 里是如何规定和体现的呢？ 语法(不基">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-01T09:44:58.824Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 学习之路-语法篇(上)">
+<meta name="twitter:description" content="上篇文章介绍了 JavaScript 的基本概念和发展概况，这篇文章将开始讲 JavaScript 的一些基本语法概念。 前言学一门编程语言，首先无非就是了解它的基本语法，例如变量、标识符、关键字、数据类型以及函数等等，然后应用这些东西去写出你相要的程序，当然程序也分很多种，就像只输出一句hello world也是一个程序对吧。那么这些在 JavaScript 里是如何规定和体现的呢？ 语法(不基">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+    <script>
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/imagesA.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:lighterlam@gmail.com" title="lighterlam@gmail.com" class="mail">lighterlam@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/JavaScript"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/aboutme"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScript 学习之路-语法篇(上)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JavaScript 学习之路-语法篇(上)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-12-01T09:44:00.000Z" itemprop="datePublished" class="page-time">
+  2018-12-01
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#语法-不基于-ES6"><span class="post-toc-number">2.</span> <span class="post-toc-text">语法(不基于 ES6)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#严格模式"><span class="post-toc-number">3.</span> <span class="post-toc-text">严格模式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关键字和保留字"><span class="post-toc-number">4.</span> <span class="post-toc-text">关键字和保留字</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变量"><span class="post-toc-number">5.</span> <span class="post-toc-text">变量</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据类型"><span class="post-toc-number">6.</span> <span class="post-toc-text">数据类型</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-JavaScript-学习之路-语法篇-上"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScript 学习之路-语法篇(上)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-12-01 17:44:00" datetime="2018-12-01T09:44:00.000Z"  itemprop="datePublished">2018-12-01</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>上篇文章介绍了 JavaScript 的基本概念和发展概况，这篇文章将开始讲 JavaScript 的一些基本语法概念。</p>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>学一门编程语言，首先无非就是了解它的基本语法，例如变量、标识符、关键字、数据类型以及函数等等，然后应用这些东西去写出你相要的程序，当然程序也分很多种，就像只输出一句<code>hello world</code>也是一个程序对吧。那么这些在 JavaScript 里是如何规定和体现的呢？</p>
+<h4 id="语法-不基于-ES6"><a href="#语法-不基于-ES6" class="headerlink" title="语法(不基于 ES6)"></a>语法(不基于 ES6)</h4><p>JavaScript 是区分大小写的，所以 <code>May</code> 和 <code>may</code> 是两个不同的变量名称。当使用变量时，一般驼峰式的命名写法，例如定义一个打招呼的变量是这样 <code>var sayHello = &#39;hello world;&#39;</code> ，当然并没有强制规定要这样写。这里的 <code>sayHello</code> 称作 <code>标识符</code> ，<strong>标识符的第一个字符必须是字母、下划线或者 $</strong> ,这意味着你不能命名一个变量诸如 <code>12say</code> 或者 <code>^hello</code> 等等，另外也不能用一些关键字作为标识符，否则都会报错。所以，养成一个良好的命名习惯很有必要，多用一些英文字符命名，实在不会英文可以用拼音代替，并且尽量避开一些关键字和保留字。关于关键字和保留字下面会提到。</p>
+<p>当你写了 <code>var sayHello = &quot;hello world&quot;;</code> 时，实际上就写了一条<code>语句</code> 。语句是我们能看懂的编程代码，它会被编译成计算机能识别的二进制代码，浏览器去解释执行这些代码就会有效果出来，比如上面那句在加上一条打印输出语句<code>console.log(sayHello);</code> 就能在控制台输出你经常看到的 <code>hello world</code> 了。当你想注释掉语句怎么办？JS 里的注释跟大多语言类似，单行注释采用 <code>//</code>，多行注释用 <code>/* 这里是需要注释的内容 */</code> 就可以实现。</p>
+<h4 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h4><p>ES5 新引入了<code>严格模式</code>这一概念，在严格模式里，很多内容都作出了完整规范的限制，比如你像前面一样声明一个 <code>sayHello</code> 变量时，如果前面没有 <code>var</code> 关键字，那运行就会报错，为何这样呢？因为浏览器不懂它到底是干嘛的，你在前面加上 <code>var</code> ，浏览器会明白它是一个变量，加上 <code>const</code> 关键字，浏览器会懂它是一个不可变的常量，所以你什么都不说，让别人去猜，它肯定就不鸟你了，这解释纯属瞎猜瞎扯，可以听听，切莫当真。想要启用<code>严格模式</code>，只需在你的 js 文件里加上下面这句代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;use strict&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>浏览器就能严格的目光来看待所有内容了，这个模式是被建议采用的，这样可以避免一些不必要的错误发生，可以先了解下。</p>
+<h4 id="关键字和保留字"><a href="#关键字和保留字" class="headerlink" title="关键字和保留字"></a>关键字和保留字</h4><p>这类单词通常具有某种用途，比如前面说到的 var 和 const 分别是用来定义变量和常量的，所以不能用他们做标识符，以免不必要的冲突。常用的关键字有以下这些：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">break    do      instanceof    typeof    case    else    new    var</span><br><span class="line">catch    finally   return      void    continue   for   switch   while</span><br><span class="line">debugger function   this       with    default    if    throw    delete</span><br><span class="line">in       try</span><br></pre></td></tr></table></figure></p>
+<p>而保留字，顾名思义，就是保留着，将来可能也会被用作关键字，因此最好也不要用它们。ECMA-262 第 3 版定义的保留字有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">abstract  enum    int     short   boolean   export   interface     static   byte</span><br><span class="line">extends   long    super   char    final     native   synchronized  class    float  </span><br><span class="line">package   throws  const   goto    private   transient  debugger    implements protected</span><br><span class="line">volatile  double  import  public</span><br></pre></td></tr></table></figure></p>
+<p>这些关键字和保留字不用时时刻刻去记住它，多熟悉下，用到的时候去查查其实也不浪费多少时间，像这些就肯定不能用作变量名称来命名了，看着都别扭。</p>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>JavaScript 的变量相比 java，c 等语言来说是相对轻松的。你可以随意定义变量的内容和类型，不用像 java 那般去区别是整型还是浮点型还是字符串类型等。像声明一个数组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,&apos;hello&apos;,undefined,&apos;15&apos;,8];</span><br><span class="line">console.log(arr);   //  [1, &quot;hello&quot;, undefined, &quot;15&quot;, 8]</span><br><span class="line"></span><br><span class="line">var str = &quot;hello world&quot;;</span><br><span class="line">str = 100;</span><br><span class="line">console.log(str);   // 100</span><br></pre></td></tr></table></figure></p>
+<p>是可以的，简直就是大杂烩啊有没有，各种类型都可以放上去，可以说语法是很松散的。第二个例子中先是给 str 赋了一个字符串型，然后又把它改成了数字类型，仍然正常输出了。</p>
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><p>上面提到的「字符串」、「数字」等就是所谓的 <code>数据类型</code> 。像 java 有八大基本数据类型，在 JavaScript 里，有五大基本数据类型：<code>undefined</code>，<code>null</code>，<code>Boolean</code>，<code>Number</code> ，<code>String</code> .这些基本数据类型可以用 <code>typeof</code> 操作符来检测。下面看看例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typeof &apos;hello world&apos;  // string</span><br><span class="line">typeof 20   // number</span><br><span class="line">typeof null  // object</span><br><span class="line">typeof &quot;hello&quot;  // string</span><br><span class="line">typeof true    // boolean</span><br><span class="line">typeof 2.3   // number</span><br><span class="line">typeof undefined   // undefined</span><br></pre></td></tr></table></figure></p>
+<p>从上面的测试中我们可以总结出，<strong>JavaScript 字符串不分单双引号；数字不分浮点型或者整型，全部为 number 型；对 null 检测类型为 object 对象；对 undefined 检测为 undefined 。</strong></p>
+<p><code>undefined</code> 通常是一个变量声明了但没有赋值，那么它的值就是 undefined，所以你对代码 <code>var str</code> 进行 typeof 就会得到 undefined 。</p>
+<p><code>null</code> 跟 undefined 有着千丝万缕的关系，比较奇妙的就是运行 <code>undefined == null</code> 时会返回 true 。通常认为他们两个是相等的，但如果是全等符 <code>===</code> 就会返回 false 了。前面为什么对 null 应用 typeof 会返回 object 呢？因为 JavaScript 解释器认为 null 是一个空的对象的引用，觉得它是个对象，只是被置为空了。</p>
+<p><code>Boolean</code> 应该很熟悉了，有两个值 true 或 false ，这两个值是区分大小写的，所以你不能把 true 写成 True ，这是隔壁 python 的写法。很多基本类型都可以转换成布尔值，例如非空字符串会转成 true，非零数字会转 true，而空字符串和 0、NaN 等都等同于 false 。除此之外，还有对象 object 也会转 true ，相应的 null 对象则是 false 。</p>
+<p><code>Number</code> 类型应用广泛，有整数和浮点数等等。需要特别记住的是 JavaScript 中浮点数的最高精度是 17 位小数，但在进行算术运算时往往精度会不如预期，所以你会看到 <code>0.1 + 0.2 == 0.3</code> 是 false ，这也是面试中经常会问到的点，0.1 和 0.2 相加是不等于 0.3 的！另外值得注意的是 NaN，它表示的是应该返回数值但却没有返回，通常在其他语言中发生这样都会直接报错，导致程序停止运行，而 JS 不会，它会返回 NaN，让程序继续运行。比如你弄数值弄着弄着搞出个字符串类型，这不是搞笑么，所以返回个 NaN，你自己体会。</p>
+<p><code>String</code> 类型同样经常遇到，声明字符串可以单引号也可以双引号，它采用的是 Unicode 字符编码。字符串有个 <code>length</code> 属性，可以返回长度。还有想要连接两个字符串的话，可以用 <code>+</code> 连接。例如下面这样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var s = &apos;hello&apos;;</span><br><span class="line">console.log(s + &apos; world&apos;);   // hello world</span><br></pre></td></tr></table></figure></p>
+<p>它还有个常用的 toString() 方法，可以将其他值转换为字符串，这里典型应用就是可以输出数值的二进制表示等等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var num = 10;</span><br><span class="line">console.log(num.toString());   // &quot;10&quot;</span><br><span class="line">console.log(num.toString(2));  // 1010</span><br><span class="line">console.log(num.toString(16));  // a</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，在 toString() 传入一个相应的数字就能转换成几进制的值。默认是转换成十进制的。</p>
+<p>未完待续… …</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-12-01T09:44:58.824Z" itemprop="dateUpdated">2018-12-01 17:44:58</time>
+</span><br>
+
+
+        
+        欢迎关注个人微信公众号，扫描下方二维码,一起学习交流前端知识<br><div style="display:flex;justify-content:center;align-items:center;padding-top:10px;"><img src="https://ws1.sinaimg.cn/large/0076KlMqgy1fxkod28jwej30a90a9t9l.jpg" width="150" height="150"></div>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.brightlam.top">
+            <img src="/img/imagesA.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/12/01/JavaScript-学习之路-语法篇-上/&title=《JavaScript 学习之路-语法篇(上)》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/imagesA.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/12/01/JavaScript-学习之路-语法篇-上/&title=《JavaScript 学习之路-语法篇(上)》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/12/01/JavaScript-学习之路-语法篇-上/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 学习之路-语法篇(上)》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/12/01/JavaScript-学习之路-语法篇-上/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/12/01/JavaScript-学习之路-语法篇-上/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/11/25/JavaScript-学习之路-起步/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JavaScript 学习之路-起步</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "iUCPVe2VLChefffS2w2mDHFO-gzGzoHsz",
+            appKey: "sOwlIg1a5fSQf3ve1mgBaoag",
+            avatar: "",
+            placeholder: "留下你的评论，一起交流学习!",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励支持
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/WeChat.png" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2015 - 2018</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2018/12/01/JavaScript-学习之路-语法篇-上/&title=《JavaScript 学习之路-语法篇(上)》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/imagesA.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2018/12/01/JavaScript-学习之路-语法篇-上/&title=《JavaScript 学习之路-语法篇(上)》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2018/12/01/JavaScript-学习之路-语法篇-上/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 学习之路-语法篇(上)》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2018/12/01/JavaScript-学习之路-语法篇-上/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2018/12/01/JavaScript-学习之路-语法篇-上/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/12/01/JavaScript-学习之路-语法篇-上/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
