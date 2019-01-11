@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>JavaScript 学习之路-语法篇(下) | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript">
+    <meta name="description" content="这段时间一直在期末复习，这几天考完试末，轻松了许多，终于放假啦。 上篇文章（很久了）说的是 JavaScript 的操作符，有相等操作符、条件操作符、赋值操作符等等，这篇文章写的是语法篇的最后两个内容：语句 和 函数 。 语句语句由一个或多个词组成，可以完成某些任务和操作。 if 语句最常用也很熟悉的语句了，它的语法如下：12345if (condition) &amp;#123;    block1&amp;#">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 学习之路-语法篇(下)">
+<meta property="og:url" content="http://www.brightlam.top/2019/01/11/JavaScript-学习之路-语法篇-下/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="这段时间一直在期末复习，这几天考完试末，轻松了许多，终于放假啦。 上篇文章（很久了）说的是 JavaScript 的操作符，有相等操作符、条件操作符、赋值操作符等等，这篇文章写的是语法篇的最后两个内容：语句 和 函数 。 语句语句由一个或多个词组成，可以完成某些任务和操作。 if 语句最常用也很熟悉的语句了，它的语法如下：12345if (condition) &amp;#123;    block1&amp;#">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-11T09:05:26.556Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 学习之路-语法篇(下)">
+<meta name="twitter:description" content="这段时间一直在期末复习，这几天考完试末，轻松了许多，终于放假啦。 上篇文章（很久了）说的是 JavaScript 的操作符，有相等操作符、条件操作符、赋值操作符等等，这篇文章写的是语法篇的最后两个内容：语句 和 函数 。 语句语句由一个或多个词组成，可以完成某些任务和操作。 if 语句最常用也很熟悉的语句了，它的语法如下：12345if (condition) &amp;#123;    block1&amp;#">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+    <script>
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/imagesA.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:lighterlam@gmail.com" title="lighterlam@gmail.com" class="mail">lighterlam@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/JavaScript"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/aboutme"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScript 学习之路-语法篇(下)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JavaScript 学习之路-语法篇(下)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-11T09:04:38.000Z" itemprop="datePublished" class="page-time">
+  2019-01-11
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#语句"><span class="post-toc-number">1.</span> <span class="post-toc-text">语句</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#if-语句"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">if 语句</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#do-while-语句"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">do-while 语句</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#while-语句"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">while 语句</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#for-语句"><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">for 语句</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#for-in-语句"><span class="post-toc-number">1.0.5.</span> <span class="post-toc-text">for-in 语句</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#label-语句"><span class="post-toc-number">1.0.6.</span> <span class="post-toc-text">label 语句</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#break-和-continue-语句"><span class="post-toc-number">1.0.7.</span> <span class="post-toc-text">break 和 continue 语句</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#with-语句"><span class="post-toc-number">1.0.8.</span> <span class="post-toc-text">with 语句</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#switch-语句"><span class="post-toc-number">1.0.9.</span> <span class="post-toc-text">switch 语句</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数"><span class="post-toc-number">2.</span> <span class="post-toc-text">函数</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-JavaScript-学习之路-语法篇-下"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScript 学习之路-语法篇(下)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-11 17:04:38" datetime="2019-01-11T09:04:38.000Z"  itemprop="datePublished">2019-01-11</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>这段时间一直在期末复习，这几天考完试末，轻松了许多，终于放假啦。</p>
+<p>上篇文章（很久了）说的是 JavaScript 的操作符，有相等操作符、条件操作符、赋值操作符等等，这篇文章写的是语法篇的最后两个内容：<code>语句</code> 和 <code>函数</code> 。</p>
+<h4 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h4><p>语句由一个或多个词组成，可以完成某些任务和操作。</p>
+<h6 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h6><p>最常用也很熟悉的语句了，它的语法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if (condition) &#123;</span><br><span class="line">    block1</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    block2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其中 condition 会被转换成一个布尔值来确定执行那一块代码，例如如果 condition 为 true，则执行 block1 的代码，否则执行 block2 。如果想要更省事一点，也可以直接用三目运算符来替代 if 语句，例如下面的代码跟上述的 if 语句是一样的，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">condition ? block1 : block2 ;</span><br></pre></td></tr></table></figure></p>
+<h6 id="do-while-语句"><a href="#do-while-语句" class="headerlink" title="do-while 语句"></a>do-while 语句</h6><p>一种循环语句，它会至少先执行循环体内的代码一次，然后在根据条件判断是否继续循环，语法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">do &#123;</span><br><span class="line">    code</span><br><span class="line">&#125; while (condition);</span><br></pre></td></tr></table></figure></p>
+<h6 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h6><p>看看它的语法，比较下跟 do-while 的区别：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while (condition) &#123;</span><br><span class="line">    code</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，while 循环语句是上来就开始判断 condition 是否为 true ，是的话才会执行代码，否则不会执行；而前面的 do-while 循环是会至少执行一次代码再来判断条件，这就是区别。</p>
+<h6 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a>for 语句</h6><p>依然是循环语句，而且也是经常使用的循环语句。它的语法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for ( init; expression; loop-expression) &#123;</span><br><span class="line">    code</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>怎么使用它呢？下面的代码会输出 1 到 10 之间的数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 1; i&lt;=10; i++) &#123;</span><br><span class="line">    console.log(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其实 while 循环能做到的，for 循环也同样能做到，上面的如果用 while 循环是这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var i = 1;</span><br><span class="line">while (i &lt;= 10) &#123;</span><br><span class="line">    console.log(i);</span><br><span class="line">    i++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>既然这样，那还要 for 循环干嘛呢？for 循环可以做到根据已知条件来确定循环次数，比如你要打印某个数 10 次，那用 for 循环，中间 i &lt; 10 直接写就好了；但如果事先并不知道要循环多少次，条件也不是很清楚，那么用 while 循环先执行着也是不错，如果这段代码要先被执行一次，那就用 do-while 好了。</p>
+<h6 id="for-in-语句"><a href="#for-in-语句" class="headerlink" title="for-in 语句"></a>for-in 语句</h6><p>是一种迭代语句，可以用来枚举对象的属性，非常实用的语句。语法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (var propName in window) &#123;</span><br><span class="line">    document.write(propName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>执行这段代码你将看到浏览器 window 对象的所有可枚举属性。</p>
+<h6 id="label-语句"><a href="#label-语句" class="headerlink" title="label 语句"></a>label 语句</h6><p>label 语句可以在代码中添加标签，以便将来使用，语法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">labelName: code</span><br></pre></td></tr></table></figure></p>
+<p>通常会与 for 等循环语句配合使用，由 break 或 continue 语句来引用。</p>
+<h6 id="break-和-continue-语句"><a href="#break-和-continue-语句" class="headerlink" title="break 和 continue 语句"></a>break 和 continue 语句</h6><p>break 语句可以让代码停止执行，用在 for 语句中会立即退出循环；而 continue 语句也是让代码停止执行，但它不会退出循环，而是从循环的顶部继续执行，也就是在执行下一次循环。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 1; i &lt;=  10; i++) &#123;</span><br><span class="line">    if ( i % 5 == 0) &#123;</span><br><span class="line">        console.log(i);</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面的代码找出 10 以内能被 5 整除的数，找到了就输出，而且找到了就不找了，立刻停止退出循环，最后输出的结果是 <code>5</code> 。而如果使用 continue 替代 break 呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 1; i &lt;=  10; i++) &#123;</span><br><span class="line">    if ( i % 5 == 0) &#123;</span><br><span class="line">        console.log(i);</span><br><span class="line">        continue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>答案显而易见，会输出 <code>5</code> 以及 <code>10</code> 。因为找到了一个 5 之外，continue 的意思是不用再执行下面的代码了，从顶部开始下一次循环再找。</p>
+<h6 id="with-语句"><a href="#with-语句" class="headerlink" title="with 语句"></a>with 语句</h6><p>with 语句可以简化代码量，以一个特定的对象来开头，减少重复书写它的次数，例如下面的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var qs = location.search;</span><br><span class="line">var hostName = location.hostname;</span><br><span class="line">var url = location.href;</span><br></pre></td></tr></table></figure></p>
+<p>每次都需要用到 location 这个对象，我们可以把它关联起来，用 with 语句改写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with (location) &#123;</span><br><span class="line">    var qs = search;</span><br><span class="line">    var hostName = hostname;</span><br><span class="line">    var url = href;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样就不必时刻写 location 字段了，需要注意的是，该语句在 <code>严格模式</code> 下是报错不能用的。</p>
+<h6 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h6><p>最后一个是 switch 语句，它是为了解决 if 语句分支过多过长的问题，例如下面这段冗长的 if 语句代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">if ( i == 100) &#123;</span><br><span class="line">    alert(&apos;恭喜你考了满分&apos;);</span><br><span class="line">&#125; else if ( i == 90) &#123;</span><br><span class="line">    alert(&apos;优秀&apos;);</span><br><span class="line">&#125; else if (i == 80) &#123;</span><br><span class="line">    alert(&apos;很不错&apos;);</span><br><span class="line">&#125; else if (i == 70) &#123;</span><br><span class="line">    alert(&apos;勉强还行&apos;);</span><br><span class="line">&#125; else if (i == 60) &#123;</span><br><span class="line">    alert(&apos;在挂科的边缘疯狂试探&apos;);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    alert(&apos;骚年，补考见&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>switch 语句为了优化上述代码，写成这个样子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">switch (i) &#123;</span><br><span class="line">    case 100:</span><br><span class="line">        alert(&apos;恭喜你考了满分&apos;);</span><br><span class="line">        break;</span><br><span class="line">    case 90:</span><br><span class="line">        alert(&apos;优秀&apos;);</span><br><span class="line">        break;</span><br><span class="line">    case 80:</span><br><span class="line">        alert(&apos;很不错&apos;);</span><br><span class="line">        break;</span><br><span class="line">    case 70:</span><br><span class="line">        alert(&apos;勉强还行&apos;);</span><br><span class="line">        break;</span><br><span class="line">    case 60:</span><br><span class="line">        alert(&apos;在挂科的边缘疯狂试探&apos;);</span><br><span class="line">        break;</span><br><span class="line">    default:</span><br><span class="line">        alert(&apos;骚年，补考见&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>switch 语句的好处是能根据条件 i 的值，来决定是到那一段 case 代码中去执行，并且执行完后就 break 掉，而不执行接下来的其它 case ，这样条例清晰、一一对应，而 default 就是上面所有 case 都不管用了，那就默认执行它里面的内容。</p>
+<p>上面这九大语句，基本就是一门编程语言中常用到的语句了，基本上其它编程语句也都是这么几种，只不过语法稍微有所差别，写法不同而已，只要熟悉了上述这几种语句，在其他语言中同样适用，毕竟语言是互通的。</p>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p>函数也是每门编程语言都会有的语法概念。有没有相过，如果一个页面里面充斥着大量的语句，这些语句实现着各种功能，有些还经常是重复的，你其实多写了几遍。这时候，你可以考虑把这些<code>语句</code>集合起来，封装成一个<code>函数</code>。<code>函数</code>就是封装了任意多条语句，每次需要用的时候就调用它，通过什么标识来区别函数呢？函数名，js 中函数使用 <code>function</code> 关键字来声明，后面紧接的就是函数名，在接着就是圆括号，里面存放的是函数的参数，用 <code>，</code>隔开，最后就是函数的主体代码了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function funName(arg1,arg2,arg3) &#123;</span><br><span class="line">    code</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面就是 js 定义一个函数的格式。函数可以有一个 <code>return</code> 语句，表示该函数返回结果，如果使用了 return 语句，则后面的代码一概不会被执行，比如下面这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function sum(a,b) &#123;</span><br><span class="line">    return a + b;</span><br><span class="line">    console.log(&apos;hello world&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输入两个参数值 a 和 b 调用 sum 函数，可以计算 a + b 的结果，但后面那句 hello world 是不会被执行了，因为 return 语句就是最终语句了，函数遇到 return 后就会立即停止退出。另外，还有一个 <code>arguments</code> 类数组对象一直存放着函数的参数，使用 arguments 可以获取函数的参数信息，比如上面的 sum 函数，以下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function sum(a,b) &#123;</span><br><span class="line">    return a + b;</span><br><span class="line">    console.log(&apos;hello world&apos;);</span><br><span class="line">    console.log(arguments.length);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当你 <code>sum(10,20)</code> 调用函数后，最后那句代码会输出 <code>2</code>，因为你输入了 10、20 两个参数，长度为 2 ，前面说了，<code>arguments</code> 存放的是参数的信息，它是一个类似数组的东西，所以你可以用 <code>arguments[0]</code> 表示第一个参数，也就是 10；用 <code>arguments[1]</code> 表示第二个参数，也就是 20 。</p>
+<p>由于 js 的函数参数实际上是一个数组，所以不传值或者少传多传都不会报错，这点可以说是非常宽松的，相比其他语言来说。你可以随意输入多个参数，只不过会显示 undefined 。</p>
+<p>js 的函数没有<code>重载</code>这一概念，如果定义两个名字相同函数，则后者覆盖前者。但由于有 arguments 数组的存在，可以通过使用 if 语句判断传入的 arguments 参数来相应执行不同的代码，也算是模拟重载。</p>
+<p>(全文完)</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-01-11T09:05:26.556Z" itemprop="dateUpdated">2019-01-11 17:05:26</time>
+</span><br>
+
+
+        
+        欢迎关注个人微信公众号，扫描下方二维码,一起学习交流前端知识<br><div style="display:flex;justify-content:center;align-items:center;padding-top:10px;"><img src="https://ws1.sinaimg.cn/large/0076KlMqgy1fxkod28jwej30a90a9t9l.jpg" width="150" height="150"></div>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.brightlam.top">
+            <img src="/img/imagesA.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2019/01/11/JavaScript-学习之路-语法篇-下/&title=《JavaScript 学习之路-语法篇(下)》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/imagesA.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2019/01/11/JavaScript-学习之路-语法篇-下/&title=《JavaScript 学习之路-语法篇(下)》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2019/01/11/JavaScript-学习之路-语法篇-下/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 学习之路-语法篇(下)》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2019/01/11/JavaScript-学习之路-语法篇-下/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2019/01/11/JavaScript-学习之路-语法篇-下/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/01/08/python-学习笔记-二/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">python 学习笔记(二)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "iUCPVe2VLChefffS2w2mDHFO-gzGzoHsz",
+            appKey: "sOwlIg1a5fSQf3ve1mgBaoag",
+            avatar: "",
+            placeholder: "留下你的评论，一起交流学习!",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励支持
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/WeChat.png" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2015 - 2019</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2019/01/11/JavaScript-学习之路-语法篇-下/&title=《JavaScript 学习之路-语法篇(下)》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/imagesA.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2019/01/11/JavaScript-学习之路-语法篇-下/&title=《JavaScript 学习之路-语法篇(下)》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2019/01/11/JavaScript-学习之路-语法篇-下/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 学习之路-语法篇(下)》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2019/01/11/JavaScript-学习之路-语法篇-下/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2019/01/11/JavaScript-学习之路-语法篇-下/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2019/01/11/JavaScript-学习之路-语法篇-下/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
