@@ -53,6 +53,8 @@
 <meta name="twitter:description" content="作为一个程序员，一些基本的排序算法是必须要掌握的。以前人们总觉得算法是后端程序员去学的，前端只需要专注于网页的美观以及 JS 的基本逻辑交互就行，然而，近几年随着前端行业的发展，前端越来越注重逻辑交互，如果你还像很久之前那样只知道用 HTML + CSS 去构建网页，那就落伍了。如今，前端程序员也需要对算法有一定的了解，不说别的，多掌握点东西总是好的。今天的文章介绍的是排序算法中的插入排序。 什么">
 <meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-9-10/64285389.jpg">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -78,7 +80,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -112,16 +114,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -424,11 +419,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -436,6 +433,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -482,7 +481,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/09/25/算法系列之插入排序/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACx0lEQVR42u3aQW7jQAwEQP//0w6wpwCJ7G5Ss0mA0skwbGlKBw3V5OMRH89/x9dvPn///HIkZ3h9zte/v+3Aw8PDGy396riLt1locq3L6+Lh4eEd471eREvNt4TXn/Pbffk9Hh4e3o/yWkB7I5LNAA8PD+9v8dr3/ZyUl+x4eHh4v4eXL3G2DeRl8eszHMxa8PDw8GJe2wD7DZ8P9vfw8PDwFl312WO3Lb7bcrlYJx4eHt4BXhut7ttXeVGeIKMNAw8PD++/8PLH96wsbmPfNiJ5szHg4eHhLXj7AnrTmsrD2VmTDA8PD+8Ebz9A0DbD8ivOivI6I8HDw8Mb8WYFdF5k53FtDkiuhYeHh3eOl0QG+6GovD2WzwMUZT0eHh7erbw8dMiDgOQG5UXzrBzHw8PDO8HLH/ptRJsXynlgUQ9+4eHh4R3j5S/2bQTQNsPaYn0V4OLh4eEteG3jalZSt02sWWxxWVLj4eHhHeDNMHmUsBlByBtpb1IWPDw8vDUvbyzlpXNbRs/Yq7cHPDw8vDVvEyVshgb211319/Dw8PDWvFmU0I5VzULhPMK4fG/Aw8PDu4nXjknlj/5ZdLvZbL75jIeHh3eAl/yobUq1Bffm/NGEAB4eHt6tvHy4ajMgNSu1823pcuPBw8PDO8Cb/eGu+CAJeZMbHe17eHh4eLfy2odyvtA87NgHEI+79hw8PDy8gJc8+u+6EcnSZxvVm5IaDw8P7xgvL2HbC+fn2Y8g4OHh4Z3jPcsj2RjaTSXnJdvJN5MReHh4eLfyZiHFLGBtQ95irKocGsPDw8Pb8/YF7qzZvy/oizcGPDw8vAO8vDhug93kgd7esuL3eHh4eH+EVz++y4i2iEjw8PDwfpSXLzEPhWeDVsWtx8PDwzvGSxYxW9Zs3KrdTm7IWvDw8PC2b/dv/py3o/KmWlua70t2PDw8vJL3AVt0VLnRuyd/AAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

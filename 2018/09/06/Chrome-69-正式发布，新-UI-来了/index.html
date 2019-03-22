@@ -53,6 +53,8 @@
 <meta name="twitter:description" content="最近，谷歌正式发布了旗下浏览器的最新版本，也就是 Chrome 69，这对程序员来说真是一个大好消息，要知道，很早之前的程序员都是用苦逼的 IE 系列浏览器，各种 bug 不说，偶尔还要兼容下低版本的例如绝望的 IE6，不过这都已经成为过去式了，因为近些年来的快速发展，Chrome 的市场份额越来越多，人们正在逐渐习惯使用谷歌或者火狐浏览器，现在 IE 估计只有一些政府部门还有国企在苦苦坚持使用，">
 <meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-9-6/72941628.jpg">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -78,7 +80,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -112,16 +114,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -426,11 +421,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -438,6 +435,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -484,7 +483,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/09/06/Chrome-69-正式发布，新-UI-来了/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACt0lEQVR42u3a204DMQwFQP7/p0HiCQS7nBMnbZFmn6p2bxOk2Nh+e4uP98/j5+f7b74eV/f5ee3Vr1dnbjjw8PDwll796ri/dX5V/nL3z8rfGQ8PD+80r71dGzau8PmC5suNh4eH9zq8PEi0uW57Jh4eHt5/4bWb+1rF4IXiHh4eHt4tL0lw85dIyrXz526uteDh4eHFvEkD7FmfH9Tfw8PDwyu76vM0evJ9G0h+eR88PDy8A7zk3/48PCS/tsnx2hP/WEs8PDy8AS8vJSSFhslgVjKakKfX3+IeHh4e3lZeEgx2jVW1ja7JEuDh4eGd4+XJ6y52/pS8zHG5fHh4eHgHeG3zaa202namcuTm3h0eHh7eANYmxDmmHT9tk/4oJODh4eENePNAMn/Y3qXZHCfx8PDwLooRbV66Nmg1KU+0Qwl4eHh453j5SclG38acBHm/cFHxAg8PD28rr93o22GstYJvkkZHAQkPDw/vAC8p2u5NtduBqjZBx8PDw3sWr92+10am1kq0i4VmPDw8vAO8SZM+L8i2zbBkQYvwgIeHhzfmtRfkCXE7zpUXOIomGR4eHt4B3qTl35Zcd5V68z8DHh4e3mle0p5vSw+7AsDaMuHh4eGd4K2VDOYDVffbfd69wsPDw3sd3qSU0I5wrVHrAgQeHh7eAV7eBsub/e3m3i7xH9fi4eHhHeDtet3JYEEbitrwg4eHh7eXd39qO/zUln3Xlq8YEcPDw8N7CC/fgtsHj2JXWRrGw8PDO8drG1qTEnCLqYu2kzYeHh4eXsnLB0PXyrujKbDBOAIeHh7eaV6eELcNrTVYW4woGmB4eHh4D+RNRgry8nGb4i+OXuHh4eE9nNcWeduBgLX7j1JqPDw8vJKXp8htUjtpoU1aa3h4eHjneLtuly/BZDRhsih4eHh4Y94HX0wNAWde7wAAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

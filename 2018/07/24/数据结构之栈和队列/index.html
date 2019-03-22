@@ -53,6 +53,8 @@
 <meta name="twitter:description" content="数据结构有许多种，上篇文章分享的是可以存储简单数据的列表，例如待办事项，购物清单等。今天要跟大家分享的是两种非常常见的也必须了解的数据结构——栈与队列。 栈的定义什么是栈呢？它是一种“后入先出”的数据结构，它跟列表一样，都是可以用来存储数据，但是却要比列表严格的多，栈的数据只能在栈顶添加或删除。举个例子，在麦当劳用餐时的那些盘子，捡餐员在拿盘子时，总是从一摞盘子的最上端拿（栈顶），然后放上食品在端">
 <meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-7-20/7478973.jpg">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -78,7 +80,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -112,16 +114,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -444,11 +439,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -456,6 +453,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -502,7 +501,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/07/24/数据结构之栈和队列/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3aQW7jQAwEwPz/095rFlgl3eSM4QVKJyOWLdUE0NBNfn3Fx+vb0Z75Ko/N1YcHHh4e3uLWny6W3MT3M5N3E8zT+cUC4eHh4V3j5bfSPsqfPrv5VHLPeHh4eJ/Ge/psAsgL5WSTwMPDw/tfePuCOE8S2nIcDw8P7z28JIz4+fxZMd2eeTFrwcPDw+t6TAce0O98faW/h4eHh7fuqs+CgNkatxtGdLd4eHh4F3j5A7cNF/L2VTu40N4nHh4e3lnea3Qkoe2m5b+Jj/96jYeHh3eBl8Syszb/vjhur1tHEnh4eHgL3uxxPKzf42I9jzyiqBcPDw/vKC9p/M8Y+WDWZkOqtwQ8PDy8Na8tiGflcrscs9ErPDw8vNu8/Ed+XkBvXm82gMfJCDw8PLyjvORRnowIbLaBdpwr2Rjw8PDw7vGSNvysTo/WdfS4LxpmeHh4eBd4m+I4/8t+72pJeHh4eLd5syGA2SXbBUq2n6K/h4eHh3eI1xbNyd/zd5MlOwDGw8PDewtvVnDvt4p8rCGPkvHw8PBO8fLLJ4Vvvkyz/0PenMPDw8O7zcuj2HaAII9r8wGFeqYMDw8P7yivHYpqbygvjmcBR/STAA8PD+8ab9buah/r+1ZZu43h4eHh3eDloUCObKe9WnASJePh4eHd47Wtr1nzfjYusCmy8fDw8G7z2oJ10wDbjwgUIQgeHh7eNV7+Rafq97zgXi0NHh4e3lHeqaBhFiUkg1z5ENg/PoWHh4d3gXe2Z5S3u9p4Yhaa4OHh4d3jtQMB+SU37bF2Y3h8Fw8PD+8ab9YYy3mnwtz8G/Dw8PA+jZe38NuYowX88m14eHh4H8BrR6baUjg/J4on8PDw8K7x8nC2jWvbcLZtbv2CxMPDw7vAm5WwsyhhtmHsR7Lw8PDwDvH+ALOEAye5qs7pAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

@@ -51,6 +51,8 @@
 <meta name="twitter:title" content="CSS布局之 flex 布局">
 <meta name="twitter:description" content="在学 CSS 的时候偶尔都会碰到 flex 布局，由于一直以来都使用传统的 display ，float ，以及 position 来实现基本的布局，因此对 flex 布局没有过多的了解。但对于一些特殊的布局，flex 布局会相对友好些。于是在网上查了资料学习后，也用这篇文章来记录下。 首先要了解下什么是 flex 布局，来看下 MDN web docs 对其的解释：  Flexible Box">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -76,7 +78,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -110,16 +112,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -426,11 +421,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -438,6 +435,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -484,7 +483,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/05/27/CSS布局之-flex-布局/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3awY7iMBAEUP7/p5nrjhDZqnYyUpznE4Jg+XEo7G6/XvF4fxn/fvrtyc9nPmf+/O7rioGBgXFbxvtwHC8un7l9J18bBgbGcxhJFOYRnATo8bfytWFgYGAkr4tYHM2PgYGBMWMkMdo+iYGBgXHMmBXUVop0ycyXnMUxMDBuyMgLZ3//+pL+BgYGxq0Y73K0rcf1Rma0KgwMjK0ZecDlR83Z4bbd9mFgYDyNsXJVa6V52TZKT9jPYmBgbMSICvGjsJ5tDVdKfhgYGHdnzJqIK2Ha/qLR742BgfEYxgzWluTaxmRUsMPAwNiaMVtiu9yzjtB1cQ0DA2MLRr7Q9fbAuVfEfj2PgYHxAEYbfyuFtrbBEJEwMDAew5hd88pLY1F0xq2Ir7dFMDAwtmMUoRZE8Gwj2F5vjYpuGBgYGzFWAnf2fB7i9WULDAyMTRkri5td2lgpt/0niDEwMLZmtKW0ojtathba4y4GBsbTGHmozVqVs0NsHvoYGBh7M2ZRmzc4ZwFaF/swMDAewFg5srYztP8A0cwYGBiPZKxcnmgPwCsYDAyMvRnvcuSbubasfzxPcU8EAwNjO8Z6QX926G0bmSsRj4GBsQejDdl8q5cfaNvAxcDAeCaj3brlzc68YNdGPwYGBkZ+eauo7V3wY2FgYGDkW7dZ+M6op/1vYGBg3IqRHGLbT8+6xhrFOgYGxtaMNvLy7eN1DYNhUxMDA+N+jB9+QnRyyZ1XtQAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

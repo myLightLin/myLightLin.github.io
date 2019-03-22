@@ -51,6 +51,8 @@
 <meta name="twitter:title" content="JavaScript 学习之路-语法篇(中)">
 <meta name="twitter:description" content="上篇文章分享了 JavaScript 的基本语法、严格模式的启用，还有变量、五大基本数据类型以及所定义的一些关键字保留字等。在这篇文章里，你可以了解到 JavaScript 中的各类操作符，这些操作符有些很熟悉，一直在用，有些可能平时不太注意，但也会多少用到。 花式操作符操作符，顾名思义，就是对数据进行操作。JavaScript 能参与运算的操作符很多，有一元操作符、位操作符、乘性操作符等等，接下">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -76,7 +78,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -110,16 +112,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -441,11 +436,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -453,6 +450,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -499,7 +498,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/12/08/JavaScript-学习之路-语法篇-中/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvklEQVR42u3aQY7CMBAEQP7/6d0r0m5C99iOOFROiEBwBYkZ2vN6xcfP2/H3mb9n719z/678+tsOPDw8vIWlX11uxnt/5f3j5JrJp/+zBjw8PLxjvHxZ9wtKSLNikK8HDw8P7zt5efG4v2bSLidXxsPDw/t+Xh43tOVh1o7j4eHhPc9bDwLuP2bWIudFZUPWgoeHh9ftN73Wf6CffHxkfw8PDw9veVc92Qxb+Tme8YrV4uHh4R3gte1sEsLOmum8KW/XiYeHh/cMLw8aVs7OIoZ6VXh4eHhbeflf/V3gpKjkmA/rx8PDwzvAy2H5qEE7IjDbfitiETw8PLytvPyiJ0aj8hGE9gvAw8PDe4a3d1CgbbJn8e6HLwYPDw/vAG+2lTULDvIYIm/Zh9UPDw8Pb4GXL7eNVmfN+uz5KGXBw8PDO8BrA9xdo1r5wFYe8v4zOoCHh4e3iXeuPLSNez4cUI8R4OHh4W3lRZMFbSO7Kapom+zLlhoPDw/vAG/XyFS7ldW20e3GGx4eHt45Xh4xzMak8th3VoQuPx0PDw/vMC8PC9qbsquc5AEuHh4e3jlevrm1crZtrFea+1dyGg8PD2+BN/shbje9ZttgbcR8Wffw8PDwjvHyWYM8GmgHp2ZxbTQTgYeHh7eJN4tf82Iwe01bJKI14+Hh4W3lrQ9atVtos7a7jm7x8PDwHuQlje96+9tujA0HvPDw8PCO8dpRgLZdThadB8TFDcLDw8Pbyvspj1nIO9swy8vS5XXw8PDwDvBW6sksVN0VCtcAPDw8vK28vBis34h8QKENbT/MR+Dh4eEd4O2NFVZi2ZXKdjkTgYeHh/cFvDYayNntCMKHleDh4eF9AW/237+9cXmeMJwpw8PDw1vmtZteszA3iYNX0ujLwoCHh4e3lde+rW2g6ya4HDjYtr+Hh4eH9/n4BQQe5ClgS9CSAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

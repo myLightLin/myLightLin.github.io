@@ -51,6 +51,8 @@
 <meta name="twitter:title" content="面试必备！数组去重的 6 种方法">
 <meta name="twitter:description" content="在前端的面试或笔试中，经常会碰到让你写一段数组去重的代码，今天就带大家一起来学习数组去重的 6 个方法，所谓人无我有，人有我优。当别人掌握了一两种方法时，你就要努力掌握比别人更多的方法，这样就可以让自己更有竞争力些。 直接遍历法这种方法直接遍历数组，利用 JavaScript 的 indexOf 方法，新建一个新数组，用这个数组去判断旧数组中的每一个数是否等于-1,如果是，说明该数在新数组中不存在">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -76,7 +78,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -110,16 +112,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -417,11 +412,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -429,6 +426,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -475,7 +474,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/08/22/面试必备！数组去重的-6-种方法/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACxElEQVR42u3awW7bQAwEUP//T7dATwVq2TOk1nGBp1PgKNa+PWiZIR+P+Pr150ru+fv69/OrT14/Mbl/deHh4eGNln51XT3sNenq+zdb+fq5l0/Bw8PDO8abvZoTUnJgXH1zst1v1oOHh4f3o7z2pfz6k/zAwMPDw/t/eW2RnZfOCQAPDw/v23h5+dsGu7PiO4+Gb8ta8PDw8GJeG61+w88H+3t4eHh4i656HrPmIULyur9ttXh4eHgHeMm//TlpVjRvxheircHDw8M7wNuECPlmtfe34wsFFQ8PD2/Bmy1x/1f5UEL79Cf/MeDh4eEd4LWFbHI85Mu9a0Px8PDwPsNLStV7X9+zxv+qs4eHh4d3K29fwiav6fwIydPXKEDBw8PDO8bbRKtJnJq3u9rfvlkbHh4e3gFeu7jZ2FM7yLWvjZ98Dx4eHt5NvLwZn0QS7YGR39NuxCM/l/Dw8PAWvH2z6kQZ3bbc6rQYDw8Pb8RLotu24I5i1puCj8vn4uHh4R3jtW3+Tdc+DzXyEv9yg/Dw8PCO8doXdPvzfvxrOEOFh4eHd5jXls6z0jwPYTdDA08OBjw8PLybeG0R3Da3opmFeHOLI2FW4+Ph4eEFvGRZydzWvQ2z2RYUYQQeHh7emjeLU2fhb76JdWjbTkbg4eHhrXntI9tjYzN8MItI8PDw8M7xZqNRm8ZVfrTMBrPepNR4eHh4C159azlQFRW+i1A42Ro8PDy8e3n5y3rTHsvjifywidaGh4eH90FeHkPMSuF8Q/NoGA8PD+8zvPzalN15uZw/Nw8y8PDw8E7w2hGrWbgw26DZwYCHh4f3GV4eJeRNqbb83YS2l2vDw8PD+1Fe28hvBw5mRfObMAIPDw/va3htCZ6HuUnUW7TN8PDw8I7x2kdujoQ2xs3BeHh4eJ/htQ2wHDYb4crjj9suPDw8vPT6DfA0kpeGMYZrAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

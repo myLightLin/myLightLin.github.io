@@ -53,6 +53,8 @@
 <meta name="twitter:description" content="作为一个程序员，一些基本的排序算法是必须要掌握的。以前人们总觉得算法是后端程序员去学的，前端只需要专注于网页的美观以及 JS 的基本逻辑交互就行，然而，近几年随着前端行业的发展，前端越来越注重逻辑交互，如果你还像很久之前那样只知道用 HTML + CSS 去构建网页，那就落伍了。如今，前端程序员也需要对算法有一定的了解，不说别的，多掌握点东西总是好的。这篇文章记录下很常见的一种排序算法——冒泡排序">
 <meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-9-10/64285389.jpg">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -78,7 +80,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -112,16 +114,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -423,11 +418,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -435,6 +432,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -481,7 +480,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/09/10/算法系列之冒泡排序/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsElEQVR42u3aQU4DMQwFUO5/aZBYwaLt/3aiIvRmVdFhkjeL2LX98RFfn9/Xo788//zzevTkR3cmTzhw4eHh4Y22ni+TLJx8O9thvmc8PDy827znwWDGazfavu4kgOHh4eG9l9ce6/kWk6QZDw8P73/wNoA8eODh4eH9TV670WRDSYKeJ+vXay14eHh4Ma9tgP2Fzxf7e3h4eHiLrnp+4ObNsPbFbS48PDy8G7w8hZ01sZLnb15NdCceHh7eZV67cF5uSFZMnl/vDQ8PD+8Cb1aYaNtR+aDAJnisirl4eHh4Aa9NVfcp736tYigBDw8P7zIvT0zbosMmUc6DQdG1w8PDw1vzNmXW2TNPBY8XLx0PDw/vAq9dYNbaz9tms6LwcHYMDw8Pb8RLju99MJiNKeRts4fPwcPDw7vGa8uyyeGep+l5g63dGx4eHt4NXg7I0+jZQT9rsw2DGR4eHt5R3mwUIE9zZ6n2qQIHHh4e3lleXpjIj+l8+fx/k8CDh4eHd4/X/rA/NRaQbHQ21vDrTjw8PLwLvFkJtW35z76dpd11MQIPDw+v5G0O6/y4z2shm28PxyI8PDy8Be9U4XWfiLciPDw8vBu82eE7K7meCjb5ABYeHh7ebV67/Kao2g5p5Un2i9EBPDw8vDVvdsjmaXEyKNAm63mwwcPDw7vN24xYncLMyr4vhq7w8PDwjvJmJYk8XW6T6U25obgfDw8Pb8H7LK/k4J6VFTavtShG4OHh4Z38FT/sHz1fPi/+ti8uT+jx8PDwbvDyYDBD5iMIeXOrKBzj4eHhXePNlp81sfIYdeAePDw8vLfyZgNV+Sqz4kWUUuPh4eG9ldc2ooqmfnlP9NLx8PDwrvHyYkQeMNpwMgsVL5pweHh4eBd4bQNss7lZa61N61f9PTw8PLxnvC+tkQMnDkDNXAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

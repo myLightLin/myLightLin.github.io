@@ -50,6 +50,8 @@
 <meta name="twitter:title" content="「Stay hungry，stay foolish.」">
 <meta name="twitter:description" content="爱技术，爱分享">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -108,17 +110,10 @@
               </a>
             </li>
         
-            <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+            <li class="waves-block waves-effect active">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -182,7 +177,11 @@
             ">全部</a>
         
 
-            <a href="/tags/CSS/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">CSS</a>
+            <a href="/tags/CSS/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">CSS</a>
+
+        
+
+            <a href="/tags/Chrome/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">Chrome</a>
 
         
 
@@ -190,35 +189,35 @@
 
         
 
-            <a href="/tags/Chrome/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">Chrome</a>
+            <a href="/tags/前端/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">前端</a>
 
         
 
-            <a href="/tags/前端/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">前端</a>
+            <a href="/tags/jQuery/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">jQuery</a>
 
         
 
-            <a href="/tags/jQuery/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">jQuery</a>
+            <a href="/tags/PS/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">PS</a>
 
         
 
-            <a href="/tags/PS/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">PS</a>
+            <a href="/tags/编程/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">编程</a>
 
         
 
-            <a href="/tags/编程/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">编程</a>
+            <a href="/tags/python/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">python</a>
 
         
 
-            <a href="/tags/python/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">python</a>
+            <a href="/tags/vue/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">vue</a>
 
         
 
-            <a href="/tags/vue/" style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">vue</a>
+            <a href="/tags/移动端/" style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">移动端</a>
 
         
 
-            <a href="/tags/移动端/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">移动端</a>
+            <a href="/tags/正则表达式/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">正则表达式</a>
 
         
 
@@ -226,11 +225,7 @@
 
         
 
-            <a href="/tags/正则表达式/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">正则表达式</a>
-
-        
-
-            <a href="/tags/数组去重/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">数组去重</a>
+            <a href="/tags/数组去重/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">数组去重</a>
 
         
     </nav>
@@ -493,11 +488,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -505,6 +502,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -551,7 +550,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/tags/数据结构与算法/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHklEQVR42u3aS3LCMBAFwNz/0uQAxOS9kaEKqbWijLHUXgjN5+cnHo+n8Xw9ufPqmVdXbh4YGBhfy3i8HMkEycTJ868+v/4tBgbGOYzXi7vaLpOJE1g+7+V1DAwMjHhLTZbbbrgYGBgYLaPdiNujHgYGBsZKEDtLir0+LOYv4rZYHAMD4wsZ+VI+//kt9Q0MDIyvYjzK0W647Z3DVWFgYGzNeEcBsl3oChsDA+MERhtAthvlrPzZljkxMDD2ZsyaHpJj3HoAXG/rGBgYmzLy41qS6L/57eYNHBgYGAcwZktfSczlhcmkXQMDA+MERh5ArhQd28D1hvoqBgbGFoy7Jku22vZouPQEDAyMjRj5oW3Wo9UWGHJYVMLEwMDYjrESjubJuFmZ858/AAwMjAMYs3aKfMpZkFyEtRgYGAcw8gTc7M42eVffj4GBcTxjtim3pdCVlBwGBsYJjLaI2KbMknaKtrCKgYFxDqMtRuatYLMiQR7Q/vEtBgbGMYxZUNpuqSvb9+VvMTAwDmC0m2bbZpGHyvnLwsDAOJPRFgNmIWibVoteKAYGxqaMRzlmSbR8iS0VAwPjBEY+PpNuywuiNQADA+PLGe3iZum2vM2rvR8DA+McxkqzV5tuW/kfiJotMDAwjmfcFaauvKy6FoqBgXEwI2kgW4+kixImBgbG1oxkEe31/IDYHg0xMDBOY8xCx3ZZs9dU9IxgYGDsyfgFJJci4NbL3KwAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

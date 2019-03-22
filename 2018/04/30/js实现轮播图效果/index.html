@@ -56,6 +56,8 @@
 <meta name="twitter:description" content="现在很多网站都会用到轮播图效果，轮播图的应用会给你的网站增色不少，本文将一步步带你用原生JavaScript捣鼓出一个轮播图，如果有不正确的地方希望指出，一起交流讨论，先来看下轮播图用到的基本知识点:1.绝对定位与相对定位2.overflow: hidden;3.闭包 HTML布局12345678910111213141516171819202122232425262728293031323334">
 <meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-5-1/22492119.jpg">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -81,7 +83,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -115,16 +117,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -457,11 +452,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -469,6 +466,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -515,7 +514,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/04/30/js实现轮播图效果/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aS3KDMBAFQN//0s42KRvljQacIDUrChtBs5iajx6P+HgeHK+/fr8yvnf8n8cVBwYGxm0Z+WNez5M1k6d0PgEGBsY+jKNXyZeugo9eKFkBAwMDo7pcktiNV6t+CAwMDIxxkB3fm9+VXMfAwMDot8Py9K6KubAWx8DAuCEj77p//vyS+QYGBsatGM/iUU0Tx+nj3DDgzVthYGAszThrhNlPFqvp45s3wcDAWJQxvm1cNOabuvJUb25LBwYGxtqM/sCyGhyvSB8xMDD2ZOQLzaV61eA72RfEwMBYgvFXyV/+xChhxcDAWJrRnwlesW2isBXsrNEmBgbGv2dUt1vl5Wg+TsifcrgmBgbGBoxkoX5grQ5KC1vHMDAwNmDMtfWrhW4e3MsDBgwMjEUZ/Y1ZeYCuppKFAQMGBsbSjLmwO9fDuy40Y2Bg7MPIS9Dxq8xd7wd3DAyMVRmFtntj08MVyeKPcwwMjKUZefmat+nH/5wbZ0ahGQMDY2PG3GizE44n8RgYGBswqm21/PpZoTkKuBgYGIsyqo3+uUK301wrDDAwMDCWYzyLR7Xp1kkKk3BcmGZgYGDcljEX5uZeqD8Y6AdrDAyM+zL6QbaaVibFaj6KwMDA2IdRHhmeVPp2PsQvXUMMDAyMYsjuhN3ow2FgYGAUW/x54Zps3YhCMwYGxgaMahFbbZ+dO1o4rd2GgYFxE0a1BO38sxp8k8+BgYGxNOMLL75GvFumicMAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

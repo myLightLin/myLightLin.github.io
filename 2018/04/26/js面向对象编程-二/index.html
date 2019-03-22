@@ -51,6 +51,8 @@
 <meta name="twitter:title" content="js面向对象编程(二)">
 <meta name="twitter:description" content="原型继承实际上，实现JavaScript的原型继承就如同Java的class中定义一个subclass一样，当我们定义了一个学生类Student，想要在定义一个子类去继承这个学生类，这就是原型继承，可是由于JavaScript没有class类型，所以其中的一个方法就是借助一个空的函数F来实现正确的原型链，确保其原型指向是正确的。这个空函数F定义如下：123456789101112131415161">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -76,7 +78,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -110,16 +112,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -411,11 +406,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -423,6 +420,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -469,7 +468,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/04/26/js面向对象编程-二/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aS3ICMQxFUfa/6c4CAPd9UpMqy9ejFAG3DwOhj18vvK63RV4nO5D/PrZkyJCxLeNarvdjkccQMNmfnE2GDBnnML4dpbP1Gpw+9+azMmTIkLFM5tJDr8EyZMiQ0WGsEz6eAqa7yZAhQwYvYtPwWmvS/bwWlyFDxoYM3nX//79/Mt+QIUPGVowrXP1BQn8Y8OGJMmTIGM2oHStN79YHJZ9CpawMGTKGMtKNOuBOAnrzfhkyZIxm1MaTtbbX79JHGTJkzGbwZn2arvHkL700huK0DBkyxjFqJSVv6/NgXWvAyZAhYzajVr6uwyJJHGul700IliFDxlBGerhOrZx+u+Rn4MPvhgwZMoYyOqEwDcFpKEcJqAwZMg5j8Afz4EuOzsMxmmzIkCFjEOPZpljt8kRtCCFDhoxzGLUiNm2upeNJkjg+0G6TIUPGhozOxa80WNeC79d9ZMiQcQCDtPU7YbGDRImpDBkyRjM6jfvOJQl+dSxIamXIkHEMo3MBopZc1kYLNwFXhgwZoxm8NcYDNHlnbQghQ4aMcxh8VFC7vFW8NhFOAWTIkDGVcYWLh13S3E9bcui7lyFDxjhGJ8ylBWq/9Z+25GTIkDGJQY7YaavVilWSdMbftAwZMjZnpGkfL3E7FzWCWlyGDBkycIlLDpSG3WAYIEOGDBlgPJA278grqP6WIUPGAYz+w3ih+9RAotVukyFDxlaMdMTIx5DpjY/06DJkyDiA8QfkwxQZIPfqpQAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

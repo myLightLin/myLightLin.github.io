@@ -57,6 +57,8 @@
 <meta name="twitter:description" content="侧边导航栏以及回到顶部已经越来越成为每个网站的必要功能之一，主要向网站的访客展示一些电话、客服QQ、邮箱或者其它信息，通常附带一个「回到顶部」的箭头。网上有很多关于这类效果的例子，姑且自己也总结一个出来，有需要的可以参考。不同的样式效果虽然不同，但原理都是差不多的，下面以小米商城的右侧栏为例">
 <meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-5-18/90992859.jpg">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -82,7 +84,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -116,16 +118,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -452,11 +447,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -464,6 +461,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -510,7 +509,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/05/18/JS学堂-小米商城右侧导航栏效果/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrUlEQVR42u3awW7rMAwEwPz/T7fXB6R2d0XJzQNGpyB1LI0OIkvq9YrH1z/j/fv759/H1fP33189s2Hg4eHhDZZ+tZT3z8lIZrnavska8PDw8J7hJYdyEh6SX022Ml8zHh4e3qfx7ie7P+Lbwx0PDw/v/+XVry5nyTcIDw8P7xN482JBC8tDyEO1Fjw8PLyuA/XKl/gJn4/09/Dw8PDGXfW8xZUc6KebXj/MgoeHh3eA1x7KSen2vqQ7KVW024SHh4d3gpf8Az8PD2ubsqHEjIeHh3eAd/+i/OpA/p62hjApEOPh4eGd4K0lrGtp9NpFhFESj4eHh/cIb5Lmnmuz5el+kXfj4eHhLfGS43Vvo+v+mTwwFNet8PDw8B7kJcXctlCbb+VaQn8Z/fDw8PC28tqiwK7n14JEdNEKDw8P7xivXWJ+NJ8o7+ZJNh4eHt45XvJQ8tckIW7LCvNZ8PDw8J7hjVpN40M8T7IXu2p4eHh4h3ltY2y+ce0s0bx4eHh4W3mTIzgvOtQV5RjzS9qNh4eHd4CXJLJtaTVvWeXtsbWUHQ8PD+8Z3t40d/LO9irYL10+PDw8vAO8tliwdtVgraHVhhY8PDy8c7xdyXSCT8JDshH1nTI8PDy8A7y2fJCUCdauESTvLJpteHh4eAd47Q/aY32txTUvcODh4eGd4yUNpDypbcu1kxFtNB4eHt4BXp7gtod1XlBom3B5gMHDw8M7wfsqx7zImyfNkysFdScNDw8Pb2fuutiI2pWatyWJRTweHh5eydsVDCZBYh4Y8PDw8J7nzRv2bSxaKzTkJV08PDy8T+C1+XgSWtqCRZt84+Hh4f0tL29Z3W9Enha3KfW2uIeHh4cX8NpXt62s9pJWss4iMODh4eFt5a0lx2vF3LWiw/HLBHh4eHgp7xsFwA0Bp6/0zQAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

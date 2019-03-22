@@ -51,6 +51,8 @@
 <meta name="twitter:title" content="时间复杂度、空间复杂度以及分析方法">
 <meta name="twitter:description" content="在学习数据结构与算法的时候，总不免提到时间复杂度以及空间复杂度这两个概念，以及每次对所写代码进行的复杂度分析等，最近这段时间学习数据结构与算法时对这两个概念的理解比之前好些了，这篇文章记录下最基础的概念以及常见的时间/空间复杂度。 时间复杂度先说下时间复杂度：描述一个算法执行时间与数据规模的增长关系，通常用 T(n) = O(f(n)) 来表示，这里的 n 表示数据的规模，f(n) 每行代码执行的">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -76,7 +78,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -110,16 +112,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -419,11 +414,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -431,6 +428,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -477,7 +476,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/10/02/时间复杂度、空间复杂度以及分析方法/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADHUlEQVR42u3aQW4bMQwF0Nz/0i7QVYvGk09SLjz00yqIJxo9GghBUl9f8Xr8Xtef/vnMv7+53jPZ4dlu128ZLWxsbOybsB+X69nWycvyo5/aM7FgY2Njb2UnCeY6WMmTvYRXTYTRDtjY2Ngfyb5OYwm4GrhqcsXGxsbGTkj5K/MD9TDY2NjY2NUkcWr+cL1//mn1SWxsbOyt7Oqg951/fuF8GxsbG/st2Y/Wqrb486O/Iml981fY2NjYi9i9MiMPwetGDvPrQdjY2Nib2L32fe9KTQLupcBq2sPGxsbexK4OentJq9qynxcbP5wNGxsbewU7T07VAqA3ZE0CUf0CfmgnYWNjY9+cPWrHtMqYecFzLE1iY2Njr2YnB5qPfpOUc/YLwMbGxt7KPlUYzMNXvSSUDyEKQcTGxsa+FTuHVZtH+RF7o4L8DKPvExsbG/vt2dXW0nUOTEJzNvR5gizUYdjY2Ng3ZD8DJI2h/JJNfrjoW2qFFRsbG3s3uzdkrTaDJvvkI43oGWxsbOwV7Oo//bNJZdLonwQUGxsbex87LzOSNn0v2czv0hTehY2Njb2UXS0SqqOF/z9pffoMNjY29iJ2NcFUhwTVY+Vtpt4oAhsbG3sru/qapAlVvdCTl0b51ZwooWJjY2OvY1dbSL3rPvmAoRqOarMMGxsb++7sciOm1UhKComkFTUfSGBjY2N/GruaWs6WLr1xbxRWbGxs7EXs6mt6Y+BqE793iac6DMbGxsbexM5jM28nVQuYr+LKG1LY2NjYn8OeFBh5uydPh5MmFDY2NvZW9qSVM7lAkxQn1TKmN1rGxsbG3sfuNYmqCW9USBTLmOg82NjY2OvY87xXuPs5QB5b2NjY2DdkP4rrFH7SDOoVKn/tho2Njb2IfbapdKp9nzenJm/ExsbG3sTuJa0qtTcGnl/rfBoybGxs7HXsXkkwz5zJ8/nAoDASwMbGxsZuJbn8r6qhrBYt2NjY2J/J7l1/7A0e8t2aXTRsbGzsdez86JN01Xs+HwwUzoCNjY29iN0b9F6HqZq68hFvdbQ8wmNjY2O/O/sX/K4a/h5eB+UAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

@@ -51,6 +51,8 @@
 <meta name="twitter:title" content="一个移动端 H5 项目总结">
 <meta name="twitter:description" content="两个月前做过几个移动端的 H5 页面，一些看似简单的东西一旦动手做起来总是会出现许多各式各样的问题，所以把这些问题记录下来，自己没事翻一翻，而且没准以后别人也遇到类似的问题，就可以供别人做参考，或者有个思路去解决。 position: fixed 定位失效需求里要求把导航栏固定在顶部，这个也很简单，当然就是一个position: fiexed 的事，然而到 Chrome 上调成手机模式一看，emm">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -76,7 +78,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -110,16 +112,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -423,11 +418,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -435,6 +432,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -481,7 +480,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2019/02/27/一个移动端-H5-项目总结/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACu0lEQVR42u3awW7bQAwE0Pz/T6dATwUSKzPkbt0CT6dAkiU9GxCZ4X58xNvn7+3rnj/3P5/z9ejzp5Izj214eHh4o0d/tT1jks/OvqznTxX3xcPDw7vGay+XvIGTo/mDPhehl/vx8PDw3sqb3ewZlrfXeHh4eP87rw0IkqZ5RsXDw8N7F2/zEk+a7/ZqyRUOZy14eHh4k3w1ek3/C39fnO/h4eHhLabqs+h2doV88UFxLzw8PLwLvLyFzZdbJSOuJOQ9Fnbg4eHhHeW1i6jaqCJfRjCLJ36INvDw8PAu89p//p+LQbu/jWujLwsPDw/vGm/2Wt8sI2iXZw1bfDw8PLwLvHYx03OgkJeEvHWe/QDDtWN4eHh4AS953CR0yKPV9vz8nKju4eHh4a15m1f2rABslhRsWnY8PDy8U7zNmCovHvuCMeuQ8fDw8G7wTpWKfM+pCGMfHOPh4eHNeG1JuNdk789czffw8PDwYt5+WNXeLI8eZksKvjkHDw8P7xovfym3e9qyMRtxDRdd4eHh4a15m1lSHm3sQ43PYMPDw8O7wdsMt9pmd1aEkq8YDw8P7128thVuA4Ic8HFqw8PDw7vASy6aHG2LRx7stu37N0fx8PDwLvA2C7Bmse+sRZ6FIHh4eHg3eMklkhd6+1in4uBiZQQeHh7emteGEW1Tm4cOs8Lww8+Ah4eH9xd5beTaBhZJOUkKxg8/AB4eHt4F3iw8rUf4i9h3P+HCw8PDO8v7LLdZlNC2xW0eG4UReHh4eId4swFYXjbawVi7eCtv3PHw8PDO8m4Ug1Nf2b7hxsPDw7vHm4WkbRvdxrX7xQR4eHh47+XlbfFsiLUfrb1sqfHw8PDeystHWZsFBJtB3aow4OHh4cW8PIzIGfmV84dulyPg4eHh3eDNstBZw922xTPwKlHGw8PDe7r+Lz/zVLn5mL9gAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

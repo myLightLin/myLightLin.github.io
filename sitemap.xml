@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.brightlam.top/tags/index.html</loc>
+    
+    <lastmod>2019-03-22T15:35:21.941Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.brightlam.top/categories/index.html</loc>
+    
+    <lastmod>2019-03-22T15:30:12.787Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.brightlam.top/2019/03/16/JS%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%80%92%E8%AE%A1%E6%97%B6/</loc>
     
     <lastmod>2019-03-16T09:52:44.360Z</lastmod>
@@ -254,9 +268,9 @@
   </url>
   
   <url>
-    <loc>http://www.brightlam.top/tags/index.html</loc>
+    <loc>http://www.brightlam.top/404.html</loc>
     
-    <lastmod>2018-04-24T15:20:16.265Z</lastmod>
+    <lastmod>2018-04-24T15:18:54.371Z</lastmod>
     
   </url>
   

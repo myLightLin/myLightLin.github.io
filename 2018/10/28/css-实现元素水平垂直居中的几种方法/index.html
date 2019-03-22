@@ -55,6 +55,8 @@
 <meta name="twitter:description" content="在做网页的时候经常会需要让某一个元素水平垂直居中，而要实现水平垂直居中有很多种方法，不知道你们有没遇到这种情况：方法倒是知道，甚至还知道许多种，可一到真正用到的时候，却突然在努力地回想，这或许就是人们经常说的「脑子短路」，所以，这篇文章和大家一起来温故而知新，梳理一下常见的几种元素水平垂直居中的方法，以后突然短路了，就翻出来看一看，而且万一以后面试就问到了，那就更好不过了。 div 元素的水平垂直">
 <meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-10-28/96507186.jpg">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -80,7 +82,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -114,16 +116,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -468,11 +463,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -480,6 +477,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -526,7 +525,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/10/28/css-实现元素水平垂直居中的几种方法/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJklEQVR42u3awW7iQBAE0Pz/T7PXSFmgqtuR4uH5FCHA8yaHZqr89RVfj2/X91ee/f3zevZtz7559tmLL2xsbOybsB8vr9dLecTXs/sm63n9qXw92NjY2GezXy9rQ01GUbKe15Mot2BjY2Nj748Z+ekg32hsbGxs7NlgSN6ZB1LXfjM2Njb2p7HzwZBERXl8n4zATbVwQZaGjY2N/efZm+Dmr/39K/02NjY29h9mP8qrHWbtsmajsVZgY2NjH8TOl5U/gpPEQLP7Jt9ZbCg2Njb2Qez2F/s+GHq9EUmotN8sbGxs7DPY+eOSs3AnZ7RjL38l6kOwsbGxb8veZ+n7ymFT6+bFMDY2NvbZ7KQGyA8ebdA/q5PbuOpploaNjY19HLvdiCQwaheUR1H5oeXNOQwbGxv7CPZmRP1G/JTzkgPPVz6HsbGxsW/Fzm/QHlc21HY9bZGAjY2NfR57RsoH2+z4samH38Rh2NjY2Aex20I3f6xns3F5JzurLrCxsbHPZm9q2tmAyTdudvB4M9iwsbGxD2LPDhL7Q0j+yE47UOuGBBsbG/u27KuK1WQLZmNmdux58wo2Njb2B7DbYdNuVj6u8gIjj5+wsbGxz2Pni27r2NkIzKuC/IjynwGGjY2NfXP25gf9pk5o37mJsYo2GBsbG/uG7BmjHV3t+MnXvBJhY2NjH8FOQpn8PXkY1EZLs62sjyLY2NjYN2TncX8+YNpaty0S8rhq1Y1gY2Nj34S9GULJUvLl5oFRe19sbGxs7LzcbYOeTdmQ//00VMLGxsY+gr2/TRvi1KHPKOqKjivY2NjYx7HzKKf96d8WuvtRF90RGxsb+2PY7VBp6+H2mNH+e7CxsbE/h50jZzdro6j29ba6xsbGxj6Dval4Z59tA6m23K2LAWxsbOybs/NrXwnPjhD7GiA/0mBjY2Pfl91i2p/+bcy0v1e0ZmxsbOzj2PnDOvlxoh1pbdE7O1lgY2NjY88i/tmYbI8xReSEjY2NjV0WCdc+KnRZv42NjY19ELstd9usJh88bdg0qwqwsbGxT2LXcUxZu1578NjUCdjY2NjHsf8BTCbZhXWCIVEAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

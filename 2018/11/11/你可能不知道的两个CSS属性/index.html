@@ -58,6 +58,8 @@
 <meta name="twitter:description" content="今天是双十一，不知道各位剁手了没有，每年的狂欢节全民都在烧钱，在这里也温馨提醒大家：赶紧准备好土，该吃土了！话说自从知道马云和他的淘宝后，我拥有了一辆车——购物车，也终于认识到自己最大的不足——余额不足，所以这个双十一什么都没有买，听说今年仅 2 分 05 秒交易额就破百亿，一不小心错失参与一个百亿大项目，真是遗憾啊！ 言归正传，这次要介绍的两个属性就是 css 中改变水平流向的direction">
 <meta name="twitter:image" content="http://p81yl6eww.bkt.clouddn.com/18-11-11/99451299.jpg">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -83,7 +85,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -117,16 +119,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -475,11 +470,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -487,6 +484,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -533,7 +532,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/11/11/你可能不知道的两个CSS属性/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtklEQVR42u3aS24jMQwEUN//0p4DZGxXkZLhxetVkE+3XgcQ5SIfj/h6/rmS7+dft889fOHh4eGtl/6e8WpxOePVcp/Bla8ZDw8P7zbv1Y7aLjcpG/nunazngwUPDw/vB3j5OfbUcTkpS3h4eHi/zEsCiNniNsUJDw8P7/u85MN/u3HnEcb74CN5xQeyFjw8PLyYd2qD/ubXV/p7eHh4eOuuehsWtFv2pmBEq8XDw8O7wJtFrpvAYnPn4Trx8PDwrvHyjbh9fF5m2sGv90UFDw8P7wZvE6G2n/2Tl5KvJyo/eHh4eBd47S3yUYBZgcnXUwwl4OHh4R3lJbfIt+O8wLRh8YGBADw8PLxDvE3o0JaTPLpt22ZRecDDw8M7ymvbUTN2++I2rwwPDw/v+7xVtjGKepNBhNnhHg8PD+8eb9PiysPW/Li8aao9kgXh4eHhHeK1AUH7sOT+bUFadfnw8PDwRrx2cbNm1Swa/hAuJE0yPDw8vKO8Wajajme1sUU7pPXybnh4eHiXefl4Uz44darMzIIPPDw8vO/wNi2xZFxg3x7LIwk8PDy8G7yigZRvx3HAMSshebnCw8PDu8GbDTO1W/OzvPLD9IdXgIeHh3eBl1+zwan8BSVxbXs3PDw8vHu8vJHfHrvbiCF/Yt6Ew8PDw7vNawenZsfoWTutHUHAw8PD+yYvDxfyzb0tJG1YXHTw8PDw8A7x8iZTG9rOjtr7JBYPDw/vBm/WmkoO4u1P2wg4KmZ4eHh4F3inGmB5Q2t2QM9f0CxoxsPDw2t5+aLb8CI/Uu8Lw8vn4uHh4V3j5XFq+5ubw/E+CMbDw8P7Bd4s9m0HC2Yv9D9/hYeHh/cDvHYQIR+6yu9QNM/w8PDwrvHacPZU8Jq01lb/Bjw8PLwLvHa7zwH5Fp8PAWxCCjw8PLw17x9/GJxxoOEkBwAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

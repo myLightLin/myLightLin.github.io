@@ -51,6 +51,8 @@
 <meta name="twitter:title" content="常用正则表达式整理">
 <meta name="twitter:description" content="正则表达式是很多程序语言中都支持的字符串操作模式，它使用单个字串来描述、匹配一系列匹配某个句法规则的字符串。经常使用的两个方法是 test() 和 match() 。 字符规则\d 可以匹配一个数字，例如\d\d可以匹配 ‘01’\D 匹配一个非数字字符\w 可以匹配一个字母、数字、下划线,例如\w\w可以匹配 ‘js’\W 匹配非字母、数字、下划线. 可以匹配任意字符，例如js.可以匹配’js+">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -76,7 +78,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -110,16 +112,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -425,11 +420,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -437,6 +434,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -483,7 +482,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/08/26/常用正则表达式整理/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACu0lEQVR42u3awW6rQAwF0P7/T7fSW7WqIPd6ZnipdFhFEQEfFtix/fERH5//jqtvfn/+fiRXuP/t1fnbDjw8PLxR6FdHe+n7EGeBXsVzHzMeHh7ead59EPcBJUkiP/8ekMeMh4eH9w68+3Dz2yeJ4f6aeHh4eH+F12JyUtvOwMPDw3sHXlLCts3Z9bI4j2dDrwUPDw8v5rUDsHf4fHC+h4eHh7cwVc9fu3lAebmc/PZFnHh4eHgHeG1rtW095I+pfZRFwsDDw8M7wJsNve7B7UJA0iZOznwBxsPDw9vEa1NC2zZtFw7aAdiLJIGHh4e3lZePr/ISvGXnRXNSlNf5Cg8PD2/ES36QV+VteZ0nnrzsxsPDw3uGl9xyV9E8axC34zE8PDy853kri1CzBJAU2UVBj4eHh/cIL/8v3y4K7B2kFYsCeHh4eAd4ux5H26hNvpkNyX4kBjw8PLwDvHbJqW2q5klitnoVldR4eHh4m3g5Jh/t54HmiWGpOYKHh4d3gDdrK8xaG+14rP0GDw8P7zSvTQntbdbXtmaDt+gfAx4eHt4CLy+X84bCbH2qWKhKHiseHh7eAV6+0pSM/JNmxEp6mLUn8PDw8Pby2tI5f5W3aWZXKY+Hh4d3mpcUsi2jHk2Vy1v5w8LDw8N7njd7lc8aFvlYq05UeHh4eAd4edNhVuyugDcnGzw8PLxNvHzsNEsebVt2/cDDw8N7ntcO9ZPE0CaMPEVFZTQeHh7eJt7SCzduDcxasfnq1eV98fDw8A7w1kdQdRYK1rDaZm57TTw8PLx1XlvgrozB2iu3iaEurPHw8PAWeCurTusv9PVR3IvEgIeHh/cGvFmDYCXo2VICHh4e3v/lrbR0Z+V4XtDj4eHhPc9LWgaz8dhs3Wq2+BXV2nh4eHjLvF0DsJVE0q4j7CrZ8fDw8EreFydFkpc2R4KcAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

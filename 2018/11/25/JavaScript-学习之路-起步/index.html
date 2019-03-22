@@ -53,6 +53,8 @@
 <meta name="twitter:description" content="这是一篇讲 JavaScript 基础的文章，接下来会更新这个系列文章。 JavaScript 诞生于 1995 年，至今已经有 20 几年了，在最新的 JavaScript 2018 年度报告 中，许多人依旧认为这门语言正在朝着好的方向去发展，从最开始的默默无闻到如今的未来可期，JavaScript 作为前端开发者的一门学习语言，一定会被更多爱好编程的人喜欢。如果想了解和学习 JavaScrip">
 <meta name="twitter:image" content="https://ws1.sinaimg.cn/large/0076KlMqgy1fxkfe4vfmmj30ow04z3yv.jpg">
     
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
@@ -78,7 +80,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -112,16 +114,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags/JavaScript"  >
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/aboutme"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
               </a>
             </li>
         
@@ -439,11 +434,13 @@
 
         <p>
             
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Light Lin &copy; 2015 - 2019</span>
+        <p><span>Light Lin &copy; 2018 - 2019</span>
             <span>
                 
                 <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
@@ -451,6 +448,8 @@
         </p>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
     </main>
     <div class="mask" id="mask"></div>
@@ -497,7 +496,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://www.brightlam.top/2018/11/25/JavaScript-学习之路-起步/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtklEQVR42u3awW4bMQwE0Pz/T6dATwUSOzOkZKfA21PhbtZ8CrBShvz4iK/Pv9ejz/+9vt7/9We//m9y/6MaDlx4eHh4o9IfXc/veV7Ec1gLSOr55gl4eHh413jt4/IiWli+3NEGhoeHh/dWXnLkzQ/Ezw/WeT14eHh4/wuvDRHyQCFfDjw8PLz38toj7GwDaIPdfIkPZC14eHh4Ma9tgP2Gf1/s7+Hh4eEtuupJxHB2HKGNdH+oFg8PD+8Crw0X2pd4Uu6pzaD4iwEPDw/vEK99fbdBRh5eHA6U8fDw8I7y8iGAHPC86P3GU4wp4OHh4V3jzR6Rl9JuBm0j7eGdeHh4eBd4xZ/08ShVGyVsBhdWLTE8PDy8EW8zIDVbv33RxXaFh4eHd423CQ7ag3Ub2q7aYHh4eHiXeW1bazMukMQWyZbwwyd4eHh4F3htIyo/EG8i3dmoFh4eHt7v4eVflscK+VH+QHyMh4eHd413dhxqNgSQPLleODw8PLyjvFk7ah/UtsMEbbyLh4eH93peHhDkL/pNoNDGE3h4eHiv4c1e023YOhuoGjbY8PDw8F7Im8WsswGsWUBcDF3h4eHhXeDtx6HyGCIBtBFw8WV4eHh4a14ej+av76RZlR+7NyEIHh4e3j1eG7+2YUHbYMu/vX0mHh4e3p6Xl75pa82WZrPB4OHh4b2Gt4kn2qZ+fmjeDGnh4eHh3eAljasE1g4NbA7ubeV4eHh4Z3mf5TWLVttFnI1/ffMcPDw8vAu8Tf89PxC3+HZraYcS8PDw8Pa8djPIA982wG2D4+jXgIeHh3eNlx9/8zC3DXDbjSS6Hw8PD++tvLbEBDDbTvJFx8PDw/s9vE28e2oziJYbDw8P7xpvNm41bDiNju9tbIGHh4d3jzf7+jaWzT+fjWp9nF1dPDw8vO8r+QPwSeQpGQ60zAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
