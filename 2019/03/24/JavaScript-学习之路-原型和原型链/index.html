@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>JavaScript 学习之路-原型和原型链 | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript">
+    <meta name="description" content="面向对象语言(Object-Oriented) 都有类的概念，通常用 class 关键字来定义。在最新的 ES6 标准里，也加入了类的使用，这意味着，js 也能像其它 OO 语言那样很方便地实现继承了。但是，js 的 class 其实只是个语法糖，它依然是通过原型链来实现继承的。 在理解原型链之前，首先要理解一句话，构造函数、原型和实例三者的关系：每个构造函数都有一个原型对象，原型对象都包含一个指">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 学习之路-原型和原型链">
+<meta property="og:url" content="http://www.brightlam.top/2019/03/24/JavaScript-学习之路-原型和原型链/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="面向对象语言(Object-Oriented) 都有类的概念，通常用 class 关键字来定义。在最新的 ES6 标准里，也加入了类的使用，这意味着，js 也能像其它 OO 语言那样很方便地实现继承了。但是，js 的 class 其实只是个语法糖，它依然是通过原型链来实现继承的。 在理解原型链之前，首先要理解一句话，构造函数、原型和实例三者的关系：每个构造函数都有一个原型对象，原型对象都包含一个指">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/12142481-7c811701bf500caa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/12142481-1df797f126628ee7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/12142481-e123d38da7fcd50d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/12142481-11f4c2fa5ac6b185.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-24T10:30:51.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 学习之路-原型和原型链">
+<meta name="twitter:description" content="面向对象语言(Object-Oriented) 都有类的概念，通常用 class 关键字来定义。在最新的 ES6 标准里，也加入了类的使用，这意味着，js 也能像其它 OO 语言那样很方便地实现继承了。但是，js 的 class 其实只是个语法糖，它依然是通过原型链来实现继承的。 在理解原型链之前，首先要理解一句话，构造函数、原型和实例三者的关系：每个构造函数都有一个原型对象，原型对象都包含一个指">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/12142481-7c811701bf500caa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+    <script>
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/imagesA.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:lighterlam@gmail.com" title="lighterlam@gmail.com" class="mail">lighterlam@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScript 学习之路-原型和原型链</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JavaScript 学习之路-原型和原型链</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-24T10:28:30.000Z" itemprop="datePublished" class="page-time">
+  2019-03-24
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#理解-prototype、proto-和-constructor"><span class="post-toc-number">1.</span> <span class="post-toc-text">理解 prototype、proto 和 constructor</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#原型链"><span class="post-toc-number">2.</span> <span class="post-toc-text">原型链</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-JavaScript-学习之路-原型和原型链"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScript 学习之路-原型和原型链</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-24 18:28:30" datetime="2019-03-24T10:28:30.000Z"  itemprop="datePublished">2019-03-24</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>面向对象语言(Object-Oriented) 都有类的概念，通常用 <code>class</code> 关键字来定义。在最新的 ES6 标准里，也加入了类的使用，这意味着，js 也能像其它 OO 语言那样很方便地实现继承了。但是，js 的 <code>class</code> 其实只是个语法糖，它依然是通过<strong>原型链</strong>来实现继承的。</p>
+<p>在理解原型链之前，首先要理解一句话，<strong>构造函数、原型和实例三者的关系：每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针。</strong></p>
+<h4 id="理解-prototype、proto-和-constructor"><a href="#理解-prototype、proto-和-constructor" class="headerlink" title="理解 prototype、proto 和 constructor"></a>理解 prototype、<strong>proto</strong> 和 constructor</h4><p>上面这句话对应着几个属性：<code>prototype</code> ，<code>__proto__</code> 和 <code>constructor</code> 。</p>
+<p>每个函数在被创建的时候，都会获得一个 <code>prototype</code> 属性，这个 <code>prototype</code> 属性会包含一个指针，叫做 <code>constrcuctor</code> ，这个 <code>constructor</code> 的值是构造函数的名称。所以对应了上面那句话：<strong>每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针</strong> 。我们通过 Chrome 控制台来验证一下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/12142481-7c811701bf500caa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Chrome" title="">
+                </div>
+                <div class="image-caption">Chrome</div>
+            </figure></p>
+<p>可以看到，我们定义了一个函数，函数名为 f ，f 的原型 prototype 里的 constructor 最终是等于它的构造函数名称的，那么这个 <code>constructor</code> 属性究竟是用来干嘛的？在查阅了网上相关资料后，我发现它是 JavaScript 语言设计的历史遗留物，它的值是可以手动变更的，但我们习惯于让它的值指向构造函数。</p>
+<p>看上面的图仔细看会发现函数的 prototype 里还有一个 <code>__proto__</code> 属性。这个属性是每个对象都会有的隐式属性。那在 JS 这门语言里，万物皆对象。你在 console 里输入 <code>typeof f</code> 会输出 <code>function</code> ,但 <code>function</code> 也是对象。不信你在输入 <code>Function instanceof Object</code> 看看结果。这个 <code>__proto__</code> 对于实现继承有非常重要的作用，<strong>它始终指向对象的构造函数的原型。</strong> 这个属性对于我们理清两个对象之间的关系有很大的作用。</p>
+<p>当我们 new 一个对象的时候，实际上就是生成了该对象的实例，这个实例对象会获得一个 <code>__proto__</code> 属性，链接到它的构造函数原型。这样下来就好理解了，前面我们定义的 <code>function f(){}</code> 实际上 <code>function</code> 只是一个语法糖，为了好看而已，它的内部是做了一个 <code>new Function()</code> 的实现，<code>Function</code> 可以理解为所有函数的老大，我们平常使用关键字定义的函数内部都是去 new Function 实现的。</p>
+<p>那既然函数 f 是 Function 的实例，那它肯定会获得一个 <code>__proto__</code> 属性，这个属性是指向它的构造函数 Function 的原型 prototype 的。眼见为实，我们来验证下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/12142481-1df797f126628ee7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<p>对于开头提到的构造函数、原型和实例三者的关系，我想你应该有了概念了。为加深理解，我把它画成了图，如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/12142481-e123d38da7fcd50d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<h4 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h4><p>在理解了原型之后，我们来看下原型链。让一个原型去继承另一个原型的属性和方法，就组成了原型链。就像前面的 finstance 是函数 f 的实例，f 又是 Function 的实例，… 就这样一层一层下来，就组成了原型链。我们来看一段代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Dad()&#123;</span><br><span class="line">  this.name = &apos;xiaoming&apos;;</span><br><span class="line">&#125;</span><br><span class="line">Dad.prototype.getName = function()&#123;</span><br><span class="line">  return this.name;</span><br><span class="line">&#125;</span><br><span class="line">function Son()&#123;</span><br><span class="line">  this.age = 18;</span><br><span class="line">&#125;</span><br><span class="line">Son.prototype = new Dad();</span><br><span class="line">var baby = new Son();</span><br><span class="line">console.log(baby.getName());   // xiaoming</span><br></pre></td></tr></table></figure></p>
+<p>上面这个就是继承的一种最简单的实现方式了，我们来看下它的原型链，首先 Dad 是父类，它有自己的属性 name，它的原型里定义了一个 getName 的方法。接着有一个子类 Son 继承 Dad ,它也有自己的属性 age，我们通过设置 <code>Son.prototype = new Dad();</code> 来实现原型继承，这样子类 Son 可以访问到父类 Dad 的属性和方法，所以子类的实例 baby 可以获取到 name 属性和 getName() 方法。</p>
+<p>我们通过一张图来看下它的原型链：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/12142481-11f4c2fa5ac6b185.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><code>__proto__</code> 属性通过将对象和原型之间联系起来来组成原型链；理解原型链，先要理解 prototype 、constructor 和 <strong>proto</strong> 这几个概念，理清构造函数、原型和实例三者的关系，结合实际效果来验证。JS 不像其它 OO 语言那样，它是通过<strong>原型链</strong>来实现继承的。这部分内容比较晦涩比较绕，耐心地多看多实践，不懂的网上查阅资料，也许就有所理解。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-03-24T10:30:51.880Z" itemprop="dateUpdated">2019-03-24 18:30:51</time>
+</span><br>
+
+
+        
+        欢迎关注个人微信公众号，扫描下方二维码,一起学习交流前端知识<br><div style="display:flex;justify-content:center;align-items:center;padding-top:10px;"><img src="https://ws1.sinaimg.cn/large/0076KlMqgy1fxkod28jwej30a90a9t9l.jpg" width="150" height="150"></div>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.brightlam.top">
+            <img src="/img/imagesA.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2019/03/24/JavaScript-学习之路-原型和原型链/&title=《JavaScript 学习之路-原型和原型链》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/imagesA.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2019/03/24/JavaScript-学习之路-原型和原型链/&title=《JavaScript 学习之路-原型和原型链》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2019/03/24/JavaScript-学习之路-原型和原型链/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 学习之路-原型和原型链》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2019/03/24/JavaScript-学习之路-原型和原型链/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2019/03/24/JavaScript-学习之路-原型和原型链/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/16/JS实现一个倒计时/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JS实现一个倒计时</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "iUCPVe2VLChefffS2w2mDHFO-gzGzoHsz",
+            appKey: "sOwlIg1a5fSQf3ve1mgBaoag",
+            avatar: "",
+            placeholder: "留下你的评论，一起交流学习!",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励支持
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/WeChat.png" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2018 - 2019</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2019/03/24/JavaScript-学习之路-原型和原型链/&title=《JavaScript 学习之路-原型和原型链》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/imagesA.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2019/03/24/JavaScript-学习之路-原型和原型链/&title=《JavaScript 学习之路-原型和原型链》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2019/03/24/JavaScript-学习之路-原型和原型链/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 学习之路-原型和原型链》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2019/03/24/JavaScript-学习之路-原型和原型链/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2019/03/24/JavaScript-学习之路-原型和原型链/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrUlEQVR42u3ay27jQAwEQP//T2evCzh2usmZPIDSKTAsaUoBNHSTj0d8fPx35J8/f+f5eP7++7MeNw48PDy8xdLf3z5f3PvPZ6T2keHh4eHd5r2/fX6b5Do5LFnDFxY8PDy8X8Bry+681s2vjIeHh/e3ePk20C5utjnh4eHh/RRvU87mS2/L8U00jIeHh3ePd+oF/Z1/X+nv4eHh4a276nlEu9lO8rPq1eLh4eFd4M0i2raJtWmJ5YMIL6+Gh4eHd4E3iwxmm8c+YkgeBx4eHt538mYt/Bk+WXp7bpGp4OHh4S14+SX2sW8bUsziCTw8PLyf5SXxQftokgA3f8TR7wM8PDy8Q7xNKTwLcNsHmn/nk8eEh4eHd42XF777uLbdKmZx8LCux8PDwysL61kQkGwPs3GrZOn5VoSHh4d3lpc3olajTqPnnQ8TvFwJHh4e3lFePvA0GxGYjQscGyPAw8PDu8BrC9kE2Q4TtIMFyVlFPY6Hh4dX8tp2Vw5uw9lNAR39VsDDw8M7xNu8iPetr3bIoA0v8PDw8G7wvjPAnTW08rV9chYeHh7eBV4etiZF8KbN34a/xdaFh4eHd4GXRLRnX/Sz5taq+MbDw8M7ypu1/GcxRAJop8a++Gfg4eHhXeYVEwfr1/fskxaPh4eHd483a+pv4oP2LkV0m9f7eHh4eAvefuBpWPLGm1O+dUWTZXh4eHhr3mN0tG3+zTYwHE3Aw8PDO8r7KI+2Xs0jiXyDKcYI8PDw8C7wzm4As+W2gch+M8PDw8Pb887GELO22X5jeHl3PDw8vGu8/KW8H8w61TyLimk8PDy8X8DLg4AkyJiFCEVIgYeHh/cLeBvw7HFsgmY8PDy8e7wkjMgHVduWVVJ8r0pqPDw8vKO82WntmFTLPjWAhYeHh3eU9w+pVBbbGkcapAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
