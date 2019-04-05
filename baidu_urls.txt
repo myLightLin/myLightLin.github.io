@@ -1,3 +1,4 @@
+http://www.brightlam.top/2019/04/05/图片懒加载的几种方法/
 http://www.brightlam.top/2019/03/24/JavaScript-学习之路-原型和原型链/
 http://www.brightlam.top/2019/03/16/JS实现一个倒计时/
 http://www.brightlam.top/2019/02/27/一个移动端-H5-项目总结/
