@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>JavaScript 学习之路- JS 小测验 | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript">
+    <meta name="description" content="在学习 JS 的过程中，很多知识往往看一遍就过去了，然后自以为掌握了，其实再次碰到不一定能答得出来，看到一些有趣的东西还是要动手实践一下，而且时不时复习一下，非常有利于加深记忆。今天是五一，假日期间，好好休息玩耍，也别学什么新东西了，你可以看看以下这些问题以及相关知识点来看看自己掌握了多少，温故知新。 问题不多，耐心看完。最下方有答案，先别急着翻，自己先想想。 问题 JS 格式化，用逗号分隔千分位">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 学习之路- JS 小测验">
+<meta property="og:url" content="http://www.brightlam.top/2019/05/01/JavaScript-学习之路-JS-小测验/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="在学习 JS 的过程中，很多知识往往看一遍就过去了，然后自以为掌握了，其实再次碰到不一定能答得出来，看到一些有趣的东西还是要动手实践一下，而且时不时复习一下，非常有利于加深记忆。今天是五一，假日期间，好好休息玩耍，也别学什么新东西了，你可以看看以下这些问题以及相关知识点来看看自己掌握了多少，温故知新。 问题不多，耐心看完。最下方有答案，先别急着翻，自己先想想。 问题 JS 格式化，用逗号分隔千分位">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-01T09:57:11.170Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 学习之路- JS 小测验">
+<meta name="twitter:description" content="在学习 JS 的过程中，很多知识往往看一遍就过去了，然后自以为掌握了，其实再次碰到不一定能答得出来，看到一些有趣的东西还是要动手实践一下，而且时不时复习一下，非常有利于加深记忆。今天是五一，假日期间，好好休息玩耍，也别学什么新东西了，你可以看看以下这些问题以及相关知识点来看看自己掌握了多少，温故知新。 问题不多，耐心看完。最下方有答案，先别急着翻，自己先想想。 问题 JS 格式化，用逗号分隔千分位">
+    
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+    <script>
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/imagesA.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:lighterlam@gmail.com" title="lighterlam@gmail.com" class="mail">lighterlam@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScript 学习之路- JS 小测验</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JavaScript 学习之路- JS 小测验</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-05-01T09:56:38.000Z" itemprop="datePublished" class="page-time">
+  2019-05-01
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#参考答案"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考答案</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-JavaScript-学习之路-JS-小测验"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScript 学习之路- JS 小测验</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-05-01 17:56:38" datetime="2019-05-01T09:56:38.000Z"  itemprop="datePublished">2019-05-01</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>在学习 JS 的过程中，很多知识往往看一遍就过去了，然后自以为掌握了，其实再次碰到不一定能答得出来，看到一些有趣的东西还是要动手实践一下，而且时不时复习一下，非常有利于加深记忆。今天是五一，假日期间，好好休息玩耍，也别学什么新东西了，你可以看看以下这些问题以及相关知识点来看看自己掌握了多少，温故知新。</p>
+<p>问题不多，耐心看完。最下方有答案，先别急着翻，自己先想想。</p>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ol>
+<li>JS 格式化，用逗号分隔千分位数字</li>
+<li>运行 <code>[1, 2, 2].fill(3, 1, 3)</code> 会输出什么</li>
+<li><code>~~3.5</code> 的结果是什么</li>
+<li>如何判断一个数组的长度是奇数还是偶数</li>
+<li>JSON.parse 和 JSON.stringify 的作用</li>
+<li><code>typeof null</code>为什么等于 <code>&quot;object&quot;</code>，它的判断原理是什么</li>
+<li>如何判断一个元素是否为数组</li>
+<li><code>&lt;&lt;</code> 和 <code>&gt;&gt;</code> 运算符</li>
+<li>function add(){}   和  var add = function（）{} 解析时的区别</li>
+<li>执行以下代码，输出是什么？为什么？<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var arr=[1,2,3,4,5];</span><br><span class="line">for(var i=0;i&lt;arr.length;i++) &#123;</span><br><span class="line">    arr[i]=function()&#123;</span><br><span class="line">      alert(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">arr[3]();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h4 id="参考答案"><a href="#参考答案" class="headerlink" title="参考答案"></a>参考答案</h4><p>如有错误，请帮忙指正。</p>
+<ol>
+<li>JS 格式化，用逗号分隔千分位数字</li>
+</ol>
+<p>两种方法，一种是使用 tolocaleString()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a = 1999;</span><br><span class="line">a.toLocaleString();     // &quot;1,999&quot;</span><br></pre></td></tr></table></figure></p>
+<p>另外一种是正则表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var re = /(?!^)(?=(\d&#123;3&#125;)+$)/g;</span><br><span class="line">var a = &quot;12345678&quot;;</span><br><span class="line">a.replace(re, &apos;,&apos;);   // &quot;12,345,678&quot;</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>运行 <code>[1, 2, 2].fill(3, 1, 3)</code> 会输出什么?  答案是 <code>[1,3,3]</code><blockquote>
+<p>fill 方法接受三个参数：num，start，end 。num 是你要填充的数字，start 是填充的起始位置，end 是终止位置。fill(3,1,3) 表示从索引 1 开始到索引 3 之间的元素填充为 3</p>
+</blockquote>
+</li>
+<li><code>~~3.5</code> 的结果是什么？答案是 <code>3</code><blockquote>
+<p>对于非数字，~~ 的结果为0，有个例外是 ~~ true 结果为 1<br>对于大于 0 的数，~~ 相当于是Math.floor<br>对于小于 0 的数，~~ 相当于是Math.ceil</p>
+</blockquote>
+</li>
+<li>如何判断一个数组的长度是奇数还是偶数？答案是<code>len &amp; 1，len 为数组长度，奇数结果为true</code><blockquote>
+<p>只要 “&amp;&amp;” 前面是false，无论 “&amp;&amp;” 后面是 true 还是 false，结果都将返 “&amp;&amp;” 前面的值;<br>只要 “||” 前面为 false,不管 “||” 后面是 true 还是 false，都返回 “||” 后面的值。</p>
+</blockquote>
+</li>
+<li>JSON.parse 和 JSON.stringify 的作用？<blockquote>
+<p>JSON.parse 将一个 json 转化为 JavaScript Object string 类型<br>JSON.stringify 将一个 string 转化为 json 类型</p>
+</blockquote>
+</li>
+<li><code>typeof null</code>为什么等于 <code>&quot;object&quot;</code>，它的判断原理是什么<blockquote>
+<p>js 底层存储变量采用二进制，会在变量的机器码的低位 1-3 位存储其类型信息<br>000：对象<br>010：浮点数<br>100：字符串<br>110：布尔<br>1：整数<br>null：全0<br>undefined：-2^30<br>所以 typeof null 为显示为 object 对象。</p>
+</blockquote>
+</li>
+<li>如何判断一个元素是否为数组？</li>
+</ol>
+<p>假设待判断对象为 arr ，有四种方法，一是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.prototype.toString.call(arr) == &apos;[object Array]&apos;</span><br></pre></td></tr></table></figure></p>
+<p>或者是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr instanceof Array</span><br></pre></td></tr></table></figure></p>
+<p>又或是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Array.isArray(arr)</span><br></pre></td></tr></table></figure></p>
+<p>第四种方法可以用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.__proto__.constructor == Array</span><br></pre></td></tr></table></figure></p>
+<ol start="8">
+<li><code>&lt;&lt;</code> 和 <code>&gt;&gt;</code> 运算符相关操作？<blockquote>
+<p>左移 &lt;&lt; 将一个数的二进制表示向左移动 n 位，右边用0填充。<br>右移 &gt;&gt; 将一个数的二进制表示向右移 n  位，舍弃被移出的位。<br>简单点说，a &gt;&gt; n 相当于用 a 去除以 2 的 n 次方，所以 8 &gt;&gt; 1 结果为 4;<br>而 a &lt;&lt; n 相当于用 a 去乘以 2 的 n 次方，所以 2 &lt;&lt; 5 结果为 64</p>
+</blockquote>
+</li>
+<li>function add() {}   和  var add = function (){} 解析时的区别<blockquote>
+<p>前者是执行前就会被解析（执行前就会读取函数名），而后者是执行过程中解析。所以 function add() {} 在执行里面的代码前就会读取函数名 add , 而 var add = function (){} 则是执行时逐步解析。</p>
+</blockquote>
+</li>
+<li>执行以下代码，输出是什么？为什么？<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var arr=[1,2,3,4,5];</span><br><span class="line">for(var i=0;i&lt;arr.length;i++) &#123;</span><br><span class="line">    arr[i]=function()&#123;</span><br><span class="line">      alert(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">arr[3]();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>答案是输出 i 的值为 5 。这个是与闭包有关的经常看到的问题，不管运行函数时传入的 i 是什么，最终输出的都是 for 循环结束时的 i 的值，也就是数组的长度，因为匿名函数里的这句 <code>alert(i)</code> 执行的时候需要找到 i 变量，里面没有，那就只好去父级里找，而父级里的 i 在 for 循环，所以最终给到它的是循环的终止条件，也就是 i = 5 。<br><br>解决方法也很简单，要么把 for() 里面的 var 换成 let ，形成块级作用域；要么使用闭包，匿名函数里在返回一个匿名函数，并且传入 i 立刻执行。</p>
+</blockquote>
+<p>(完)</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-05-01T09:57:11.170Z" itemprop="dateUpdated">2019-05-01 17:57:11</time>
+</span><br>
+
+
+        
+        欢迎关注微信公众号，分享原创技术文章，见下方二维码。<br><div style="display:flex;justify-content:center;align-items:center;padding-top:10px;"><img src="https://s2.ax1x.com/2019/03/27/AaPjyR.png" width="150" height="150"></div>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.brightlam.top">
+            <img src="/img/imagesA.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2019/05/01/JavaScript-学习之路-JS-小测验/&title=《JavaScript 学习之路- JS 小测验》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/imagesA.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2019/05/01/JavaScript-学习之路-JS-小测验/&title=《JavaScript 学习之路- JS 小测验》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2019/05/01/JavaScript-学习之路-JS-小测验/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 学习之路- JS 小测验》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2019/05/01/JavaScript-学习之路-JS-小测验/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2019/05/01/JavaScript-学习之路-JS-小测验/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/05/图片懒加载的几种方法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">图片懒加载的几种方法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "iUCPVe2VLChefffS2w2mDHFO-gzGzoHsz",
+            appKey: "sOwlIg1a5fSQf3ve1mgBaoag",
+            avatar: "",
+            placeholder: "留下你的评论，一起交流学习!",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢您的支持。
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/WeChat.png" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2018 - 2019</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2019/05/01/JavaScript-学习之路-JS-小测验/&title=《JavaScript 学习之路- JS 小测验》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/imagesA.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2019/05/01/JavaScript-学习之路-JS-小测验/&title=《JavaScript 学习之路- JS 小测验》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2019/05/01/JavaScript-学习之路-JS-小测验/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript 学习之路- JS 小测验》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2019/05/01/JavaScript-学习之路-JS-小测验/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2019/05/01/JavaScript-学习之路-JS-小测验/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACu0lEQVR42u3aQU4DMQwF0N7/0iCxQoKZfttxKdLLqirMJC9IibH9eMTj42v8/Ob7uHrq+0+vPt8/ez/LgYGHh4fXWvr96+4/JxNXMfdvSNaMh4eHt83LX5c8lW/Zxux4eHh478PLQ978qkiuFjw8PLz/y7taSmGywdGPh4eH9268avibpAbuQ+fqvOu5Fjw8PLyYVy2AvcPnxfoeHh4e3qCqPilK9YphSeBeWC0eHh7eAi/5t//++0m6Ng+RqyF+c9F4eHh4Aa9a1soZvVLZpOHgl3fi4eHhrfHy4tM8lZAf8b008ZP/GPDw8PDGvLxIXz3W86uies2U34yHh4e3xuulJKqAfLOqG9GM9PHw8PBavMnSq2ncyRInFwkeHh7eKV41xdBLwlZP7F7x7Je34eHh4a3x8ushvyQKZapxcH+5lXh4eHgLvLOBctLhlS90nqTAw8PD2+DlC0rKUZNvqo1W0d8NDw8Pb4HXC23z4zvZymrYnW8fHh4e3gavd1ifbZmaN2ldbjQeHh7eAi8vMuUv7V0eeeCezFuuoeHh4eHFvHxB1aN5ErIn2xcV6vDw8PDWeNXl5i0F+UVSfSo6+fHw8PAWeHnSIW/P6iVqqxtUaFnAw8PDO8qrFuPzpfQSFpNQGw8PD+/1vF471OTg/iiOatCPh4eHt83bADS7wOKg/MlceHh4eAu8PPDNkxfzYD1PQ0Tvx8PDwzvKiwLTOKk6aRHIw/3Cb+Lh4eEt806lVgtNUa0QPGlBwMPDw9vj5SMv9ie8ahjdC9Px8PDw9niT5EJ+xPfY1YuhfPvh4eHhDXhnL4PeUvI2hcJTeHh4eH/Ky5uoJkd8r7HgwMWAh4eH90JekpzNL4lqEvkJEg8PD2+NVw2F84aAJEnRuwYKITUeHh7eUV6vAFZt3ioEwbezPDYGHh4eXjo+AeWu2k95KqNlAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
