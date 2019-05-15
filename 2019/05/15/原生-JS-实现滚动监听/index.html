@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>原生 JS 实现滚动监听 | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript">
+    <meta name="description" content="本文的内容是 JS 滚动监听导航栏更新背景色标识。 之前在 bootstrap 文档上看到这样一个效果，如下                                                                                                            因为 bootstrap 是引用了 jQuery 库的，非常容易上手，也能方">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原生 JS 实现滚动监听">
+<meta property="og:url" content="http://www.brightlam.top/2019/05/15/原生-JS-实现滚动监听/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="本文的内容是 JS 滚动监听导航栏更新背景色标识。 之前在 bootstrap 文档上看到这样一个效果，如下                                                                                                            因为 bootstrap 是引用了 jQuery 库的，非常容易上手，也能方">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/15/ETojNn.gif">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/15/ETX6w8.md.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/15/ETxyex.gif">
+<meta property="og:updated_time" content="2019-05-15T11:04:53.594Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="原生 JS 实现滚动监听">
+<meta name="twitter:description" content="本文的内容是 JS 滚动监听导航栏更新背景色标识。 之前在 bootstrap 文档上看到这样一个效果，如下                                                                                                            因为 bootstrap 是引用了 jQuery 库的，非常容易上手，也能方">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/05/15/ETojNn.gif">
+    
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+    <script>
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/imagesA.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:lighterlam@gmail.com" title="lighterlam@gmail.com" class="mail">lighterlam@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">原生 JS 实现滚动监听</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">原生 JS 实现滚动监听</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-05-15T10:50:48.000Z" itemprop="datePublished" class="page-time">
+  2019-05-15
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#滚动监听原理"><span class="post-toc-number">1.</span> <span class="post-toc-text">滚动监听原理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#瞄点定位"><span class="post-toc-number">2.</span> <span class="post-toc-text">瞄点定位</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">实现</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-原生-JS-实现滚动监听"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">原生 JS 实现滚动监听</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-05-15 18:50:48" datetime="2019-05-15T10:50:48.000Z"  itemprop="datePublished">2019-05-15</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>本文的内容是 <strong>JS 滚动监听导航栏更新背景色标识</strong>。</p>
+<p>之前在 bootstrap 文档上看到这样一个效果，如下</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.ax1x.com/2019/05/15/ETojNn.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>因为 bootstrap 是引用了 jQuery 库的，非常容易上手，也能方便地用在各个项目中，但不折腾的前端，跟咸鱼有什么区别。于是就想着不用这些库，自己用 JS 实现以下这个效果，所以就折腾了下。</p>
+<h4 id="滚动监听原理"><a href="#滚动监听原理" class="headerlink" title="滚动监听原理"></a>滚动监听原理</h4><p>首先了解一下滚动监听的原理，当鼠标滚轮滚动或页面滚动条滑动时，每到一块内容区域，其上方对应的导航栏状态也将更新，那就需要知道每块内容区域相对于顶部的距离，将这个距离跟滚动条滑行的距离做比较，根据比较的结果来决定是否更新导航栏状态标。所以整个大致思路就是：监听页面的 scroll 事件，然后<strong>获取当前页面滚动条纵坐标的位置</strong>，假设为 posNav；在获取内容区域，这里假设分为内容1，内容2，内容3，获取这些内容块<strong>相对于视口顶部的距离</strong>，假设是 height ，随着滚动条的滑动，如果 posNav &gt; height1，那么第一个导航标签更新；如果 posNav &gt; height2 ，那么第二个导航更新，…，依次遍历直至底部，在这个过程中，还要注意当其中一个加上了背景色之后，跟它同级的所有元素都要移除掉这个背景色。</p>
+<h4 id="瞄点定位"><a href="#瞄点定位" class="headerlink" title="瞄点定位"></a>瞄点定位</h4><p>除了根据内容区域滚动更新之外，这里还涉及到一个定位的问题，即点击导航栏，就定位到这个导航所对应的内容区域，这也是很多单页面常有的做法。实现这个最简单、粗暴的方法就是使用<strong>瞄点定位</strong>，给每个导航 a 标签的 href  属性写上 <strong>#id</strong> 的格式，然后给对应的内容区域加上 <strong>id名称</strong> ，由于 id 是唯一标识，因此点击导航就可直接定位，简单，无兼容问题，非常好的一个实现技巧。</p>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>在开始写 js 之前，先准备一个简单的静态页面，默认给第一个导航加上 active 属性，也就是有背景色的效果。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.ax1x.com/2019/05/15/ETX6w8.md.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>有了页面后，先获取所有导航 li 标签，存在数组里，等会用它更新导航栏。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var lis = [...document.querySelectorAll(&apos;.nav &gt; ul &gt; li&apos;)];</span><br></pre></td></tr></table></figure></p>
+<p><strong>…</strong> 是一个展开运算符，<strong>querySelectorAll</strong> 选取<strong>所有</strong> class 为 nav 下面的 ul 的 li 标签元素的集合，展开运算符将它们都存在数组 lis 里。接着获取内容块区域相对于页面顶部的距离，同样将它们存在数组里。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var divs = [...document.querySelectorAll(&apos;.mainPage&apos;)];</span><br></pre></td></tr></table></figure></p>
+<p>获取到后，用一个 for 循环遍历获取每个 div 的距离顶部的值，使用 getBoundingClientRect() 方法，它返回元素的大小及其相对于视口的位置，我们主要使用 top 属性获取顶部距离。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var divHeights = [];</span><br><span class="line">for (var i = 0; i &lt; divs.length; i++) &#123;         // 循环每个 div 的距离 top 的值存放至数组</span><br><span class="line">   divHeights.push(divs[i].getBoundingClientRect().top);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>现在所有该有的元素及其数值都有了，可以开始写监听事件了。这里吐个槽，别看上面寥寥几句话就完成了这些属性及其元素的获取，真正在做的时候，我花了不少世间查询这些方法及属性，像 getBoundingClientRect() 、document.doucmentElement.scrollTop 等属性的用法，主要是一直使用现成的框架，导致太依赖框架的那些简便封装好的方法而忽视了原来方法，所以建议各位用框架久了记得回过来看看每个方法对应的作用以及在原生 js  的实现。<br>好了，监听页面滚动事件把它写在一个函数里，定义如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function updateNav() &#123;</span><br><span class="line">   var scop = document.documentElement.scrollTop;</span><br><span class="line">   var k;</span><br><span class="line">   for (var i = 0; i &lt; divHeights.length; i++) &#123;</span><br><span class="line">      if (scop &gt; divHeights[i] - 50) &#123;</span><br><span class="line">           k = i;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">   lis[k].classList.add(&apos;current&apos;);</span><br><span class="line">   for (var i = 0; i &lt; lis.length; i++) &#123;</span><br><span class="line">       if (i == k) continue;</span><br><span class="line">       else lis[i].classList.remove(&apos;current&apos;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后一句代码调用函数即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&apos;scroll&apos;, updateNav);</span><br></pre></td></tr></table></figure></p>
+<p>至此，所以代码都完成了，来看看最终浏览器的效果吧：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.ax1x.com/2019/05/15/ETxyex.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>感谢阅读，想要获取完整源代码，请点击 <a href="https://github.com/myLightLin/jsDemo/tree/master/%E6%BB%9A%E5%8A%A8%E7%9B%91%E5%90%AC" target="_blank" rel="noopener">这里</a></p>
+<p>（完）</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-05-15T11:04:53.594Z" itemprop="dateUpdated">2019-05-15 19:04:53</time>
+</span><br>
+
+
+        
+        欢迎关注微信公众号，分享原创技术文章，见下方二维码。<br><div style="display:flex;justify-content:center;align-items:center;padding-top:10px;"><img src="https://s2.ax1x.com/2019/03/27/AaPjyR.png" width="150" height="150"></div>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.brightlam.top">
+            <img src="/img/imagesA.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2019/05/15/原生-JS-实现滚动监听/&title=《原生 JS 实现滚动监听》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/imagesA.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2019/05/15/原生-JS-实现滚动监听/&title=《原生 JS 实现滚动监听》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2019/05/15/原生-JS-实现滚动监听/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《原生 JS 实现滚动监听》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2019/05/15/原生-JS-实现滚动监听/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2019/05/15/原生-JS-实现滚动监听/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/05/01/JavaScript-学习之路-JS-小测验/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JavaScript 学习之路- JS 小测验</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "iUCPVe2VLChefffS2w2mDHFO-gzGzoHsz",
+            appKey: "sOwlIg1a5fSQf3ve1mgBaoag",
+            avatar: "",
+            placeholder: "留下你的评论，一起交流学习!",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢您的支持。
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/WeChat.png" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2018 - 2019</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2019/05/15/原生-JS-实现滚动监听/&title=《原生 JS 实现滚动监听》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/imagesA.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2019/05/15/原生-JS-实现滚动监听/&title=《原生 JS 实现滚动监听》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2019/05/15/原生-JS-实现滚动监听/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《原生 JS 实现滚动监听》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2019/05/15/原生-JS-实现滚动监听/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2019/05/15/原生-JS-实现滚动监听/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACs0lEQVR42u3aQY7bMBAEQP//0wmQq71095C0F0HptEBkicWDZtLDxyO+/vy7nv9+vuf5Su5cv2v9tAMXHh4e3mjp68WtX7l+cbs1yb8ma8bDw8O7zWuX1eLXZWD9/Hab8PDw8H4Pb01aPy1fOh4eHt7/xPvMcvO2Hg8PD++7vCSMaO+cbUQS+F7JWvDw8PBi3s4A7Ft/f2i+h4eHh1dO1feLwey3s6e9eD4eHh7eBV7SBCdf3Z34NX9OEigXC8XDw8Mb8fJhVR4xtOVk/au8T36xHjw8PLzLvDZgbZc4a9Dze16sGQ8PD+8Cr0W227GP32m+8fDw8D7Dy6OHFrPTiK/vfxOp4OHh4R3ltdHAzqd/J9Idlgc8PDy8C7yzg6sc1oaz9UwPDw8P7zIvH9LPooeWsUN601jj4eHhHeXtjPnbT38ec7Rr+3HKh4eHh3eIlw+c8uKRLLeNHtptwsPDw7vHa8dgSQueN9Bnj3C9UeDh4eEd4uWHn/Jwtj1WNTvIFW0xHh4e3gVee1CgfcEslm2f/KalxsPDwzvKSwBtDJEsZX9sFrHx8PDwrvHyn82GWPnHfRbdFocG8PDw8I7yZs3r7BhW20y3b8HDw8O7x5sdfpoFrPvblw/J3oS5eHh4eNu89tjTjYjhEV/tYQI8PDy8G7x20bN4t93EWeP+yCsSHh4e3gYv+dTOXpA05e0Br2ExwMPDw7vAm0UG623K75mVk61ah4eHh7cBy6/ZOGqGzI9e/Rgx4+Hh4V3gzYrHrDluX58M5IaJCx4eHt42b2dBeQlJ4oMrhQEPDw/vGq8NI9pIIt+CWR3Dw8PD+828U4WkLTnDAwp4eHh4X+XNBlRJEJy3yG2sjIeHh3ePNxvkJ0egcljSTCdFAg8PD+82r/2vfnvE6jMBx9aUDw8PDy/l/QXjBSvwjpwPOgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
