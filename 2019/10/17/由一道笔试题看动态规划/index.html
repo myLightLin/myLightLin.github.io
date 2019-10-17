@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>由一道笔试题看动态规划 | 「Stay hungry，stay foolish.」</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript">
+    <meta name="description" content="对于大多数学习编程的人来说，动态规划一直是一个难突破的点，我自己在学习过程中也是很困惑，各种书籍资料，视频都看过不少，基本的思想也都能理解，但一碰到题目的时候还是觉得无从下手。最近在做笔试题的时候突然有了一丢丢理解，这里记录下， 没准路过看到的人能加深理解或有所启发。 逆向思维题目如下：  一个人在 m×n 的方格里行走，每次只能向右或向下，每个方格里的值是距离，求从起点走到终点的最短路径值。示例">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="由一道笔试题看动态规划">
+<meta property="og:url" content="http://www.brightlam.top/2019/10/17/由一道笔试题看动态规划/index.html">
+<meta property="og:site_name" content="「Stay hungry，stay foolish.」">
+<meta property="og:description" content="对于大多数学习编程的人来说，动态规划一直是一个难突破的点，我自己在学习过程中也是很困惑，各种书籍资料，视频都看过不少，基本的思想也都能理解，但一碰到题目的时候还是觉得无从下手。最近在做笔试题的时候突然有了一丢丢理解，这里记录下， 没准路过看到的人能加深理解或有所启发。 逆向思维题目如下：  一个人在 m×n 的方格里行走，每次只能向右或向下，每个方格里的值是距离，求从起点走到终点的最短路径值。示例">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/12142481-099a63df90d5895d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/12142481-b10fa68ce46e2120.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/12142481-feeac6b8e7428c95.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-17T13:11:18.668Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="由一道笔试题看动态规划">
+<meta name="twitter:description" content="对于大多数学习编程的人来说，动态规划一直是一个难突破的点，我自己在学习过程中也是很困惑，各种书籍资料，视频都看过不少，基本的思想也都能理解，但一碰到题目的时候还是觉得无从下手。最近在做笔试题的时候突然有了一丢丢理解，这里记录下， 没准路过看到的人能加深理解或有所启发。 逆向思维题目如下：  一个人在 m×n 的方格里行走，每次只能向右或向下，每个方格里的值是距离，求从起点走到终点的最短路径值。示例">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/12142481-099a63df90d5895d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="「Stay hungry，stay foolish.」" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+    <script>
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/imagesA.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Light Lin</h5>
+          <a href="mailto:lighterlam@gmail.com" title="lighterlam@gmail.com" class="mail">lighterlam@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                档案
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/myLightLin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/404.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                404测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">由一道笔试题看动态规划</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">由一道笔试题看动态规划</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-10-17T13:09:32.000Z" itemprop="datePublished" class="page-time">
+  2019-10-17
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#逆向思维"><span class="post-toc-number">1.</span> <span class="post-toc-text">逆向思维</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#动态规划的思想"><span class="post-toc-number">2.</span> <span class="post-toc-text">动态规划的思想</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#后记"><span class="post-toc-number">3.</span> <span class="post-toc-text">后记</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-由一道笔试题看动态规划"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">由一道笔试题看动态规划</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-10-17 21:09:32" datetime="2019-10-17T13:09:32.000Z"  itemprop="datePublished">2019-10-17</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>对于大多数学习编程的人来说，动态规划一直是一个难突破的点，我自己在学习过程中也是很困惑，各种书籍资料，视频都看过不少，基本的思想也都能理解，<strong>但一碰到题目的时候还是觉得无从下手</strong>。最近在做笔试题的时候突然有了一丢丢理解，这里记录下， 没准路过看到的人能加深理解或有所启发。</p>
+<h4 id="逆向思维"><a href="#逆向思维" class="headerlink" title="逆向思维"></a>逆向思维</h4><p>题目如下：</p>
+<blockquote>
+<p>一个人在 m×n 的方格里行走，每次只能向右或向下，每个方格里的值是距离，求从起点走到终点的<strong>最短</strong>路径值。<br>示例：3 3<br>1 3 1<br>1 5 1<br>4 2 1<br>最终输出 7  ，从左上走到右下所花费的最短距离是 7</p>
+</blockquote>
+<p>第一眼看到题目的时候，就知道是动态规划类的题了，然而在做题时由于各（tai）种（cai）原（le）因还是没能做出来，尽管对这种类型的题目见得多了。有种我熟悉它它却不待见我的赶脚。等到结束之后回过头来想，想啊想啊想 … 半小时过去了，又想啊想，总算是把代码实现出来了。</p>
+<p>按照正常思维来看的话，人站在起点处，向右或向下走到终点，那么最短距离就是每次比较向左或向下的路程，取最小的走，在加上自身需要的路程，这样一直走到终点就是最短的路径值。对照着题目验证下，那就是 1 -&gt; (向下) 1 -&gt; (向下) 4 -&gt; (向右) 2 -&gt; (向右) 1 到达终点，总距离是 9 ，发现这种走法是错的。正确的走法应该是 1 -&gt; 3 -&gt; 1 -&gt; 1 -&gt; 1 ,总距离是 7 最短。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/12142481-099a63df90d5895d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<p>此方法不行，那我们来考虑第二种解法。现在，不从起点来推算了，因为我们一眼看过去题目这个矩阵，就知道在这个输入下，最好的路径就是 1 -&gt; 1 -&gt; 1 -&gt; 3 -&gt; 1 这样走法，怎么得出来的呢？我们从矩阵最后一个数看，它是终点，那这个终点是如何过来的呢？ 发现它是由左边或者上边这个数字过来的，为什么会这样？因为题目说了，只能向右或向下走，所以终点的这个位置要么是上面位置向下走得来的，要么就是左边位置向右走到达的。所以我们从后往前推得出 1 -&gt; 1 -&gt; 1 -&gt; 3 -&gt; 1 这种最佳走法。如下图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/12142481-b10fa68ce46e2120.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<p>这就是传说中的<strong>动态规划</strong> , 在这道题里，我们定义的一个状态是 f(i, j) ，表示从起点走到坐标（i, j） 所经历的最短路径，由上面的推断可以发现，<strong>坐标 （i,j）的最短路径总是由 坐标(i-1, j) 和坐标 (i, j-1) 两个的最小值加上坐标 (i, j) 自身的值得来</strong>，<br>状态转移方程为 <code>f(i, j) = Math.min(f(i-1 ,j), f(i, j-1)) + values[i, j]</code> i, j 为二维数组的坐标，values 为数组对应坐标的初始值。原始数组 values 和 dp 数组的推算值如下图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/12142481-feeac6b8e7428c95.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<p>有了上面的铺垫，我们就可以得出代码了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function solve(arr, m, n) &#123;</span><br><span class="line">    //定义一个二维数组 dp , dp[i][j]表示走到i,j这个点的最短路径</span><br><span class="line">    var dp = new Array(m);</span><br><span class="line">    for (var i = 0; i &lt; m; i++) &#123;</span><br><span class="line">        dp[i] = [];</span><br><span class="line">        for (var j = 0; j &lt; n; j++) &#123;</span><br><span class="line">            dp[i][j] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    // 初始化第一行和第一列的状态值</span><br><span class="line">    dp[0][0] = arr[0][0];</span><br><span class="line">    for (var i = 1; i &lt; n; i++) &#123;</span><br><span class="line">        dp[0][i] = arr[0][i] + dp[0][i - 1];</span><br><span class="line">    &#125;</span><br><span class="line">    for (var i = 1; i &lt; m; i++) &#123;</span><br><span class="line">        dp[i][0] = arr[i][0] + dp[i - 1][0];</span><br><span class="line">    &#125;</span><br><span class="line">    // 动态规划，计算每个点的最短路径值</span><br><span class="line">    for (var i = 1; i &lt; m; i++) &#123;</span><br><span class="line">        for (var j = 1; j &lt; n; j++) &#123;</span><br><span class="line">            dp[i][j] = arr[i][j] + Math.min(dp[i - 1][j], dp[i][j - 1]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[m - 1][n - 1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们用一个二维数组dp , 来存储每个节点的最短路径值，这里要特别注意的是，需要对数组的第一行和第一列进行初始化，第一行的每个点只能由左边向右走过来，所以直接累加相应坐标的值；同理第一列的每个点只能由上面向下走得来，每个点由原来的值加上一个点的值即可。接下来从第 1 行，第1列开始，一直遍历到 m -1, n -1 ,把每个状态值填上，函数的返回值为走到终点的坐标也就是 dp[m-1][n-1] 。</p>
+<h4 id="动态规划的思想"><a href="#动态规划的思想" class="headerlink" title="动态规划的思想"></a>动态规划的思想</h4><p>在学习动态规划的时候，学的一愣一愣的，什么最优子结构、无副作用、重复子问题等，看着这些理论似懂非懂。</p>
+<p>什么是动态规划？我觉得动态规划就是逆向，由后往前地去推导这样的过程，就仿佛开了上帝视角一样，在已经知道结果的情况下，通过对各种情况的抉择，去倒推出原始的起点，然后定义一个合理的状态来解释。像上面的这道题目，问你一个人从左上角走到右下角的最短路程，那我们在看题的时候，可以全局地看到各个路径的距离值以及周围的路径分布，所以可以通过推算很快得出结果。上面的第一种解法其实就是贪心的思路，从起点开始，每次选择一条最短的路径走下去，这样带来的弊端就是可能后面的路径是更加糟糕的，容易因为短视而得不到最佳的结果。</p>
+<p>总的来说，在遇到一些求最佳问题时，比如求最短路径，最大价值、最长公共子序列等问题时，就要考虑使用动态规划来求解，而有些时候，不妨先用贪心的思想来试试能否求得结果，这样也能明白不行的原因在哪里，也能加深对动态规划的应用场景理解。</p>
+<h4 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h4><p>很多时候看懂了不一定真的懂了，正如开头提到的知道题目是动态规划，但就是觉得无从下手，现在看还是要多做多理解，也许过段时间又有新的领悟。</p>
+<p>对这个知识点的理解还有待加深，文章有什么不对之处，敬请指正，欢迎交流探讨。</p>
+<p>(完)</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-10-17T13:11:18.668Z" itemprop="dateUpdated">2019-10-17 21:11:18</time>
+</span><br>
+
+
+        
+        欢迎关注微信公众号，分享原创技术文章，见下方二维码。<br><div style="display:flex;justify-content:center;align-items:center;padding-top:10px;"><img src="https://s2.ax1x.com/2019/03/27/AaPjyR.png" width="150" height="150"></div>
+        
+    </div>
+    
+    <footer>
+        <a href="http://www.brightlam.top">
+            <img src="/img/imagesA.png" alt="Light Lin">
+            Light Lin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2019/10/17/由一道笔试题看动态规划/&title=《由一道笔试题看动态规划》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/imagesA.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2019/10/17/由一道笔试题看动态规划/&title=《由一道笔试题看动态规划》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2019/10/17/由一道笔试题看动态规划/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《由一道笔试题看动态规划》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2019/10/17/由一道笔试题看动态规划/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2019/10/17/由一道笔试题看动态规划/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/24/1-7-11-map-parseInt-会输出什么/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[&#39;1&#39;, &#39;7&#39;, &#39;11&#39;].map(parseInt) 会输出什么</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "iUCPVe2VLChefffS2w2mDHFO-gzGzoHsz",
+            appKey: "sOwlIg1a5fSQf3ve1mgBaoag",
+            avatar: "",
+            placeholder: "留下你的评论，一起交流学习!",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢您的支持。
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/WeChat.png" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Light Lin &copy; 2018 - 2019</span>
+            <span>
+                
+                <!-- Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a> -->
+            </span>
+        </p>
+    </div>
+</footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.brightlam.top/2019/10/17/由一道笔试题看动态规划/&title=《由一道笔试题看动态规划》 — 「Stay hungry，stay foolish.」&pic=http://www.brightlam.top/img/imagesA.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.brightlam.top/2019/10/17/由一道笔试题看动态规划/&title=《由一道笔试题看动态规划》 — 「Stay hungry，stay foolish.」&source=爱技术，爱分享" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.brightlam.top/2019/10/17/由一道笔试题看动态规划/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《由一道笔试题看动态规划》 — 「Stay hungry，stay foolish.」&url=http://www.brightlam.top/2019/10/17/由一道笔试题看动态规划/&via=http://www.brightlam.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.brightlam.top/2019/10/17/由一道笔试题看动态规划/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqElEQVR42u3aS3KkQAwFwL7/pT0H8EA/fYrAEcnKCxoqWZTKT/p84uvn4srvTK7fz/n9zM+JCw8PD29p6fcvSF52/6sr0v0a8jXj4eHhneZdLS5ZSkJKykC1VNyvGQ8PD+9tvOT+/KB8//y8LOHh4eH9XV4Pn68BDw8P7w28PAjIl5iXivsS8lDWgoeHhxfz8i7Se/4+0t/Dw8PDG3fV82bY5JA9j4MvV4uHh4d3gLc7BFBdaC/wra4TDw8Pb5eXD1dNPkF+LJ4UpP+8BQ8PD+8wrxrjVltl1UJS/RzNMAIPDw+vxZvkn9Ucdf6uQuHBw8PDe5yXN8AKI1DFxv/aQAAeHh7eKq+KyV+fD1TN490v02R4eHh4S7z5Vl7d7pvt/+KnXIsn8PDw8G6HrvKtP7m/Cq4WpGbdw8PDwxvz8uNsNbbohbDzYYKo4uHh4eGt8iaH3V4zrBc6lJF4eHh4j/Am+DmjWjw+va+Lh4eH1+JNDtO9VllyyK6OI3wpCXh4eHhLvDw4qI5w5XHwQtfu6i14eHh4B3i9htbkaJ4cr3uhw5cuHx4eHt4SL9/681A1jxXyD9drleHh4eGd4/XGpCaRa+/AXQ4p8PDw8A7w8kVsbev5k+dBMB4eHt6TvOpIwaSdlheJJCLBw8PDe4bXOy5PRqN6QwZ5eSjkKHh4eHgD3vwYPT9255t+obWGh4eHd4yXRKJ5qJoUjPmYV1SW8PDw8FZ5P8Wr+sp5UDsqDHh4eHgHeJPNd9Kg6h2dewd0PDw8vBO8fNAq2dZ7gWy1nCRPw8PDwzvNy6PVagjbO45Pggk8PDy8t/F6Y1W98lMNO/Dw8PDeyZsw7p9TjXfLM2V4eHh4q7xq82m3QZUstPlbPDw8vAO83j/5vW26WjAWlo6Hh4e3yfsHokwDJ+spaNwAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
